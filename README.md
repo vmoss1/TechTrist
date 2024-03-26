@@ -1,7 +1,7 @@
-# [TechTrist]
+# TechTrist
 
 ## Database Schema Design
 
-![db schema](image.png)
+![db schema](images/image.png)
 
 ## API Documentation
