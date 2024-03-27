@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
-import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
+import AllPins from "./components/Pins/AllPins";
+import Home from "./components/Home/Home";
+import SinglePin from "./components/Pins/SinglePin";
 import * as sessionActions from "./store/session";
 
 function Layout() {
@@ -32,15 +33,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <Home />,
       },
       {
-        path: "login",
-        element: <LoginFormPage />,
+        path: "pins",
+        element: <AllPins />,
       },
       {
-        path: "signup",
-        element: <SignupFormPage />,
+        path: "pins/:pinId",
+        element: <SinglePin />,
       },
     ],
   },

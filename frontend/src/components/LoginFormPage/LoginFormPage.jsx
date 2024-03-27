@@ -3,6 +3,8 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginFormPage.css";
+import { SiKingstontechnology } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -10,10 +12,12 @@ function LoginFormPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
+    navigate("/pins");
     return dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {
@@ -31,35 +35,42 @@ function LoginFormPage() {
   };
 
   return (
-    <div className="loginForm">
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit} id="loginForm">
-        Username or Email
-        <label>
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        Password
-        <label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.message && <p id="invalidCredentials">{errors.message}</p>}
-        <div id="loginButton">
-          <button type="submit">Log In</button>
-          <button id="demoButton" type="button" onClick={handleDemoLogin}>
-            Login as Demo User
+    <div id="signup-form-container">
+      <div id="bio-tech" style={{ fontSize: "40px" }}>
+        <SiKingstontechnology />
+      </div>
+      <div id="form-container">
+        <h1 id="welcome-tech">Welcome to TechTrist</h1>
+
+        <form id="signup-form" onSubmit={handleSubmit}>
+          Email
+          <label>
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </label>
+          {errors.credential && <p>{errors.credential}</p>}
+          Password
+          <label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {errors.password && <p>{errors.password}</p>}
+          <button id="login-button-modal" type="submit">
+            Log In
           </button>
-        </div>
-      </form>
+          <button id="demo-login-button" onClick={handleDemoLogin}>
+            Demo User Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

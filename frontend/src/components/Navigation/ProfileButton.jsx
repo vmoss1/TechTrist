@@ -64,12 +64,12 @@ function ProfileButton({ user }) {
       {!user && (
         <div className="login-signup-buttons">
           <OpenModalButton
-            buttonText="Log In"
+            buttonText={<p id="nav-login-button">Log in</p>}
             onItemClick={closeMenu}
             modalComponent={<LoginFormPage />}
           />
           <OpenModalButton
-            buttonText="Sign Up"
+            buttonText={<p id="nav-signup-button">Sign up</p>}
             onItemClick={closeMenu}
             modalComponent={<SignupFormPage />}
           />

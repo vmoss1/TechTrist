@@ -1,0 +1,60 @@
+@import url("https://fonts.cdnfonts.com/css/raider-crusader");
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+#nav-logo-container {
+  display: flex;
+  margin-left: 10px;
+}
+
+#bio-tech {
+  color: #605856;
+}
+
+#nav-home-button {
+  text-decoration: none;
+  color: #1c6e8c;
+  font-size: 1.75rem;
+  font-family: "Raider Crusader", sans-serif;
+}
+
+.login-signup-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+#nav-login-button {
+  color: #1c6e8c;
+  font-size: 1rem;
+  margin: 0px;
+  font-family: "Raider Crusader", sans-serif;
+}
+
+#nav-signup-button {
+  font-size: 1rem;
+  margin: 0px;
+  color: #605856;
+  font-family: "Raider Crusader", sans-serif;
+}
+
+.modal-button {
+  border-radius: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px white solid;
+  border: #605856 1px solid;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  box-shadow: 1px 5px 8px #274156;
+}

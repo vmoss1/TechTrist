@@ -1,0 +1,26 @@
+#home-page-container {
+  background-color: antiquewhite;
+  min-height: 850px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-image: url("../../../public/background.jpg");
+}
+#home-signup-form {
+  border: 1px solid grey;
+  border-radius: 25px;
+  max-height: 700px;
+  margin-top: 50px;
+  max-width: 500px;
+  background-color: white;
+  box-shadow: 1px 2px 2px black;
+}
+
+#home-paragraph-container {
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
+  text-shadow: 2px 2px 9px rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

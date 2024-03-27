@@ -1,0 +1,62 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#signup-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 16px;
+}
+
+#welcome-tech {
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+#find-new {
+  font-weight: 200;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+
+#form-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+input {
+  border-radius: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: rgba(182, 182, 182, 0.709) 2px solid;
+  width: 250px;
+}
+
+#signup-button-modal {
+  border-radius: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border: 1px grey solid;
+  background-color: #1c6e8c;
+  color: white;
+  font-size: 1rem;
+}
