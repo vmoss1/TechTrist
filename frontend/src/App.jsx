@@ -6,6 +6,7 @@ import { Modal } from "./context/Modal";
 import AllPins from "./components/Pins/AllPins";
 import Home from "./components/Home/Home";
 import SinglePin from "./components/Pins/SinglePin";
+import CreatePin from "./components/Pins/CreatePin/CreatePin";
 import * as sessionActions from "./store/session";
 
 function Layout() {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "pins/:pinId",
         element: <SinglePin />,
+      },
+      {
+        path: "pins/new",
+        element: <CreatePin />,
       },
     ],
   },

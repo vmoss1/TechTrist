@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 // import { Link } from "react-router-dom";
@@ -16,17 +16,16 @@ function Navigation({ isLoaded }) {
         <div id="nav-logo-container">
           <div id="bio-tech" style={{ fontSize: "30px" }}>
             <SiKingstontechnology />
+            <NavLink id="nav-home-button" to="/pins">
+              TechTrist
+            </NavLink>
           </div>
-          <NavLink id="nav-home-button" to="/">
-            TechTrist
-          </NavLink>
+          <Link to={"/pins"} id="home-button">
+            Home
+          </Link>
         </div>
       </div>
-      {isLoaded && (
-        <div id="topButton">
-          <ProfileButton user={sessionUser} />
-        </div>
-      )}
+      {isLoaded && <ProfileButton user={sessionUser} />}
     </nav>
   );
 }

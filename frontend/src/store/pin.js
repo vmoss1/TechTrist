@@ -54,7 +54,7 @@ export const fetchPinDetails = (pinId) => async (dispatch) => {
 };
 
 //Pin post
-//Create new group
+//Create new pin
 export const createPinThunk = (pin) => async (dispatch) => {
   const response = await csrfFetch("/api/pins", {
     method: "POST",
@@ -77,6 +77,7 @@ export const deletePinThunk = (pinId) => async (dispatch) => {
   const response = await csrfFetch(`/api/pins/${pinId}`, {
     method: "DELETE",
   });
+  //   console.log("RES", response);
   if (response.ok) {
     dispatch(deletePin(pinId));
     return response.json();
@@ -94,8 +95,10 @@ export const editPinThunk = (pinId, pinData) => async (dispatch) => {
     },
     body: JSON.stringify(pinData),
   });
+  //   console.log("RESPONSE", response);
   if (response.ok) {
     const editedPin = await response.json();
+    // console.log("PIN", editedPin);
     dispatch(editPin(editedPin));
     return editedPin;
   } else {
@@ -105,7 +108,6 @@ export const editPinThunk = (pinId, pinData) => async (dispatch) => {
 
 const initialState = {
   list: [],
-  pinDetails: {},
 };
 
 const pinsReducer = (state = initialState, action) => {
@@ -114,30 +116,24 @@ const pinsReducer = (state = initialState, action) => {
       return { ...state, list: action.payload };
 
     case READ_PIN_DETAILS:
-      return { ...state, pinDetails: action.payload };
+      return { ...state, list: action.payload };
 
     case CREATE_PIN:
       return {
         ...state,
         list: [...state.list, action.payload],
-        pinDetails: action.payload,
       };
-
-    case DELETE_PIN: {
-      return {
-        ...state,
-        list: state.list.filter((pin) => pin.id !== action.payload),
-        pinDetails: {}, // Change to empty object when deleting a group
-      };
-    }
     case EDIT_PIN:
       return {
         ...state,
-        list: state.list.map((pin) =>
-          pin.id === action.payload.id ? action.payload : pin
-        ),
-        pinDetails: action.payload,
+        [action.payload.id]: action.payload, // Update the pin with the new data
       };
+
+    case DELETE_PIN: {
+      let pinState = { ...state };
+      delete pinState[action.payload];
+      return pinState;
+    }
 
     default:
       return state;

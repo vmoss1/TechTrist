@@ -9,9 +9,87 @@ nav {
   margin-right: 10px;
 }
 
+.profile-button {
+  border: none;
+  background-color: white;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-button:hover {
+  cursor: pointer;
+  box-shadow: 1px 5px 5px #1c6e8c;
+}
+
+#logout-button {
+  border-radius: 20px;
+  padding: 5px;
+  background-color: #1c6e8c;
+  color: white;
+  border: 1px white solid;
+}
+
+#home-button {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 2px black solid;
+  padding: 10px;
+  background-color: black;
+}
+
+#home-button:hover {
+  box-shadow: 1px 2px 5px #1c6e8c;
+}
+
+#ul-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(189, 189, 189);
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#currentlyIn {
+  font-size: 0.75rem;
+  margin-right: 65px;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border: 2px solid #1c6e8c;
+  border-radius: 20px;
+}
+
+#profile-button-dropdown {
+  z-index: 99;
+  position: fixed; /* or 'fixed' depending on your preference */
+  top: 5%; /* Position it below the button */
+  right: 0.5%;
+  margin-right: 10px;
+}
+
 #nav-logo-container {
   display: flex;
   margin-left: 10px;
+  gap: 35px;
+  align-items: center;
 }
 
 #bio-tech {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { GiHarryPotterSkull } from "react-icons/gi";
+import { CgProfile } from "react-icons/cg";
 import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormPage from "../LoginFormPage";
@@ -34,11 +34,12 @@ function ProfileButton({ user }) {
 
   const closeMenu = () => setShowMenu(false);
 
-  const logout = (e) => {
-    e.preventDefault();
+  const logout = () => {
     dispatch(sessionActions.logout());
     closeMenu();
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+    }, 100);
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -47,20 +48,31 @@ function ProfileButton({ user }) {
     <div className="profile-dropdown-container">
       {user && (
         <div className="profile-button-container">
-          <button onClick={toggleMenu} className="profile-button">
-            <GiHarryPotterSkull />
+          <button
+            style={{ fontSize: "30px" }}
+            onClick={toggleMenu}
+            className="profile-button"
+          >
+            <CgProfile />
           </button>
         </div>
       )}
-      {user && showMenu && (
-        <ul className={ulClassName} ref={ulRef}>
-          <li>Hello! {user.firstName}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      <div id="profile-button-dropdown">
+        {user && showMenu && (
+          <ul className={ulClassName} ref={ulRef}>
+            <p id="currentlyIn">Currently in</p>
+            <div id="ul-dropdown">
+              <div>{user.firstName}</div>
+              <div>{user.email}</div>
+              <div>
+                <button id="logout-button" onClick={logout}>
+                  Log Out
+                </button>
+              </div>
+            </div>
+          </ul>
+        )}
+      </div>
       {!user && (
         <div className="login-signup-buttons">
           <OpenModalButton
