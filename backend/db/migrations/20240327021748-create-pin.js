@@ -29,7 +29,7 @@ module.exports = {
           },
         },
         description: {
-          type: Sequelize.STRING(200),
+          type: Sequelize.STRING(300),
           allowNull: false,
         },
         imageUrl: {
