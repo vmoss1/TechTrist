@@ -9,6 +9,12 @@ nav {
   margin-right: 10px;
 }
 
+#user-photo {
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+}
+
 .profile-button {
   border: none;
   background-color: white;
@@ -16,6 +22,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px;
+  margin-right: 20px;
 }
 
 .profile-button:hover {
@@ -75,12 +83,13 @@ nav {
   padding-top: 10px;
   border: 2px solid #1c6e8c;
   border-radius: 20px;
+  background-color: white;
 }
 
 #profile-button-dropdown {
   z-index: 99;
   position: fixed; /* or 'fixed' depending on your preference */
-  top: 5%; /* Position it below the button */
+  top: 8%; /* Position it below the button */
   right: 0.5%;
   margin-right: 10px;
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { CgProfile } from "react-icons/cg";
+import { useDispatch, useSelector } from "react-redux";
+// import { CgProfile } from "react-icons/cg";
 import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormPage from "../LoginFormPage";
@@ -13,6 +13,7 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const navigate = useNavigate();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -48,12 +49,8 @@ function ProfileButton({ user }) {
     <div className="profile-dropdown-container">
       {user && (
         <div className="profile-button-container">
-          <button
-            style={{ fontSize: "30px" }}
-            onClick={toggleMenu}
-            className="profile-button"
-          >
-            <CgProfile />
+          <button onClick={toggleMenu} className="profile-button">
+            <img id="user-photo" src={sessionUser.profilePicture} alt="" />
           </button>
         </div>
       )}
