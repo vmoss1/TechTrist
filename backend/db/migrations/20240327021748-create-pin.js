@@ -17,7 +17,7 @@ module.exports = {
           type: Sequelize.INTEGER,
         },
         title: {
-          type: Sequelize.STRING(30),
+          type: Sequelize.STRING(40),
           allowNull: false,
         },
         userId: {
@@ -37,7 +37,7 @@ module.exports = {
           allowNull: false,
         },
         category: {
-          type: Sequelize.STRING(30),
+          type: Sequelize.STRING(40),
           allowNull: false,
         },
         createdAt: {
