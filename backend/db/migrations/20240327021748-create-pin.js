@@ -17,7 +17,7 @@ module.exports = {
           type: Sequelize.INTEGER,
         },
         title: {
-          type: Sequelize.STRING(40),
+          type: Sequelize.STRING(50),
           allowNull: false,
         },
         userId: {
@@ -29,7 +29,7 @@ module.exports = {
           },
         },
         description: {
-          type: Sequelize.STRING(300),
+          type: Sequelize.STRING(400),
           allowNull: false,
         },
         imageUrl: {
@@ -37,7 +37,7 @@ module.exports = {
           allowNull: false,
         },
         category: {
-          type: Sequelize.STRING(40),
+          type: Sequelize.STRING(50),
           allowNull: false,
         },
         createdAt: {

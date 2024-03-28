@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Pin.init(
     {
       title: {
-        type: DataTypes.STRING(40),
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
       userId: {
@@ -27,12 +27,12 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       description: {
-        type: DataTypes.STRING(300),
+        type: DataTypes.STRING(400),
         allowNull: false,
       },
       imageUrl: { type: DataTypes.STRING, allowNull: false },
       category: {
-        type: DataTypes.STRING(40),
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
     },
