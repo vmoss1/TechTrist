@@ -1,58 +1,49 @@
 "use strict";
 const { Model, Validator } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
-  class Pin extends Model {
+  class BoardPin extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Pin.belongsTo(models.User, {
-        foreignKey: "userId",
+      BoardPin.belongsTo(models.Board, {
+        foreignKey: "boardId",
+        // onDelete: "CASCADE",
+        // hooks: true,
       });
-      Pin.belongsToMany(models.Board, {
-        through: models.BoardPin,
+      BoardPin.belongsTo(models.Pin, {
         foreignKey: "pinId",
-        otherKey: "boardId",
-      });
-      Pin.hasMany(models.BoardPin, {
-        foreignKey: "pinId",
+        // onDelete: "CASCADE",
+        // hooks: true,
       });
     }
   }
-  Pin.init(
+  BoardPin.init(
     {
-      title: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-      },
-      userId: {
+      boardId: {
         type: DataTypes.INTEGER,
         references: {
-          model: "User",
+          model: "Board",
         },
       },
-      description: {
-        type: DataTypes.STRING(600),
-        allowNull: false,
-      },
-      imageUrl: { type: DataTypes.STRING, allowNull: false },
-      category: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
+      pinId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Pin",
+        },
       },
     },
     {
       sequelize,
-      modelName: "Pin",
+      modelName: "BoardPin",
       defaultScope: {
         attributes: {
-          exclude: ["updatedAt"],
+          exclude: ["updatedAt", "createdAt"],
         }, // default query when searching for Users, the hashedPassword, updatedAt, and, depending on your application, email and createdAt fields should not be returned
       }, // protects
     }
   );
-  return Pin;
+  return BoardPin;
 };

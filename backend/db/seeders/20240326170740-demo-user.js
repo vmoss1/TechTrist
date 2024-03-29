@@ -99,7 +99,7 @@ module.exports = {
       );
     } catch (e) {
       console.error(e);
-      throw new Error("Check validators");
+      throw new Error("Check User validators");
     }
   },
 

@@ -109,6 +109,8 @@ router.put("/:pinId", requireAuth, async (req, res, next) => {
   }
 });
 
+// delete pin
+// require auth
 router.delete("/:pinId", requireAuth, async (req, res, next) => {
   let { pinId } = req.params;
   pinId = +pinId;
