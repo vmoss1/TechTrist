@@ -121,7 +121,7 @@ const pinsReducer = (state = initialState, action) => {
     case CREATE_PIN:
       return {
         ...state,
-        list: [...state.list, action.payload],
+        list: action.payload,
       };
     case EDIT_PIN:
       return {

@@ -24,32 +24,41 @@ export default function CreatePin({ pin }) {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (title.length == 0) {
-      setErrors({ Title: "Title is required" });
-      return;
-    } else if (title.length > 30) {
-      setErrors({
-        Title: "Title must be shorter than 30 characters long.",
-      });
-      return;
+    const validate = {};
+    if (!title) validate.title = "Please provide title";
+    if (!description) validate.description = "Please provide a description";
+    if (!imageUrl) validate.imageUrl = "Please provide an image URL";
+    if (!category) validate.category = "Please provide a category";
+    if (title.length > 50 || title.length < 5)
+      validate.title =
+        "Please write at least 5 characters but not more than 50";
+    if (description.length > 600 || title.length < 5)
+      validate.description =
+        "Please write at least 5 characters but not more than 600";
+    if (category.length > 50 || title.length < 5)
+      validate.category =
+        "Please write at least 5 characters but not more than 50";
+
+    if (Object.values(validate).length) {
+      setErrors(validate);
+    } else {
+      const editedPin = {
+        id: pin?.id,
+        userId: currentUser.id,
+        title,
+        description,
+        imageUrl,
+        category,
+      };
+
+      const res = await dispatch(editPinThunk(pin?.id, editedPin));
+
+      if (res && res.errors) {
+        return setErrors(res.errors);
+      }
+      closeModal();
+      navigate(`/pins/${pin?.id}`);
     }
-
-    const editedPin = {
-      id: pin?.id,
-      userId: currentUser.id,
-      title,
-      description,
-      imageUrl,
-      category,
-    };
-
-    const res = await dispatch(editPinThunk(pin?.id, editedPin));
-
-    if (res && res.errors) {
-      return setErrors(res.errors);
-    }
-    closeModal();
-    navigate(`/pins/${pin?.id}`);
   };
 
   const handleDelete = async (e) => {
@@ -74,17 +83,18 @@ export default function CreatePin({ pin }) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              {errors?.title && <p className="p-error">{errors.title}</p>}
+              {"title" in errors && <p className="errors">{errors.title}</p>}
             </label>
             Description
             <label>
-              <input
+              <textarea
+                id="description"
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
-              {errors?.description && (
-                <p className="p-error">{errors.description}</p>
+              {"description" in errors && (
+                <p className="errors">{errors.description}</p>
               )}
             </label>
             ImageUrl
@@ -94,7 +104,9 @@ export default function CreatePin({ pin }) {
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
               />
-              {errors?.imageUrl && <p className="p-error">{errors.imageUrl}</p>}
+              {"imageUrl" in errors && (
+                <p className="errors">{errors.imageUrl}</p>
+              )}
             </label>
             Category
             <label>
@@ -103,10 +115,14 @@ export default function CreatePin({ pin }) {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               />
-              {errors?.category && <p className="p-error">{errors.category}</p>}
+              {"category" in errors && (
+                <p className="errors">{errors.category}</p>
+              )}
             </label>
-            <button>Save</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button id="save-button">Save</button>
+            <button id="delete-button" onClick={handleDelete}>
+              Delete
+            </button>
           </div>
         </form>
       </div>

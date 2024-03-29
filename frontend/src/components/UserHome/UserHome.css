@@ -1,0 +1,22 @@
+#profile-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-page-picture {
+  height: 120px;
+  width: 120px;
+  border-radius: 80px;
+  border: 2px #1c6e8c solid;
+}
+
+#profile-page-h1 {
+  margin: 0px;
+  margin-top: 20px;
+}
+
+#profile-page-p {
+  margin-top: 5px;
+}

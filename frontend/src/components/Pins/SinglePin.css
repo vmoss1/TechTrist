@@ -1,0 +1,43 @@
+#current-pin-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+#current-pin-small-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 1px 2px 5px grey;
+  border-radius: 25px;
+}
+
+#single-pin-image {
+  border-radius: 20px;
+}
+
+#single-pin-right-side {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+#single-pin-title-container {
+  display: flex;
+  justify-content: center;
+}
+
+#single-pin-edit-button {
+  border: none;
+}
+
+#current-pin-description-container {
+  max-width: 500px;
+  margin-left: 20px;
+}
+
+#single-pin-edit-container {
+  width: 200px;
+  height: 50px;
+  margin-left: 15px;
+}

@@ -24,6 +24,11 @@ nav {
   align-items: center;
   padding: 0px;
   margin-right: 20px;
+  border: #1c6e8c solid 2px;
+}
+
+.errors {
+  color: red;
 }
 
 .profile-button:hover {
@@ -33,10 +38,27 @@ nav {
 
 #logout-button {
   border-radius: 20px;
-  padding: 5px;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #8c1c1c;
+  color: white;
+  border: 2px #ffffff solid;
+}
+
+#profile-button {
+  border-radius: 20px;
+  text-decoration: none;
+  margin-top: 10px;
+  padding-top: 8%;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
   background-color: #1c6e8c;
   color: white;
-  border: 1px white solid;
+  border: 2px #ffffff solid;
 }
 
 #home-button {
@@ -44,9 +66,9 @@ nav {
   color: rgb(255, 255, 255);
   font-size: 1rem;
   border-radius: 20px;
-  border: 2px black solid;
+  border: 2px #1c6e8c solid;
   padding: 10px;
-  background-color: black;
+  background-color: #605856;
 }
 
 #home-button:hover {
@@ -57,9 +79,9 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: rgb(189, 189, 189);
+  background-color: #605856;
   border-radius: 20px;
-  padding: 10px;
+  padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
@@ -77,10 +99,10 @@ nav {
   gap: 10px;
   justify-content: center;
   align-items: center;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 5px;
   border: 2px solid #1c6e8c;
   border-radius: 20px;
   background-color: white;
@@ -97,7 +119,7 @@ nav {
 #nav-logo-container {
   display: flex;
   margin-left: 10px;
-  gap: 35px;
+  gap: 20px;
   align-items: center;
 }
 

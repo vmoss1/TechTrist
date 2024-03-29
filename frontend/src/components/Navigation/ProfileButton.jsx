@@ -6,6 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormPage from "../LoginFormPage";
 import SignupFormPage from "../SignupFormPage";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
@@ -50,7 +51,7 @@ function ProfileButton({ user }) {
       {user && (
         <div className="profile-button-container">
           <button onClick={toggleMenu} className="profile-button">
-            <img id="user-photo" src={sessionUser.profilePicture} alt="" />
+            <img id="user-photo" src={sessionUser?.profilePicture} alt="" />
           </button>
         </div>
       )}
@@ -61,6 +62,9 @@ function ProfileButton({ user }) {
             <div id="ul-dropdown">
               <div>{user.firstName}</div>
               <div>{user.email}</div>
+              <Link to={"/myProfile"} id="profile-button" user={sessionUser}>
+                MyProfile
+              </Link>
               <div>
                 <button id="logout-button" onClick={logout}>
                   Log Out
