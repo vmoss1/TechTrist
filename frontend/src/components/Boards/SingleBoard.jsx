@@ -12,8 +12,11 @@ import EditBoard from "./EditBoard/EditBoard";
 export default function SingleBoard() {
   const { boardId } = useParams();
   let board = useSelector((state) => state.boards?.list);
+  let currentPins = useSelector((state) => state.boards);
+  console.log("CURRENT", currentPins);
 
-  //   console.log("BOARD", board);
+  const pinCount = board?.Pins?.length;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,6 +36,9 @@ export default function SingleBoard() {
           modalComponent={<EditBoard board={board} />}
         />
       </div>
+
+      <h3>{pinCount} Pins</h3>
+
       <div id="single-board-pins-container">
         {board.Pins?.map((pin) => (
           <div key={pin.id}>

@@ -58,7 +58,6 @@ function ProfileButton({ user }) {
       <div id="profile-button-dropdown">
         {user && showMenu && (
           <ul className={ulClassName} ref={ulRef}>
-            <p id="currentlyIn">Currently in</p>
             <div id="ul-dropdown">
               <div>{user.firstName}</div>
               <div>{user.email}</div>

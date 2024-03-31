@@ -5,6 +5,49 @@
   margin-top: 80px;
 }
 
+#single-pin-edit-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#single-pin-dropdown {
+  z-index: 99;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute; /* or 'fixed' depending on your preference */
+  top: 20% Position it below the button;
+  border: 2px #1c6e8c solid;
+  border-radius: 25px;
+  /* margin-left: 25px; */
+  background-color: #1c6e8c;
+  margin-right: 200px;
+}
+
+.single-pin-save-button {
+  margin-left: 350px;
+  border-radius: 25px;
+  border: 2px #1c6e8c solid;
+  background-color: gray;
+  color: white;
+}
+
+#single-pin-board-name {
+  padding: 5px;
+}
+
+#single-pin-board-name:hover {
+  box-shadow: 0 0 1px 1px #1c6e8c;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.single-pin-save-button:hover {
+  box-shadow: 0 0 1px 1px #1c6e8c;
+}
+
 #current-pin-small-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -123,10 +123,12 @@ export const addPinToBoardThunk = (boardId, pinId) => async (dispatch) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(pinId, boardId),
+    body: JSON.stringify({ pinId, boardId }),
   });
+  //   console.log("RESPONSE", response);
   if (response.ok) {
     const newPinOnBoard = await response.json();
+    console.log("NEWPINONBOARD", newPinOnBoard);
     dispatch(addPinToBoard(newPinOnBoard));
     return newPinOnBoard;
   } else {
@@ -141,7 +143,7 @@ export const deletePinFromBoardThunk = (boardId, pinId) => async (dispatch) => {
   });
   //   console.log("RES", response);
   if (response.ok) {
-    dispatch(deletePinFromBoard(boardId, pinId));
+    dispatch(deletePinFromBoard({ boardId, pinId }));
     return response.json();
   } else {
     throw new Error("Unable to Delete");
@@ -150,6 +152,7 @@ export const deletePinFromBoardThunk = (boardId, pinId) => async (dispatch) => {
 
 const initialState = {
   list: [],
+  pins: {},
 };
 
 const boardsReducer = (state = initialState, action) => {
@@ -176,6 +179,11 @@ const boardsReducer = (state = initialState, action) => {
       delete boardState[action.payload];
       return boardState;
     }
+    case ADD_PIN_TO_BOARD:
+      return {
+        ...state,
+        pins: action.payload,
+      };
 
     default:
       return state;
