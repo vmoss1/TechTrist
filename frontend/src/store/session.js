@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf.js";
 
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const GET_USERS = "session/getUsers";
 
 const setUser = (user) => {
   return {
@@ -15,6 +16,11 @@ const removeUser = () => {
     type: REMOVE_USER,
   };
 };
+
+const getUsers = (users) => ({
+  type: GET_USERS,
+  payload: users,
+});
 
 export const signup = (user) => async (dispatch) => {
   const { username, firstName, lastName, email, password } = user;
@@ -47,7 +53,21 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
-const initialState = { user: null };
+export const getUsersThunk = () => async (dispatch) => {
+  try {
+    const response = await csrfFetch("/api/session/users");
+    if (!response.ok) {
+      throw new Error("Failed to fetch users");
+    }
+    const data = await response.json();
+    dispatch(getUsers(data));
+    // console.log(data.users);
+  } catch (error) {
+    console.error("Error fetching users:", error.message);
+  }
+};
+
+const initialState = { user: null, users: {} };
 
 const sessionsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -55,6 +75,8 @@ const sessionsReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
+    case GET_USERS:
+      return { ...state, users: action.payload.users };
     default:
       return state;
   }

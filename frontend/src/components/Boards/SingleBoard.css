@@ -1,0 +1,52 @@
+@import url("https://fonts.cdnfonts.com/css/raider-crusader");
+#single-board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#single-board-title-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+#single-board-edit-button {
+  border-radius: 20px;
+  background-color: grey;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin: 0px;
+}
+
+#single-board-pins-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  align-items: center;
+  gap: 5px;
+}
+
+#single-board-pin-image {
+  max-width: 400px;
+  height: 450px;
+  border-radius: 25px;
+}
+#single-board-pin-image:hover {
+  box-shadow: 0 0 4px 5px #1c6e8c;
+  transform: scale(1.1); /* Scale up by 10% on hover */
+}
+
+#single-board-title {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+}

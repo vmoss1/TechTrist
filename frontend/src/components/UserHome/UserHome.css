@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/raider-crusader");
+
 #profile-page-container {
   display: flex;
   flex-direction: column;
@@ -19,4 +21,96 @@
 
 #profile-page-p {
   margin-top: 5px;
+}
+
+#all-boards {
+  display: flex;
+  gap: 65px;
+  /* font-family: "Raider Crusader", sans-serif; */
+}
+
+#boards-link {
+  text-decoration: none;
+  /* font-family: "Raider Crusader", sans-serif; */
+}
+
+#plus-emblem-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: flex-end;
+  margin-right: 25px;
+}
+
+#my-boards-title {
+  font-weight: 500;
+  font-family: "Raider Crusader", sans-serif;
+  margin: 0px;
+  margin-top: 45px;
+}
+
+#my-pins-title {
+  font-weight: 500;
+  font-family: "Raider Crusader", sans-serif;
+}
+
+#plus-emblem:hover {
+  border-radius: 30px;
+}
+
+#profile-add-new-pin-board {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+#profile-new-pin {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #1c6e8c;
+}
+
+#board-title-profile {
+  color: #1c6e8c;
+  text-decoration: none;
+  /* font-family: "Raider Crusader", sans-serif; */
+  font-size: 1.5rem;
+}
+
+#board-title-profile:hover {
+  transform: scale(1.1);
+}
+
+#profile-new-pin-container {
+  padding: 8px;
+}
+
+#profile-new-pin-container:hover {
+  box-shadow: 1px 3px 5px #1c6e8c;
+  border-radius: 25px;
+}
+
+#open-modal-new-board {
+  color: #1c6e8c;
+  margin: 0px;
+  padding: 10px;
+  font-size: 2rem;
+}
+
+/* #open-modal-new-board:hover {
+  box-shadow: 1px 3px 5px #1c6e8c;
+} */
+
+#profile-new-board {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #1c6e8c;
+}
+
+.modal-button {
+  border: none;
+  background-color: white;
 }

@@ -6,7 +6,7 @@ import { deletePinThunk } from "../../../store/pin";
 import { useModal } from "../../../context/Modal";
 import "./EditPin.css";
 
-export default function CreatePin({ pin }) {
+export default function EditPin({ pin }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { closeModal } = useModal();
@@ -25,6 +25,11 @@ export default function CreatePin({ pin }) {
     e.preventDefault();
 
     const validate = {};
+
+    if (currentUser.id != pin.userId) {
+      validate.userCheck = "You are not authorized to make this change";
+    }
+
     if (!title) validate.title = "Please provide title";
     if (!description) validate.description = "Please provide a description";
     if (!imageUrl) validate.imageUrl = "Please provide an image URL";
@@ -64,10 +69,20 @@ export default function CreatePin({ pin }) {
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    await dispatch(deletePinThunk(pin.id));
+    let validate = {};
 
-    closeModal();
-    navigate("/pins");
+    if (currentUser.id != pin.userId) {
+      validate.userDeleteCheck = "You are not authorized to make this change";
+    }
+
+    if (Object.values(validate).length) {
+      setErrors(validate);
+    } else {
+      await dispatch(deletePinThunk(pin.id));
+
+      closeModal();
+      navigate("/pins");
+    }
   };
 
   return (
@@ -120,9 +135,15 @@ export default function CreatePin({ pin }) {
               )}
             </label>
             <button id="save-button">Save</button>
+            {"userCheck" in errors && (
+              <p className="errors">{errors.userCheck}</p>
+            )}
             <button id="delete-button" onClick={handleDelete}>
               Delete
             </button>
+            {"userDeleteCheck" in errors && (
+              <p className="errors">{errors.userDeleteCheck}</p>
+            )}
           </div>
         </form>
       </div>

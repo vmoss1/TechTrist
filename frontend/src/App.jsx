@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import SinglePin from "./components/Pins/SinglePin";
 import CreatePin from "./components/Pins/CreatePin/CreatePin";
 import UserHome from "./components/UserHome/UserHome";
+import SingleBoard from "./components/Boards/SingleBoard";
 import * as sessionActions from "./store/session";
 
 function Layout() {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "myProfile",
         element: <UserHome />,
+      },
+      {
+        path: "boards/:boardId",
+        element: <SingleBoard />,
       },
     ],
   },

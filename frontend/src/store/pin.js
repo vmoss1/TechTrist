@@ -86,7 +86,7 @@ export const deletePinThunk = (pinId) => async (dispatch) => {
   }
 };
 
-//update group
+//update pin
 export const editPinThunk = (pinId, pinData) => async (dispatch) => {
   const response = await csrfFetch(`/api/pins/${pinId}`, {
     method: "PUT",

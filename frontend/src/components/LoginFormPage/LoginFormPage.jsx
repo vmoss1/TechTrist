@@ -29,7 +29,7 @@ function LoginFormPage() {
   };
 
   const handleDemoLogin = async () => {
-    setCredential("Demo-lition");
+    setCredential("CodeWizard");
     setPassword("password");
     await handleSubmit();
   };
@@ -43,7 +43,7 @@ function LoginFormPage() {
         <h1 id="welcome-tech">Welcome to TechTrist</h1>
 
         <form id="signup-form" onSubmit={handleSubmit}>
-          Email
+          Credential
           <label>
             <input
               type="text"

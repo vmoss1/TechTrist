@@ -21,7 +21,6 @@ const AllPins = () => {
         {currentPins?.map((pin) => (
           <div id="pin" key={pin.id}>
             <Link id="pins-link" to={`/pins/${pin.id}`} key={pin.id}>
-              {pin.title}
               <img id="pin-images" src={pin.imageUrl} alt={pin.title} />
             </Link>
           </div>

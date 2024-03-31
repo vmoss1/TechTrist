@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import EditPin from "../Pins/EditPin/EditPin";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { getUsersThunk } from "../../store/session";
 
 import "./SinglePin.css";
 
@@ -13,9 +14,15 @@ const SinglePin = () => {
   const dispatch = useDispatch();
 
   let currentPin = useSelector((state) => state.pins.list);
+  // let currentUser = useSelector((state) => state.session.user);
+  let users = useSelector((state) => state.session.users);
+  users = Object.values(users);
+  let creator = users?.filter((user) => currentPin.userId == user.id);
+  // console.log(creator[0].profilePicture);
 
   useEffect(() => {
     dispatch(fetchPinDetails(pinId));
+    dispatch(getUsersThunk());
   }, [dispatch, pinId]);
 
   return (
@@ -29,7 +36,7 @@ const SinglePin = () => {
             <OpenModalButton
               id="single-pin-edit-button"
               buttonText={
-                <p id="single-pin-edit-button">
+                <p style={{ fontSize: "25px" }} id="single-pin-edit-button">
                   <BiDotsHorizontalRounded />
                 </p>
               }
@@ -38,6 +45,10 @@ const SinglePin = () => {
           </div>
           <div id="single-pin-title-container">
             <h1 id="single-pin-title">{currentPin?.title}</h1>
+          </div>
+          <div id="creator-name-photo">
+            <img id="creator-img" src={creator[0]?.profilePicture} alt="" />
+            <p id="single-pin-username">{creator[0]?.username}</p>
           </div>
           <div id="current-pin-description-container">
             <p>{currentPin.description}</p>
