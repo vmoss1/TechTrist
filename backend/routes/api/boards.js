@@ -24,6 +24,29 @@ router.get("/current", requireAuth, async (req, res, next) => {
   }
 });
 
+//Get single board by id
+router.get("/:boardId", async (req, res, next) => {
+  let { boardId } = req.params;
+  boardId = +boardId;
+  try {
+    const currentBoard = await Board.findByPk(boardId, {
+      include: [
+        {
+          model: Pin,
+        },
+      ],
+    });
+
+    if (!currentBoard) {
+      return res.status(404).json({ message: "Board couldn't be found" });
+    }
+
+    return res.json({ Board: currentBoard });
+  } catch (e) {
+    next(e);
+  }
+});
+
 //Create a board
 // require auth
 router.post("/", requireAuth, async (req, res, next) => {

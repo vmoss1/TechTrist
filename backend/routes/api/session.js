@@ -82,4 +82,10 @@ router.get("/", (req, res) => {
   } else return res.json({ user: null });
 });
 
+router.get("/users", async (req, res) => {
+  const users = await User.findAll();
+
+  return res.json({ users });
+});
+
 module.exports = router;
