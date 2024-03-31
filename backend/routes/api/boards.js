@@ -132,6 +132,7 @@ router.post("/:boardId/pins/:pinId", requireAuth, async (req, res, next) => {
 
     const board = await Board.findByPk(boardId);
     const pin = await Pin.findByPk(pinId);
+    // console.log("ONE", board);
 
     if (!board || !pin) {
       return res.json({ message: "Pin or Board does not exist" });
@@ -145,9 +146,9 @@ router.post("/:boardId/pins/:pinId", requireAuth, async (req, res, next) => {
     }
 
     // Create a record in BoardPin table to associate the pin with the board
-    await BoardPin.create({ boardId, pinId });
+    const newPost = await BoardPin.create({ boardId, pinId });
 
-    res.status(200).json({ message: "Pin added to board successfully" });
+    res.status(200).json(newPost);
   } catch (e) {
     next(e);
   }
