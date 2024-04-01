@@ -18,7 +18,8 @@ module.exports = {
             email: "demo@user.io",
             firstName: "Tlon",
             lastName: "Rusk",
-            profilePicture: "./images/profilepic1.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic1.jpg",
             username: "CodeWizard",
             password: bcrypt.hashSync("password"),
           },
@@ -26,7 +27,8 @@ module.exports = {
             email: "user1@user.io",
             firstName: "Deff",
             lastName: "Bozos",
-            profilePicture: "./images/profilepic2.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic2.jpg",
             username: "BinaryGenius",
             password: bcrypt.hashSync("password"),
           },
@@ -34,7 +36,8 @@ module.exports = {
             email: "user2@user.io",
             firstName: "Dill",
             lastName: "Dates",
-            profilePicture: "./images/profilepic3.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic3.jpg",
             username: "DataDynamo",
             password: bcrypt.hashSync("password"),
           },
@@ -42,7 +45,8 @@ module.exports = {
             email: "user3@user.io",
             firstName: "Park",
             lastName: "Muckerberg",
-            profilePicture: "./images/prolfiepic4.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/prolfiepic4.jpg",
             username: "CyberGeek",
             password: bcrypt.hashSync("password"),
           },
@@ -50,7 +54,8 @@ module.exports = {
             email: "user4@user.io",
             firstName: "Kim",
             lastName: "Took",
-            profilePicture: "./images/prolfilepic5.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/prolfilepic5.jpg",
             username: "TechSavvyPro",
             password: bcrypt.hashSync("password"),
           },
@@ -58,7 +63,8 @@ module.exports = {
             email: "user5@user.io",
             firstName: "Barry",
             lastName: "Wage",
-            profilePicture: "./images/profilepic6.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic6.jpg",
             username: "ByteBlaster",
             password: bcrypt.hashSync("password"),
           },
@@ -66,7 +72,8 @@ module.exports = {
             email: "user6@user.io",
             firstName: "Mercy",
             lastName: "Srin",
-            profilePicture: "./images/profilepic7.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic7.jpg",
             username: "PythonWrangler",
             password: bcrypt.hashSync("password"),
           },
@@ -74,7 +81,8 @@ module.exports = {
             email: "user7@user.io",
             firstName: "Patya",
             lastName: "Kadella",
-            profilePicture: "./images/profilepic8.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic8.jpg",
             username: "Dr.Sequelize",
             password: bcrypt.hashSync("password"),
           },
@@ -82,7 +90,8 @@ module.exports = {
             email: "user8@user.io",
             firstName: "Pack",
             lastName: "Forsey",
-            profilePicture: "./images/profilepic9.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profilepic9.jpg",
             username: "RecursiveCrusher",
             password: bcrypt.hashSync("password"),
           },
@@ -90,7 +99,8 @@ module.exports = {
             email: "user9@user.io",
             firstName: "Punder",
             lastName: "Sichai",
-            profilePicture: "./images/profile10.jpg",
+            profilePicture:
+              "https://tech-trist-open.s3.us-east-2.amazonaws.com/profile10.jpg",
             username: "LemonHead",
             password: bcrypt.hashSync("password"),
           },

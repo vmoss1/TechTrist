@@ -1,5 +1,6 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 const { Pin, Comment, User } = require("../../db/models");
 
 const router = express.Router();
@@ -10,7 +11,7 @@ router.get("/", async (req, res, next) => {
   try {
     const allPins = await Pin.findAll();
 
-    return res.json({ allPins });
+    return res.json({ Pins: allPins });
   } catch (e) {
     next(e);
   }
@@ -48,7 +49,7 @@ router.get("/:pinId", async (req, res, next) => {
       return res.status(404).json({ message: "Pin couldn't be found" });
     }
 
-    return res.json({ Pin: currentPin });
+    return res.json(currentPin);
   } catch (e) {
     next(e);
   }
@@ -56,23 +57,29 @@ router.get("/:pinId", async (req, res, next) => {
 
 //Creates and returns a new pin
 // require auth
-router.post("/", requireAuth, async (req, res, next) => {
-  try {
-    const { title, description, imageUrl, category } = req.body;
+router.post(
+  "/",
+  singleMulterUpload("imageUrl"),
+  requireAuth,
+  async (req, res, next) => {
+    try {
+      const { title, description, category } = req.body;
+      const imageUrl1 = await singlePublicFileUpload(req.file);
 
-    const newPin = await Pin.create({
-      userId: req.user.id,
-      title,
-      description,
-      imageUrl,
-      category,
-    });
+      const newPin = await Pin.create({
+        userId: req.user.id,
+        title,
+        description,
+        imageUrl: imageUrl1,
+        category,
+      });
 
-    return res.status(201).json(newPin);
-  } catch (e) {
-    next(e);
+      return res.status(201).json(newPin);
+    } catch (e) {
+      next(e);
+    }
   }
-});
+);
 
 // Updates a new pin and returns updated pin
 // require auth

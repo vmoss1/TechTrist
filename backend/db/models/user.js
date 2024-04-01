@@ -76,7 +76,15 @@ module.exports = (sequelize, DataTypes) => {
           len: [6, 60],
         },
       },
-      profilePicture: DataTypes.STRING,
+      profilePicture: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "Profile picture cannot be empty",
+          },
+        },
+      },
     },
     {
       sequelize,

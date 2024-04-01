@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User } = require("../../db/models");
@@ -27,33 +28,38 @@ const validateSignup = [
 ];
 
 // Sign up
-router.post("", validateSignup, async (req, res) => {
-  const { email, password, username, firstName, lastName, profilePicture } =
-    req.body;
-  const hashedPassword = bcrypt.hashSync(password);
-  const user = await User.create({
-    email,
-    username,
-    password: hashedPassword,
-    firstName,
-    lastName,
-    profilePicture,
-  });
+router.post(
+  "",
+  singleMulterUpload("profilePicture"),
+  validateSignup,
+  async (req, res) => {
+    const { email, password, username, firstName, lastName } = req.body;
+    const profileImageUrl = await singlePublicFileUpload(req.file);
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.create({
+      email,
+      username,
+      password: hashedPassword,
+      firstName,
+      lastName,
+      profilePicture: profileImageUrl,
+    });
 
-  const safeUser = {
-    id: user.id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    username: user.username,
-    profilePicture: user.profilePicture,
-  };
+    const safeUser = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      username: user.username,
+      profilePicture: user.profilePicture,
+    };
 
-  await setTokenCookie(res, safeUser);
+    await setTokenCookie(res, safeUser);
 
-  return res.json({
-    user: safeUser,
-  });
-});
+    return res.json({
+      user: safeUser,
+    });
+  }
+);
 
 module.exports = router;
