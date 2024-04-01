@@ -1,25 +1,32 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchBoardDetails } from "../../store/board";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./SingleBoard.css";
 import OpenModalButton from "../OpenModalButton";
 import EditBoard from "./EditBoard/EditBoard";
+import { deletePinFromBoardThunk } from "../../store/board";
 
 export default function SingleBoard() {
   const { boardId } = useParams();
   let board = useSelector((state) => state.boards?.list);
+  const [editing, setEditing] = useState(false);
 
   const pinCount = board?.Pins?.length;
 
   const dispatch = useDispatch();
 
+  const handleRemove = async (pinId) => {
+    await dispatch(deletePinFromBoardThunk(boardId, pinId));
+    setEditing(true);
+  };
+
   useEffect(() => {
     dispatch(fetchBoardDetails(boardId));
-  }, [dispatch, boardId]);
+  }, [dispatch, boardId, editing]);
 
   return (
     <div id="single-board-container">
@@ -39,7 +46,7 @@ export default function SingleBoard() {
 
       <div id="single-board-pins-container">
         {board.Pins?.map((pin) => (
-          <div key={pin.id}>
+          <div id="container-for-each-pin" key={pin.id}>
             <Link id="single-board-title" to={`/pins/${pin.id}`}>
               <img
                 id="single-board-pin-image"
@@ -49,6 +56,9 @@ export default function SingleBoard() {
               />
               <p id="single-board-title">{pin?.title}</p>
             </Link>
+            <button id="remove-button" onClick={() => handleRemove(pin.id)}>
+              Remove
+            </button>
           </div>
         ))}
       </div>

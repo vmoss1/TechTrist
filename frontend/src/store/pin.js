@@ -44,7 +44,7 @@ export const fetchAllPins = () => async (dispatch) => {
   //   console.log("RES", response);
   const data = await response.json();
   //   console.log("DATA", data);
-  dispatch(readPins(data.allPins));
+  dispatch(readPins(data.Pins));
 };
 
 // Pin details fetch
@@ -53,7 +53,7 @@ export const fetchPinDetails = (pinId) => async (dispatch) => {
   if (response.ok) {
     const pinDetails = await response.json();
     // console.log("pinDETAILLS", pinDetails);
-    dispatch(readPinDetails(pinDetails.Pin));
+    dispatch(readPinDetails(pinDetails));
   } else {
     throw new Error("Unable to fetch pin Details");
   }
@@ -61,21 +61,47 @@ export const fetchPinDetails = (pinId) => async (dispatch) => {
 
 //Pin post
 //Create new pin
+// export const createPinThunk = (pin) => async (dispatch) => {
+//   const response = await csrfFetch("/api/pins", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(pin),
+//   });
+//   if (response.ok) {
+//     const newPin = await response.json();
+//     dispatch(createPin(newPin));
+//     return newPin;
+//   } else {
+//     throw new Error("Unable to Create");
+//   }
+// };
+//Pin post
+//Create new pin
 export const createPinThunk = (pin) => async (dispatch) => {
-  const response = await csrfFetch("/api/pins", {
+  const { userId, title, description, category, imageUrl } = pin;
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("category", category);
+
+  // for single file
+  if (imageUrl) formData.append("imageUrl", imageUrl);
+
+  const res = await csrfFetch(`/api/pins`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
-    body: JSON.stringify(pin),
+    body: formData,
   });
-  if (response.ok) {
-    const newPin = await response.json();
-    dispatch(createPin(newPin));
-    return newPin;
-  } else {
-    throw new Error("Unable to Create");
-  }
+
+  const data = await res.json();
+  // console.log("DATA", data);
+  dispatch(createPin(data));
+  return data;
 };
 
 //delete pin
@@ -149,7 +175,7 @@ const pinsReducer = (state = initialState, action) => {
     case CREATE_PIN:
       return {
         ...state,
-        list: action.payload,
+        list: [state.list, action.payload],
       };
     case EDIT_PIN:
       return {
@@ -163,21 +189,17 @@ const pinsReducer = (state = initialState, action) => {
       return pinState;
     }
     //Currently breaking on adding a comment
-    case ADD_COMMENT: {
-      const updatedList = Object.values(state.list).map((pin) => {
-        if (pin.id === action.payload.pinId) {
-          return {
-            ...pin,
-            Comments: [...pin.Comments, action.payload], // Assuming Comments is an array of comments in your pin object
-          };
-        }
-        return pin;
-      });
+    case ADD_COMMENT:
       return {
         ...state,
-        list: updatedList,
+        list: Array.isArray(state.list)
+          ? state.list.map((pin) =>
+              pin.id === action.payload.pinId
+                ? { ...pin, Comments: [...pin.Comments, action.payload] }
+                : pin
+            )
+          : state.list, // Check if state.list is an array before mapping
       };
-    }
 
     default:
       return state;

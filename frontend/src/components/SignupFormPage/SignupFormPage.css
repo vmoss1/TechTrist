@@ -19,6 +19,12 @@
   font-weight: 500;
 }
 
+#signup-file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #find-new {
   font-weight: 200;
   margin: 0px;

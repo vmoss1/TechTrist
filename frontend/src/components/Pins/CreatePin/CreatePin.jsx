@@ -11,9 +11,24 @@ export default function CreatePin() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
   const [category, setCategory] = useState("");
   const [errors, setErrors] = useState({});
+  const [imagePreview, setImagePreview] = useState(""); // Store the URL for image preview
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageUrl(file);
+
+      // Create a URL for image preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -40,15 +55,18 @@ export default function CreatePin() {
         userId: currentUser.id,
         title,
         description,
-        imageUrl,
         category,
+        imageUrl,
       };
+
+      // console.log("NEW-PIN", newPin);
 
       const res = await dispatch(createPinThunk(newPin));
 
       if (res && res.errors) {
         return setErrors(res.errors);
       }
+      // console.log("RES", res);
       // passed in res.id because res is the newly created Pin which is where the id gets assigned
       navigate(`/pins/${res?.id}`);
     }
@@ -59,8 +77,27 @@ export default function CreatePin() {
       <div id="post-form-header">
         <h2 id="post-form-h2">Create Pin</h2>
       </div>
-      <div className="outer-post-container">
-        <form onSubmit={onSubmit}>
+      <div id="outer-post-containers">
+        <form id="outer-post-container" onSubmit={onSubmit}>
+          <div id="post-pin-image-url">
+            <div id="post-pin-image-form-container">
+              Upload Image
+              <label>
+                <input id="post-image-url" type="file" onChange={updateFile} />
+              </label>
+              {imagePreview && (
+                <img
+                  id="preview-image"
+                  src={imagePreview}
+                  alt="preview of uploaded image"
+                  style={{ maxWidth: "300px" }}
+                />
+              )}
+            </div>
+            {"imageUrl" in errors && (
+              <p className="errors">{errors.imageUrl}</p>
+            )}
+          </div>
           <div id="create-pin-form">
             Title
             <label>
@@ -85,18 +122,6 @@ export default function CreatePin() {
               />
               {"description" in errors && (
                 <p className="errors">{errors.description}</p>
-              )}
-            </label>
-            ImageUrl
-            <label>
-              <input
-                type="text"
-                placeholder="Add a an image URL"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              {"imageUrl" in errors && (
-                <p className="errors">{errors.imageUrl}</p>
               )}
             </label>
             Category

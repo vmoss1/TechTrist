@@ -14,9 +14,31 @@
   justify-content: center;
 }
 
+#container-for-each-pin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#remove-button {
+  border-radius: 20px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin: 0px;
+  width: 60px;
+  background-color: grey;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#remove-button:hover {
+  box-shadow: 0 0 4px 5px #1c6e8c;
+}
+
 #single-board-edit-button {
   border-radius: 20px;
-  background-color: grey;
   padding-top: 5px;
   padding-bottom: 1px;
   padding-left: 2px;

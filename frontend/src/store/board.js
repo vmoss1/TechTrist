@@ -198,6 +198,11 @@ const boardsReducer = (state = initialState, action) => {
         list: updatedList,
       };
     }
+    case DELETE_PIN_FROM_BOARD: {
+      let boardState = { ...state };
+      delete boardState[action.payload];
+      return boardState;
+    }
     default:
       return state;
   }

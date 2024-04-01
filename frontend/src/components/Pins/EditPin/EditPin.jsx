@@ -13,13 +13,28 @@ export default function EditPin({ pin }) {
   const currentUser = useSelector((state) => state.session.user);
   const pinTitle = pin?.title;
   const pinDescription = pin?.description;
-  const pinImageUrl = pin?.imageUrl;
+  // const pinImageUrl = pin?.imageUrl;
   const pinCategory = pin?.category;
   const [title, setTitle] = useState(pinTitle);
   const [description, setDescription] = useState(pinDescription);
-  const [imageUrl, setImageUrl] = useState(pinImageUrl);
+  // const [imageUrl, setImageUrl] = useState(pinImageUrl);
   const [category, setCategory] = useState(pinCategory);
   const [errors, setErrors] = useState({});
+  // const [imagePreview, setImagePreview] = useState("");
+
+  // const updateFile = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setImageUrl(file);
+
+  //     // Create a URL for image preview
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setImagePreview(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +47,7 @@ export default function EditPin({ pin }) {
 
     if (!title) validate.title = "Please provide title";
     if (!description) validate.description = "Please provide a description";
-    if (!imageUrl) validate.imageUrl = "Please provide an image URL";
+    // if (!imageUrl) validate.imageUrl = "Please provide an image URL";
     if (!category) validate.category = "Please provide a category";
     if (title.length > 50 || title.length < 5)
       validate.title =
@@ -52,17 +67,17 @@ export default function EditPin({ pin }) {
         userId: currentUser.id,
         title,
         description,
-        imageUrl,
+        // imageUrl,
         category,
       };
 
-      const res = await dispatch(editPinThunk(pin?.id, editedPin));
+      const res = await dispatch(editPinThunk(pin.id, editedPin));
 
       if (res && res.errors) {
         return setErrors(res.errors);
       }
       closeModal();
-      navigate(`/pins/${pin?.id}`);
+      navigate(`/pins/${res.id}`);
     }
   };
 
@@ -90,7 +105,7 @@ export default function EditPin({ pin }) {
       <div className="outer-post_container">
         <form onSubmit={onSubmit}>
           <h2>Edit Pin</h2>
-          <div id="create-pin-form">
+          <div id="edit-pin-form">
             Title
             <label>
               <input
@@ -112,17 +127,20 @@ export default function EditPin({ pin }) {
                 <p className="errors">{errors.description}</p>
               )}
             </label>
-            ImageUrl
-            <label>
-              <input
-                type="text"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              {"imageUrl" in errors && (
-                <p className="errors">{errors.imageUrl}</p>
-              )}
+            {/* <label>
+              <input id="post-image-url" type="file" onChange={updateFile} />
             </label>
+            {imagePreview && (
+              <img
+                id="preview-image"
+                src={imagePreview}
+                alt="preview of uploaded image"
+                style={{ maxWidth: "300px" }}
+              />
+            )}
+            {"imageUrl" in errors && (
+              <p className="errors">{errors.imageUrl}</p>
+            )} */}
             Category
             <label>
               <input
@@ -134,7 +152,9 @@ export default function EditPin({ pin }) {
                 <p className="errors">{errors.category}</p>
               )}
             </label>
-            <button id="save-button">Save</button>
+            <button type="submit" id="save-button">
+              Save
+            </button>
             {"userCheck" in errors && (
               <p className="errors">{errors.userCheck}</p>
             )}

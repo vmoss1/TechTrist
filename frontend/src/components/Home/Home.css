@@ -8,12 +8,13 @@
 #home-signup-form {
   border: 1px solid grey;
   border-radius: 25px;
-  max-height: 700px;
-  margin-top: 80px;
+  max-height: 900px;
+  margin-top: 40px;
   max-width: 500px;
   margin-left: 130px;
   background-color: white;
   box-shadow: 1px 2px 2px black;
+  margin-bottom: 10px;
 }
 
 #home-paragraph-container {

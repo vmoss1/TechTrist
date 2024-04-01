@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { SiKingstontechnology } from "react-icons/si";
-// import { useNavigate } from "react-router-dom";
 import "./SignupFormPage.css";
 
 function SignupFormPage() {
@@ -15,12 +14,19 @@ function SignupFormPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [image, setImage] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Navigate to="/" replace={true} />;
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   const handleSubmit = (e) => {
+    if (image === null) errors.image = "Please provide an image";
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors({});
@@ -31,6 +37,7 @@ function SignupFormPage() {
           firstName,
           lastName,
           password,
+          profilePicture: image,
         })
       ).catch(async (res) => {
         const data = await res.json();
@@ -39,6 +46,7 @@ function SignupFormPage() {
         }
       });
     }
+
     return setErrors({
       confirmPassword:
         "Confirm Password field must be the same as the Password field",
@@ -122,6 +130,11 @@ function SignupFormPage() {
           {errors.confirmPassword && (
             <p className="errors">{errors.confirmPassword}</p>
           )}
+          Upload a profile picture
+          <label id="signup-file-upload">
+            <input id="signup-file-upload" type="file" onChange={updateFile} />
+          </label>
+          {errors.image && <p className="errors">{errors.image}</p>}
           <button id="signup-button-modal" type="submit">
             Continue
           </button>

@@ -10,7 +10,7 @@ import { addPinToBoardThunk } from "../../store/board";
 import { fetchUserBoards } from "../../store/board";
 import { useRef } from "react";
 import { createCommentThunk } from "../../store/pin";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./SinglePin.css";
 
 const SinglePin = () => {
@@ -18,16 +18,21 @@ const SinglePin = () => {
   const [body, setBody] = useState("");
   const ulRef = useRef();
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  const showButton = body !== "";
+  // const navigate = useNavigate();
   let boards = useSelector((state) => state.boards?.list);
   // console.log("BOARDS", boards);
-  let currentPin = useSelector((state) => state.pins.list);
+  // let currentPin = useSelector((state) => state.pins?.list);
 
   // console.log("PIN", currentPin);
   let currentUser = useSelector((state) => state.session.user);
   let users = useSelector((state) => state.session.users);
   users = Object.values(users);
-  let creator = users?.filter((user) => currentPin.userId == user.id);
+  // let currentPin = useSelector((state) => state.pins?.list);
+
+  let currentPin = useSelector((state) => state.pins?.list);
+  let creator = users?.filter((user) => currentPin?.userId == user.id);
+  // let creator = users?.filter((user) => currentPin?.userId == user.id);
 
   // console.log(creator[0].profilePicture);
 
@@ -54,13 +59,15 @@ const SinglePin = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPinDetails(pinId));
-    dispatch(getUsersThunk());
-    dispatch(fetchUserBoards());
-  }, [dispatch, pinId]);
+    const fetchData = async () => {
+      await dispatch(fetchPinDetails(pinId));
+      await dispatch(getUsersThunk());
+      await dispatch(fetchUserBoards());
+    };
+    fetchData();
+  }, [dispatch, pinId, body]);
 
   const handleSaveToBoard = async (pinId, boardId) => {
-    // console.log("BOARD-ID", boardId);
     await dispatch(addPinToBoardThunk(pinId, boardId));
     closeMenu();
   };
@@ -79,15 +86,13 @@ const SinglePin = () => {
         pinId: pinId,
         body: body,
       };
-      // console.log("NEWCOMMENTFRONT", newComment);
 
       const res = await dispatch(createCommentThunk(pinId, newComment));
 
       if (res && res.errors) {
         return setErrors(res.errors);
       }
-      //! ADDING COMMENT CURRENTLY BREAKING STATE
-      navigate(`/pins/${pinId}`);
+      setBody("");
     }
   };
 
@@ -171,7 +176,7 @@ const SinglePin = () => {
           <div id="comment-form">
             <img
               id="creator-img-comment"
-              src={creator[0]?.profilePicture}
+              src={currentUser?.profilePicture}
               alt=""
             />
             <form onSubmit={onSubmit}>
@@ -181,14 +186,12 @@ const SinglePin = () => {
                   type="text"
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      onSubmit(e);
-                    }
-                  }}
                 />
                 {"body" in errors && <p className="errors">{errors.body}</p>}
               </label>
+              {showButton && (
+                <button id="submit-button-single-pin">Submit</button>
+              )}
             </form>
           </div>
         </div>
