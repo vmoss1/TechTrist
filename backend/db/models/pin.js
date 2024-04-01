@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       });
       Pin.hasMany(models.BoardPin, {
         foreignKey: "pinId",
+        onDelete: "CASCADE",
+        hooks: true,
       });
       Pin.hasMany(models.Comment, {
         foreignKey: "pinId",
