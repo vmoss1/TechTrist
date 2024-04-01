@@ -150,7 +150,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName = "Comment";
+    options.tableName = "Comments";
     return queryInterface.bulkDelete(options, null, {});
   },
 };
