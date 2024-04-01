@@ -172,20 +172,4 @@ router.post("/:pinId/comments", requireAuth, async (req, res, next) => {
   }
 });
 
-router.get("/:pinId/comments", requireAuth, async (req, res, next) => {
-  let { pinId } = req.params;
-  pinId = +pinId;
-  try {
-    const comments = await Comment.findAll({
-      where: {
-        pinId,
-      },
-    });
-
-    return res.status(201).json(comments);
-  } catch (e) {
-    next(e);
-  }
-});
-
 module.exports = router;
