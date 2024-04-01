@@ -134,8 +134,12 @@ router.post("/:boardId/pins/:pinId", requireAuth, async (req, res, next) => {
     const pin = await Pin.findByPk(pinId);
     // console.log("ONE", board);
 
-    if (!board || !pin) {
-      return res.json({ message: "Pin or Board does not exist" });
+    if (!pin) {
+      return res.json({ message: "Pin does not exist" });
+    }
+
+    if (!board) {
+      return res.json({ message: "Board does not exist" });
     }
 
     const isCreator = board.userId === req.user.id;

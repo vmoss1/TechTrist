@@ -1,37 +1,28 @@
 "use strict";
 const { Model, Validator } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
-  class Pin extends Model {
+  class Comment extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Pin.belongsTo(models.User, {
+      Comment.belongsTo(models.User, {
         foreignKey: "userId",
       });
-      Pin.belongsToMany(models.Board, {
-        through: models.BoardPin,
+      Comment.belongsTo(models.Pin, {
         foreignKey: "pinId",
-        otherKey: "boardId",
-      });
-      Pin.hasMany(models.BoardPin, {
-        foreignKey: "pinId",
-      });
-      Pin.hasMany(models.Comment, {
-        foreignKey: "pinId",
-        onDelete: "CASCADE",
-        hooks: true,
       });
     }
   }
-  Pin.init(
+  Comment.init(
     {
-      title: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
+      pinId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Pin",
+        },
       },
       userId: {
         type: DataTypes.INTEGER,
@@ -39,19 +30,14 @@ module.exports = (sequelize, DataTypes) => {
           model: "User",
         },
       },
-      description: {
-        type: DataTypes.STRING(600),
-        allowNull: false,
-      },
-      imageUrl: { type: DataTypes.STRING, allowNull: false },
-      category: {
-        type: DataTypes.STRING(50),
+      body: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Pin",
+      modelName: "Comment",
       defaultScope: {
         attributes: {
           exclude: ["updatedAt"],
@@ -59,5 +45,5 @@ module.exports = (sequelize, DataTypes) => {
       }, // protects
     }
   );
-  return Pin;
+  return Comment;
 };

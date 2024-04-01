@@ -1,6 +1,6 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
-const { Pin } = require("../../db/models");
+const { Pin, Comment, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -36,8 +36,14 @@ router.get("/:pinId", async (req, res, next) => {
   let { pinId } = req.params;
   pinId = +pinId;
   try {
-    const currentPin = await Pin.findByPk(pinId);
-
+    const currentPin = await Pin.findByPk(pinId, {
+      include: {
+        model: Comment,
+        include: {
+          model: User,
+        },
+      },
+    });
     if (!currentPin) {
       return res.status(404).json({ message: "Pin couldn't be found" });
     }
@@ -131,6 +137,29 @@ router.delete("/:pinId", requireAuth, async (req, res, next) => {
     await currentPin.destroy();
 
     return res.json({ message: "Successfully Destroyed" });
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/:pinId/comments", requireAuth, async (req, res, next) => {
+  let { pinId } = req.params;
+  pinId = +pinId;
+  try {
+    const currentPin = await Pin.findByPk(pinId);
+    if (!currentPin) {
+      return res.status(404).json({ message: "Pin couldn't be found" });
+    }
+    const { body } = req.body;
+    // console.log("BODY", body);
+
+    const newComment = await Comment.create({
+      userId: req.user.id,
+      pinId,
+      body: body,
+    });
+
+    return res.status(201).json(newComment);
   } catch (e) {
     next(e);
   }
