@@ -10,9 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Comment.belongsTo(models.User, {
         foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks: true,
       });
       Comment.belongsTo(models.Pin, {
         foreignKey: "pinId",
+        onDelete: "CASCADE",
+        hooks: true,
       });
     }
   }
