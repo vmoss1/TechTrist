@@ -8,7 +8,6 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-  //   const isLoggedIn = useSelector((state) => state.session.user !== null);
 
   return (
     <nav>

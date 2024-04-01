@@ -28,7 +28,6 @@ function ProfileButton({ user }) {
         setShowMenu(false);
       }
     };
-
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -50,6 +49,9 @@ function ProfileButton({ user }) {
     <div className="profile-dropdown-container">
       {user && (
         <div className="profile-button-container">
+          <Link to={"/myProfile"} id="my-button">
+            MyProfile
+          </Link>
           <button onClick={toggleMenu} className="profile-button">
             <img id="user-photo" src={sessionUser?.profilePicture} alt="" />
           </button>

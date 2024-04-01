@@ -12,8 +12,6 @@ import EditBoard from "./EditBoard/EditBoard";
 export default function SingleBoard() {
   const { boardId } = useParams();
   let board = useSelector((state) => state.boards?.list);
-  let currentPins = useSelector((state) => state.boards);
-  console.log("CURRENT", currentPins);
 
   const pinCount = board?.Pins?.length;
 

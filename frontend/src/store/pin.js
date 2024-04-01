@@ -6,6 +6,7 @@ const READ_PIN_DETAILS = "pins/readPinDetails";
 const CREATE_PIN = "pins/createPin";
 const EDIT_PIN = "pins/editPin";
 const DELETE_PIN = "pins/deletePin";
+const ADD_COMMENT = "pins/addComment";
 
 const readPins = (pins) => ({
   type: READ_PINS,
@@ -30,6 +31,11 @@ const deletePin = (pinId) => ({
 const editPin = (pin) => ({
   type: EDIT_PIN,
   payload: pin,
+});
+
+const addComment = (pinId, comment) => ({
+  type: ADD_COMMENT,
+  payload: { pinId, comment },
 });
 
 // Pins fetch
@@ -106,8 +112,30 @@ export const editPinThunk = (pinId, pinData) => async (dispatch) => {
   }
 };
 
+//post a comment
+export const createCommentThunk = (pinId, comment) => async (dispatch) => {
+  // console.log("THUNK", comment);
+  const response = await csrfFetch(`/api/pins/${pinId}/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(comment),
+  });
+  // console.log("RES", response);
+  if (response.ok) {
+    const newComment = await response.json();
+    // console.log("NEWCOMMENT", newComment);
+    dispatch(addComment(newComment));
+    return newComment;
+  } else {
+    throw new Error("Unable to Create");
+  }
+};
+
 const initialState = {
   list: [],
+  comments: [],
 };
 
 const pinsReducer = (state = initialState, action) => {
@@ -133,6 +161,22 @@ const pinsReducer = (state = initialState, action) => {
       let pinState = { ...state };
       delete pinState[action.payload];
       return pinState;
+    }
+    //Currently breaking on adding a comment
+    case ADD_COMMENT: {
+      const updatedList = Object.values(state.list).map((pin) => {
+        if (pin.id === action.payload.pinId) {
+          return {
+            ...pin,
+            Comments: [...pin.Comments, action.payload], // Assuming Comments is an array of comments in your pin object
+          };
+        }
+        return pin;
+      });
+      return {
+        ...state,
+        list: updatedList,
+      };
     }
 
     default:

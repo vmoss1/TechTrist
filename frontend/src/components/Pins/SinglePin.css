@@ -18,29 +18,60 @@
   justify-content: center;
   flex-direction: column;
   position: absolute; /* or 'fixed' depending on your preference */
-  top: 20% Position it below the button;
   border: 2px #1c6e8c solid;
+  margin-left: 25px;
   border-radius: 25px;
-  /* margin-left: 25px; */
   background-color: #1c6e8c;
-  margin-right: 200px;
+  gap: 5px;
 }
 
 .single-pin-save-button {
   margin-left: 350px;
   border-radius: 25px;
+  margin-right: 10px;
+  padding: 10px;
   border: 2px #1c6e8c solid;
   background-color: gray;
   color: white;
 }
 
+#comment-title {
+  font-weight: bold;
+}
+
+#comment-photo-and-username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+#comment-username {
+  font-family: "Raider Crusader", sans-serif;
+}
+
+#comment-body {
+  margin-left: 45px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 #single-pin-board-name {
-  padding: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background-color: #1c6e8c;
+}
+
+#single-pin-comment-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  border: #1c6e8c 2px solid;
 }
 
 #single-pin-board-name:hover {
-  box-shadow: 0 0 1px 1px #1c6e8c;
-  border-radius: 25px;
+  box-shadow: 0 0 4px 4px #ffffff;
   cursor: pointer;
 }
 
@@ -53,20 +84,50 @@
   grid-template-columns: 1fr 1fr;
   box-shadow: 0 0 10px 4px#1c6e8c;
   border-radius: 25px;
-  max-width: 900px;
+  max-width: 1150px;
+  height: 620px;
+  gap: 20px;
 }
 
 #single-pin-image {
   border-radius: 20px;
-  max-width: 400px;
-  min-height: 450px;
+  max-width: 520px;
+  height: 620px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#comment-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#follow-button {
+  margin-left: 150px;
+  border-radius: 25px;
+  margin-right: 10px;
+  padding: 15px;
+  border: 2px #1c6e8c solid;
+  background-color: gray;
+  color: white;
 }
 
 #single-pin-right-side {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  margin-right: 15px;
+  /* margin-right: 15px; */
+  max-height: 630px;
+  overflow-y: auto;
+}
+
+#creator-img-comment {
+  width: 40px;
+  border-radius: 40px;
+  border: #1c6e8c 2px solid;
 }
 
 #creator-img {
@@ -78,6 +139,7 @@
 #single-pin-username {
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
+  font-size: 1.5rem;
 }
 
 #creator-name-photo {

@@ -15,6 +15,12 @@ nav {
   border-radius: 30px;
 }
 
+.profile-button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
 .profile-button {
   border: none;
   background-color: white;
@@ -61,6 +67,20 @@ nav {
   border: 2px #ffffff solid;
 }
 
+#my-button {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 2px #1c6e8c solid;
+  padding: 10px;
+  background-color: #605856;
+}
+
+#my-button:hover {
+  box-shadow: 1px 2px 5px #1c6e8c;
+}
+
 #home-button {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -79,7 +99,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #605856;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 5px;
   padding-left: 20px;
@@ -87,6 +107,7 @@ nav {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  border: 2px #1c6e8c solid;
 }
 
 #currentlyIn {

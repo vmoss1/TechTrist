@@ -117,7 +117,8 @@ export const editBoardThunk = (boardId, boardData) => async (dispatch) => {
 };
 
 //Add pin to board
-export const addPinToBoardThunk = (boardId, pinId) => async (dispatch) => {
+export const addPinToBoardThunk = (pinId, boardId) => async (dispatch) => {
+  // console.log("THUNK-BOARD-ID", boardId);
   const response = await csrfFetch(`/api/boards/${boardId}/pins/${pinId}`, {
     method: "POST",
     headers: {
@@ -128,7 +129,7 @@ export const addPinToBoardThunk = (boardId, pinId) => async (dispatch) => {
   //   console.log("RESPONSE", response);
   if (response.ok) {
     const newPinOnBoard = await response.json();
-    console.log("NEWPINONBOARD", newPinOnBoard);
+    // console.log("NEW-PIN-ON-BOARD", newPinOnBoard);
     dispatch(addPinToBoard(newPinOnBoard));
     return newPinOnBoard;
   } else {
@@ -152,7 +153,7 @@ export const deletePinFromBoardThunk = (boardId, pinId) => async (dispatch) => {
 
 const initialState = {
   list: [],
-  pins: {},
+  pins: [],
 };
 
 const boardsReducer = (state = initialState, action) => {
@@ -179,12 +180,24 @@ const boardsReducer = (state = initialState, action) => {
       delete boardState[action.payload];
       return boardState;
     }
-    case ADD_PIN_TO_BOARD:
+    case ADD_PIN_TO_BOARD: {
+      // desc pinId and boardId from action payload
+      const { pinId, boardId } = action.payload;
+      // creating new list so that board can be updated by id
+      const updatedList = state.list.map((board) => {
+        if (board.id === boardId) {
+          return {
+            ...board,
+            pins: [...board.pins, pinId],
+          };
+        }
+        return board;
+      });
       return {
         ...state,
-        pins: action.payload,
+        list: updatedList,
       };
-
+    }
     default:
       return state;
   }

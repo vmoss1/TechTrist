@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { SiKingstontechnology } from "react-icons/si";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./SignupFormPage.css";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -24,7 +24,6 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors({});
-      navigate("/pins");
       return dispatch(
         sessionActions.signup({
           email,
@@ -65,7 +64,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p className="errors">{errors.email}</p>}
           Username
           <label>
             <input
@@ -76,7 +75,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.username && <p>{errors.username}</p>}
+          {errors.username && <p className="errors">{errors.username}</p>}
           First Name
           <label>
             <input
@@ -87,7 +86,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.firstName && <p>{errors.firstName}</p>}
+          {errors.firstName && <p className="errors">{errors.firstName}</p>}
           Last Name
           <label>
             <input
@@ -98,7 +97,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.lastName && <p>{errors.lastName}</p>}
+          {errors.lastName && <p className="errors">{errors.lastName}</p>}
           Password
           <label>
             <input
@@ -109,7 +108,7 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p className="errors">{errors.password}</p>}
           Confirm Password
           <label>
             <input
@@ -120,7 +119,9 @@ function SignupFormPage() {
               required
             />
           </label>
-          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+          {errors.confirmPassword && (
+            <p className="errors">{errors.confirmPassword}</p>
+          )}
           <button id="signup-button-modal" type="submit">
             Continue
           </button>
