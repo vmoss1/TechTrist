@@ -153,7 +153,7 @@ const SinglePin = () => {
             </button>
           </div>
           <div id="current-pin-description-container">
-            <p>{currentPin.description}</p>
+            <p id="single-pin-description">{currentPin.description}</p>
           </div>
           <div>
             <p id="comment-title">Comments</p>

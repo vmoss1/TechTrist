@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { deleteBoardThunk } from "../../../store/board";
 import { useModal } from "../../../context/Modal";
+import { fetchBoardDetails } from "../../../store/board";
 import "./EditBoard.css";
 
 export default function EditBoard({ board }) {
@@ -39,6 +40,7 @@ export default function EditBoard({ board }) {
       };
 
       const res = await dispatch(editBoardThunk(board?.id, editedBoard));
+      dispatch(fetchBoardDetails(board.id));
 
       if (res && res.errors) {
         return setErrors(res.errors);

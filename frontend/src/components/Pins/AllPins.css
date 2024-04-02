@@ -1,3 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
 #all-pins-main-container {
   display: flex;
   align-items: center;
@@ -26,10 +27,36 @@
   width: fit-content;
 }
 
-#pin-images {
-  max-width: 350px;
-  height: 400px;
+#pin__overlay {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  height: 380px;
   border-radius: 25px;
+  position: absolute;
+  border-radius: 25px;
+  z-index: 0;
+  background-color: rgba(47, 47, 47, 0.462);
+}
+
+.pin-overlay-icons {
+  z-index: 99;
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 1.25rem;
+  align-items: center;
+  font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#pin-images {
+  width: 300px;
+  height: 380px;
+  border-radius: 25px;
+  opacity: 1;
+  color: black;
 }
 
 #pins-link {
@@ -41,7 +68,10 @@
   border-radius: 30px;
 }
 
-#pin-images:hover {
+/* #pin-images:hover {
   box-shadow: 0 0 10px 4px#1c6e8c;
-  transform: scale(1.1); /* Scale up by 10% on hover */
-}
+  opacity: 0.5;
+  transition-duration: 0.5s, 1s;
+  transform: scale(1);
+  z-index: 0;  
+} */

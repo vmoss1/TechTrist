@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchAllPins } from "../../store/pin";
 import { fetchUserBoards } from "../../store/board";
 import "./UserHome.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import OpenModalButton from "../OpenModalButton";
 import { Link, NavLink } from "react-router-dom";
@@ -15,6 +15,8 @@ function UserHome() {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+  const [isMouseOver, setIsMouseOver] = useState(null);
+  const [currentSelectedKey, setCurrentSelectedKey] = useState(null);
 
   let currentPins = useSelector((state) => state.pins.list);
   let boards = useSelector((state) => state.boards.list);
@@ -22,6 +24,14 @@ function UserHome() {
   // console.log("BOARDS", boards);
   currentPins = Object.values(currentPins);
   currentPins = currentPins.filter((pins) => pins.userId == currentUser.id);
+  const handleMouseOver = (pinId) => {
+    setCurrentSelectedKey(pinId);
+    setIsMouseOver(true);
+  };
+
+  const handleMouseLeave = () => {
+    setCurrentSelectedKey(null);
+  };
 
   useEffect(() => {
     dispatch(fetchAllPins());
@@ -84,12 +94,24 @@ function UserHome() {
       <div>
         <div id="all-pins">
           {currentPins?.map((pin) => (
-            <div id="pin" key={pin.id}>
-              <Link id="pins-link" to={`/pins/${pin.id}`} key={pin.id}>
-                {pin.title}
+            <Link
+              to={`/pins/${pin.id}`}
+              id="pin"
+              onMouseLeave={handleMouseLeave}
+              onMouseOver={() => handleMouseOver(pin.id)}
+              key={pin.id}
+            >
+              {isMouseOver && currentSelectedKey === pin.id && (
+                <div id="pin__overlay">
+                  <h3 className="pin-overlay-icons">{pin.title}</h3>
+                  <h3 className="pin-overlay-icons"></h3>
+                  <h3 className="pin-overlay-icons"></h3>
+                </div>
+              )}
+              <div id="pins-link" key={pin.id}>
                 <img id="pin-images" src={pin.imageUrl} alt={pin.title} />
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

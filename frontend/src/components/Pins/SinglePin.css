@@ -1,13 +1,20 @@
 @import url("https://fonts.cdnfonts.com/css/raider-crusader");
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
 #current-pin-container {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 #single-pin-edit-container {
   display: flex;
   justify-content: space-between;
+  height: 40px;
+}
+
+#single-pin-title {
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #single-pin-dropdown {
@@ -26,18 +33,21 @@
 }
 
 .single-pin-save-button {
-  margin-left: 350px;
+  margin-left: 440px;
   border-radius: 25px;
   margin-right: 10px;
   padding: 10px;
-  border: 2px #1c6e8c solid;
-  background-color: gray;
-  color: white;
+  background-color: rgb(182, 182, 182);
+  border: none;
+  color: rgb(0, 0, 0);
   margin-top: 5px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #comment-title {
+  font-family: "Petrov Sans-Trial", sans-serif;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 #comment-photo-and-username {
@@ -55,6 +65,7 @@
   margin-left: 45px;
   margin-top: 0px;
   margin-bottom: 0px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #single-pin-board-name {
@@ -62,6 +73,7 @@
   border-radius: 25px;
   border: none;
   background-color: #1c6e8c;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #single-pin-comment-photo {
@@ -78,6 +90,7 @@
 
 .single-pin-save-button:hover {
   cursor: pointer;
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #current-pin-small-container {
@@ -92,7 +105,7 @@
 
 #single-pin-image {
   border-radius: 20px;
-  max-width: 520px;
+  width: 520px;
   height: 620px;
   padding: 0px;
   margin: 0px;
@@ -108,6 +121,12 @@
   display: flex;
   justify-content: flex-end;
   border-radius: 25px;
+  border: none;
+  background-color: white;
+}
+
+#remove-comment-button:hover {
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #comment-form {
@@ -119,6 +138,11 @@
   border-top: #1c6e8c 1px solid;
   padding-top: 20px;
   margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+#single-pin-description {
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #follow-button {
@@ -126,9 +150,15 @@
   border-radius: 25px;
   margin-right: 10px;
   padding: 15px;
-  border: 2px #1c6e8c solid;
-  background-color: gray;
-  color: white;
+  background-color: rgb(182, 182, 182);
+  border: none;
+  color: rgb(0, 0, 0);
+  font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#follow-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #single-pin-right-side {
@@ -174,11 +204,8 @@
 }
 
 #single-pin-edit-button {
-  border: none;
-  flex-direction: row;
   margin: 0px;
-  margin-left: 5px;
-  margin-top: 5px;
+  padding: 0px;
 }
 
 #current-pin-description-container {

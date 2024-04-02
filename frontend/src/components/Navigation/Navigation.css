@@ -1,4 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/raider-crusader");
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
 
 nav {
   display: flex;
@@ -29,6 +30,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 0px;
+  height: 40px;
   margin-right: 20px;
   border: #1c6e8c solid 2px;
 }
@@ -39,7 +41,7 @@ nav {
 
 .profile-button:hover {
   cursor: pointer;
-  box-shadow: 1px 5px 5px #1c6e8c;
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #logout-button {
@@ -69,30 +71,29 @@ nav {
 
 #my-button {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  font-size: 1.25rem;
   border-radius: 20px;
-  border: 2px #1c6e8c solid;
   padding: 10px;
-  background-color: #605856;
+  padding-top: 13px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #my-button:hover {
-  box-shadow: 1px 2px 5px #1c6e8c;
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #home-button {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  font-size: 1.25rem;
   border-radius: 20px;
-  border: 2px #1c6e8c solid;
   padding: 10px;
-  background-color: #605856;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #home-button:hover {
-  box-shadow: 1px 2px 5px #1c6e8c;
+  box-shadow: 0 0 10px 1px #1c6e8c;
 }
 
 #ul-dropdown {
@@ -135,7 +136,7 @@ nav {
 #nav-logo-container {
   display: flex;
   margin-left: 10px;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -148,6 +149,7 @@ nav {
   color: #1c6e8c;
   font-size: 1.75rem;
   font-family: "Raider Crusader", sans-serif;
+  margin-right: 5px;
 }
 
 .login-signup-buttons {
@@ -170,14 +172,17 @@ nav {
 }
 
 .modal-button {
-  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0px;
   margin: 0px;
-  border: 1px white solid;
-  border: #605856 1px solid;
+  border: none;
+  background-color: white;
+  border-radius: 25px;
 }
 
 .modal-button:hover {
   cursor: pointer;
-  box-shadow: 1px 5px 8px #274156;
+  box-shadow: 0 0 10px 2px #274156;
 }
