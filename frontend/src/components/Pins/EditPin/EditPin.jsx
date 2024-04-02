@@ -1,9 +1,11 @@
 import { editPinThunk } from "../../../store/pin";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deletePinThunk } from "../../../store/pin";
 import { useModal } from "../../../context/Modal";
+import { fetchPinDetails } from "../../../store/pin";
+
 import "./EditPin.css";
 
 export default function EditPin({ pin }) {
@@ -20,21 +22,13 @@ export default function EditPin({ pin }) {
   // const [imageUrl, setImageUrl] = useState(pinImageUrl);
   const [category, setCategory] = useState(pinCategory);
   const [errors, setErrors] = useState({});
-  // const [imagePreview, setImagePreview] = useState("");
 
-  // const updateFile = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setImageUrl(file);
-
-  //     // Create a URL for image preview
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       setImagePreview(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchPinDetails(pin.id));
+    };
+    fetchData();
+  }, [dispatch, pin.id]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +66,7 @@ export default function EditPin({ pin }) {
       };
 
       const res = await dispatch(editPinThunk(pin.id, editedPin));
+      await dispatch(fetchPinDetails(pin.id));
 
       if (res && res.errors) {
         return setErrors(res.errors);

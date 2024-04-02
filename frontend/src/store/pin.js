@@ -7,6 +7,7 @@ const CREATE_PIN = "pins/createPin";
 const EDIT_PIN = "pins/editPin";
 const DELETE_PIN = "pins/deletePin";
 const ADD_COMMENT = "pins/addComment";
+const DELETE_COMMENT = "pins/deleteComment";
 
 const readPins = (pins) => ({
   type: READ_PINS,
@@ -36,6 +37,11 @@ const editPin = (pin) => ({
 const addComment = (pinId, comment) => ({
   type: ADD_COMMENT,
   payload: { pinId, comment },
+});
+
+const deleteComment = (commentId) => ({
+  type: DELETE_COMMENT,
+  payload: commentId,
 });
 
 // Pins fetch
@@ -159,6 +165,20 @@ export const createCommentThunk = (pinId, comment) => async (dispatch) => {
   }
 };
 
+//delete comment
+export const deleteCommentThunk = (commentId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${commentId}`, {
+    method: "DELETE",
+  });
+  //   console.log("RES", response);
+  if (response.ok) {
+    dispatch(deleteComment(commentId));
+    return response.json();
+  } else {
+    throw new Error("Unable to Delete");
+  }
+};
+
 const initialState = {
   list: [],
   comments: [],
@@ -180,7 +200,7 @@ const pinsReducer = (state = initialState, action) => {
     case EDIT_PIN:
       return {
         ...state,
-        [action.payload.id]: action.payload, // Update the pin with the new data
+        list: [state.list, action.payload], // Update the pin with the new data
       };
 
     case DELETE_PIN: {
@@ -200,6 +220,11 @@ const pinsReducer = (state = initialState, action) => {
             )
           : state.list, // Check if state.list is an array before mapping
       };
+    case DELETE_COMMENT: {
+      let pinState = { ...state };
+      delete pinState[action.payload];
+      return pinState;
+    }
 
     default:
       return state;

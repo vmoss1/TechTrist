@@ -19,12 +19,16 @@ function Navigation({ isLoaded }) {
               TechTrist
             </NavLink>
           </div>
-          <Link to={"/pins"} id="home-button">
-            Home
-          </Link>
-          <Link to={"/pins/new"} id="home-button">
-            Create
-          </Link>
+          {sessionUser && (
+            <>
+              <Link to={"/pins"} id="home-button">
+                Home
+              </Link>
+              <Link to={"/pins/new"} id="home-button">
+                Create
+              </Link>
+            </>
+          )}
         </div>
       </div>
 

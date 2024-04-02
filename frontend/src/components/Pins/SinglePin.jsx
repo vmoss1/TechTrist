@@ -10,6 +10,8 @@ import { addPinToBoardThunk } from "../../store/board";
 import { fetchUserBoards } from "../../store/board";
 import { useRef } from "react";
 import { createCommentThunk } from "../../store/pin";
+import { deleteCommentThunk } from "../../store/pin";
+import { IoMdTrash } from "react-icons/io";
 // import { useNavigate } from "react-router-dom";
 import "./SinglePin.css";
 
@@ -19,21 +21,15 @@ const SinglePin = () => {
   const ulRef = useRef();
   const [errors, setErrors] = useState({});
   const showButton = body !== "";
+  const [editing, setEditing] = useState(false);
   // const navigate = useNavigate();
   let boards = useSelector((state) => state.boards?.list);
-  // console.log("BOARDS", boards);
-  // let currentPin = useSelector((state) => state.pins?.list);
-
-  // console.log("PIN", currentPin);
   let currentUser = useSelector((state) => state.session.user);
   let users = useSelector((state) => state.session.users);
   users = Object.values(users);
-  // let currentPin = useSelector((state) => state.pins?.list);
 
   let currentPin = useSelector((state) => state.pins?.list);
   let creator = users?.filter((user) => currentPin?.userId == user.id);
-  // let creator = users?.filter((user) => currentPin?.userId == user.id);
-
   // console.log(creator[0].profilePicture);
 
   const toggleMenu = (e) => {
@@ -65,11 +61,17 @@ const SinglePin = () => {
       await dispatch(fetchUserBoards());
     };
     fetchData();
-  }, [dispatch, pinId, body]);
+  }, [dispatch, pinId, body, editing]);
 
   const handleSaveToBoard = async (pinId, boardId) => {
     await dispatch(addPinToBoardThunk(pinId, boardId));
     closeMenu();
+  };
+
+  const handleDelete = async (e, commentId) => {
+    e.preventDefault();
+    await dispatch(deleteCommentThunk(commentId));
+    setEditing(true);
   };
 
   const onSubmit = async (e) => {
@@ -170,6 +172,16 @@ const SinglePin = () => {
                 <p id="comment-body" key={comment.id}>
                   {comment.body}
                 </p>
+                <div id="remove-comment-container">
+                  {comment.User.id === currentUser.id && (
+                    <button
+                      id="remove-comment-button"
+                      onClick={(e) => handleDelete(e, comment.id)}
+                    >
+                      <IoMdTrash />
+                    </button>
+                  )}
+                </div>
               </>
             ))}
           </div>
