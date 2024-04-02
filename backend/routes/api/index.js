@@ -5,6 +5,8 @@ const usersRouter = require("./users.js");
 const pinsRouter = require("./pins.js");
 const boardsRouter = require("./boards.js");
 const commentsRouter = require("./commets.js");
+const followerRouter = require("./follower.js");
+
 router.use(restoreUser);
 const { requireAuth } = require("../../utils/auth.js");
 
@@ -19,6 +21,8 @@ router.use("/pins", pinsRouter);
 router.use("/boards", boardsRouter);
 
 router.use("/comments", commentsRouter);
+
+router.use("/followers", followerRouter);
 
 router.post("/test", (req, res) => {
   res.json({ requestBody: req.body });
