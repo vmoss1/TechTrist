@@ -26,6 +26,8 @@
   justify-content: flex-start;
   height: fit-content;
   width: fit-content;
+  box-shadow: 0 0 10px 1px#2680a1;
+  border-radius: 25px;
 }
 
 #pin__overlay {
@@ -50,10 +52,10 @@
     #54064d4c
   );
   background-size: 200% 200%;
-  animation: Gradient 5s ease infinite;
+  animation: pulse 3s ease infinite;
 }
 
-@keyframes Gradient {
+@keyframes pulse {
   0% {
     background-position: 0% 50%;
   }

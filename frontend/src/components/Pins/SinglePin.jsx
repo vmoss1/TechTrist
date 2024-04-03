@@ -73,6 +73,7 @@ const SinglePin = () => {
   const handleDelete = async (e, commentId) => {
     e.preventDefault();
     await dispatch(deleteCommentThunk(commentId));
+    await dispatch(fetchPinDetails(pinId));
     setEditing(true);
   };
 

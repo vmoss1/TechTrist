@@ -14,7 +14,9 @@ export default function CreatePin() {
   const [imageUrl, setImageUrl] = useState(null);
   const [category, setCategory] = useState("");
   const [errors, setErrors] = useState({});
-  const [imagePreview, setImagePreview] = useState(""); // Store the URL for image preview
+  const [imagePreview, setImagePreview] = useState("");
+
+  if (!currentUser) navigate("/");
 
   const updateFile = (e) => {
     const file = e.target.files[0];

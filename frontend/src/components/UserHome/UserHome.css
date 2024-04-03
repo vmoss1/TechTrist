@@ -54,8 +54,19 @@
   font-family: "Raider Crusader", sans-serif;
 }
 
+#plus-emblem {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 0px;
+  padding-top: 3px;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
 #plus-emblem:hover {
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #profile-add-new-pin-board {
@@ -76,12 +87,16 @@
 #board-title-profile {
   color: #1c6e8c;
   text-decoration: none;
-  /* font-family: "Raider Crusader", sans-serif; */
   font-size: 1.5rem;
+}
+
+#home-pins-container {
+  margin-bottom: 15px;
 }
 
 #board-title-profile:hover {
   transform: scale(1.1);
+  transition: transform 0.5s ease;
 }
 
 #profile-new-pin-container {
@@ -89,8 +104,10 @@
 }
 
 #profile-new-pin-container:hover {
-  box-shadow: 1px 3px 5px #1c6e8c;
+  box-shadow: 0 0 10px 2px #1c6e8c;
   border-radius: 25px;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #open-modal-new-board {

@@ -24,6 +24,7 @@ export default function SingleBoard() {
 
   const handleRemove = async (pinId) => {
     await dispatch(deletePinFromBoardThunk(boardId, pinId));
+    dispatch(fetchBoardDetails(boardId));
     setEditing(true);
   };
 
@@ -43,7 +44,7 @@ export default function SingleBoard() {
   return (
     <div id="single-board-container">
       <div id="single-board-title-container">
-        <h1>{board?.title}</h1>{" "}
+        <h1 id="single-board-title">{board?.title}</h1>{" "}
         <OpenModalButton
           buttonText={
             <p style={{ fontSize: "30px" }} id="single-board-edit-button">
@@ -54,7 +55,7 @@ export default function SingleBoard() {
         />
       </div>
 
-      <h3>{pinCount} Pins</h3>
+      <h3 id="single-board-title">{pinCount} Pins</h3>
 
       <div id="single-board-pins-container">
         {board.Pins?.map((pin) => (

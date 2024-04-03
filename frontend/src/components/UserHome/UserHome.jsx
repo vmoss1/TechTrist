@@ -91,7 +91,7 @@ function UserHome() {
         />
       </div>
       <h2 id="my-pins-title">My Pins</h2>
-      <div>
+      <div id="home-pins-container">
         <div id="all-pins">
           {currentPins?.map((pin) => (
             <Link

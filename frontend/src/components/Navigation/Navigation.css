@@ -42,6 +42,8 @@ nav {
 .profile-button:hover {
   cursor: pointer;
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #logout-button {
@@ -81,6 +83,8 @@ nav {
 
 #my-button:hover {
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #home-button {
@@ -94,6 +98,8 @@ nav {
 
 #home-button:hover {
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #ul-dropdown {
@@ -160,6 +166,7 @@ nav {
 #nav-login-button {
   color: #1c6e8c;
   font-size: 1rem;
+  padding: 10px;
   margin: 0px;
   font-family: "Raider Crusader", sans-serif;
 }
@@ -184,5 +191,7 @@ nav {
 
 .modal-button:hover {
   cursor: pointer;
-  box-shadow: 0 0 10px 2px #274156;
+  box-shadow: 0 0 10px 2px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }

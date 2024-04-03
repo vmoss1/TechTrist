@@ -86,21 +86,26 @@
 #single-pin-board-name:hover {
   box-shadow: 0 0 4px 4px #ffffff;
   cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 .single-pin-save-button:hover {
   cursor: pointer;
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #current-pin-small-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: 0 0 10px 4px#1c6e8c;
+  box-shadow: 0 0 15px 5px#2680a1;
   border-radius: 25px;
   max-width: 1150px;
   height: 600px;
   gap: 20px;
+  background-color: rgb(233, 233, 233);
 }
 
 #single-pin-image {
@@ -127,6 +132,8 @@
 
 #remove-comment-button:hover {
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #comment-form {
@@ -159,6 +166,8 @@
 #follow-button:hover {
   cursor: pointer;
   box-shadow: 0 0 10px 1px #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #single-pin-right-side {
