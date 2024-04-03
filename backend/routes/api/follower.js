@@ -1,23 +1,43 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
 const { Follower, User } = require("../../db/models");
+const follower = require("../../db/models/follower");
 
 const router = express.Router();
 
-router.get("/:userId/followers", requireAuth, async (req, res, next) => {
-  let { userId } = req.params;
-  userId = +userId;
+// GET route to retrieve following of the current user
+// router.get("/current", requireAuth, async (req, res, next) => {
+//   try {
+//     const userId = req.user.id;
 
+//     const followers = await Follower.findAll({
+//       where: {
+//         followerId: userId,
+//       },
+//       include: {
+//         model: User,
+//         as: "following",
+//       },
+//     });
+
+//     res.json({ followers });
+//   } catch (e) {
+//     next(e);
+//   }
+// });
+
+// GET route to retrieve followers of the current user
+router.get("/current", requireAuth, async (req, res, next) => {
   try {
+    const userId = req.user.id;
+
     const followers = await Follower.findAll({
-      include: {
-        model: User,
-        where: {
-          as: "followers",
-        },
+      where: {
+        followerId: userId,
       },
     });
-    return res.json(followers);
+
+    res.json({ followers });
   } catch (e) {
     next(e);
   }

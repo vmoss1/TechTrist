@@ -2,7 +2,11 @@ const express = require("express");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
-const { setTokenCookie, restoreUser } = require("../../utils/auth");
+const {
+  setTokenCookie,
+  restoreUser,
+  requireAuth,
+} = require("../../utils/auth");
 const { User, Follower } = require("../../db/models");
 
 const { check } = require("express-validator");
@@ -31,6 +35,10 @@ router.post("/", validateLogin, async (req, res, next) => {
         username: credential,
         email: credential,
       },
+    },
+    include: {
+      model: Follower,
+      as: "followers",
     },
   });
 
@@ -83,7 +91,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/users", async (req, res) => {
-  const users = await User.findAll();
+  const users = await User.findAll({
+    include: {
+      model: Follower,
+      as: "followers",
+    },
+  });
 
   return res.json({ users });
 });

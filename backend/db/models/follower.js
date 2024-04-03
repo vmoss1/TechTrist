@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Follower.belongsTo(models.User, {
-        foreignKey: "userId",
-        as: "following",
+        foreignKey: "followerId",
+        as: "follower",
       });
       Follower.belongsTo(models.User, {
-        foreignKey: "userId",
-        as: "followers",
+        foreignKey: "followingId",
+        as: "following",
       });
     }
   }
@@ -24,12 +24,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         references: {
           model: "User",
+          key: "id",
         },
       },
       followingId: {
         type: DataTypes.INTEGER,
         references: {
           model: "User",
+          key: "id",
         },
       },
     },

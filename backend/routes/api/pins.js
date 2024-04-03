@@ -9,7 +9,11 @@ const router = express.Router();
 // No auth required
 router.get("/", async (req, res, next) => {
   try {
-    const allPins = await Pin.findAll();
+    const allPins = await Pin.findAll({
+      include: {
+        model: User,
+      },
+    });
 
     return res.json({ Pins: allPins });
   } catch (e) {
