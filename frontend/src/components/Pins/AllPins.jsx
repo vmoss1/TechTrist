@@ -44,8 +44,14 @@ const AllPins = () => {
             {isMouseOver && currentSelectedKey === pin.id && (
               <div id="pin__overlay">
                 <h3 className="pin-overlay-icons">{pin.title}</h3>
-                <h3 className="pin-overlay-icons"></h3>
-                <h3 className="pin-overlay-icons"></h3>
+                <div id="container-img-username">
+                  <img
+                    id="pin-creator-img"
+                    src={pin.User.profilePicture}
+                    alt={pin.title}
+                  />
+                  <h4 id="username-all-pins">{pin.User.username}</h4>
+                </div>
               </div>
             )}
             <div id="pins-link" key={pin.id}>

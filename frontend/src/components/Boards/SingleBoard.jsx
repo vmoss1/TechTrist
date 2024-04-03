@@ -70,6 +70,7 @@ export default function SingleBoard() {
               {isMouseOver && currentSelectedKey === pin.id && (
                 <div id="board-pin__overlay">
                   <h3 className="board-pin-overlay-icons">{pin.title}</h3>
+
                   <button
                     className="board-remove-button"
                     onClick={(e) => {

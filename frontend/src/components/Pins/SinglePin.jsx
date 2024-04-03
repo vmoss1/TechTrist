@@ -30,7 +30,9 @@ const SinglePin = () => {
 
   let currentPin = useSelector((state) => state.pins?.list);
   let creator = users?.filter((user) => currentPin?.userId == user.id);
-  // console.log(creator[0].profilePicture);
+  // console.log(creator[0].followers.length);
+
+  let followers = creator[0]?.followers?.length;
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -108,6 +110,7 @@ const SinglePin = () => {
           <div id="single-pin-edit-container">
             <OpenModalButton
               id="single-pin-edit-button"
+              closeTimeoutMS={2000}
               buttonText={
                 <p style={{ fontSize: "25px" }} id="single-pin-edit-button">
                   <BiDotsHorizontalRounded />
@@ -144,7 +147,12 @@ const SinglePin = () => {
           </div>
           <div id="creator-name-photo">
             <img id="creator-img" src={creator[0]?.profilePicture} alt="" />
-            <p id="single-pin-username">{creator[0]?.username}</p>
+            <div>
+              <p id="single-pin-username">{creator[0]?.username}</p>
+              {followers && (
+                <p id="single-pin-followers">{followers} followers</p>
+              )}
+            </div>
             <button
               onClick={() => alert("Feature coming soon")}
               id="follow-button"
@@ -152,6 +160,7 @@ const SinglePin = () => {
               Follow
             </button>
           </div>
+
           <div id="current-pin-description-container">
             <p id="single-pin-description">{currentPin.description}</p>
           </div>

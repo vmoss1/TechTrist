@@ -63,9 +63,6 @@ function ProfileButton({ user }) {
             <div id="ul-dropdown">
               <div>{user.firstName}</div>
               <div>{user.email}</div>
-              <Link to={"/myProfile"} id="profile-button" user={sessionUser}>
-                MyProfile
-              </Link>
               <div>
                 <button id="logout-button" onClick={logout}>
                   Log Out

@@ -24,7 +24,30 @@
   position: absolute;
   border-radius: 25px;
   z-index: 0;
-  background-color: rgba(47, 47, 47, 0.462);
+  background: linear-gradient(
+    110deg,
+    #06b22543,
+    #1b97495c,
+    #19a19f52,
+    #0e797746,
+    #105c8851,
+    #9b1d1d5c,
+    #6e0c2947,
+    #54064d4c
+  );
+  background-size: 200% 200%;
+  animation: Gradient 5s ease infinite;
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .board-pin-overlay-icons {

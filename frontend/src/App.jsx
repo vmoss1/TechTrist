@@ -24,7 +24,7 @@ function Layout() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Modal />
+      <Modal closeTimeoutMS={2000} />
       {isLoaded && <Outlet />}
     </>
   );

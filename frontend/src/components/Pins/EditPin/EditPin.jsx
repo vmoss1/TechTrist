@@ -15,11 +15,9 @@ export default function EditPin({ pin }) {
   const currentUser = useSelector((state) => state.session.user);
   const pinTitle = pin?.title;
   const pinDescription = pin?.description;
-  // const pinImageUrl = pin?.imageUrl;
   const pinCategory = pin?.category;
   const [title, setTitle] = useState(pinTitle);
   const [description, setDescription] = useState(pinDescription);
-  // const [imageUrl, setImageUrl] = useState(pinImageUrl);
   const [category, setCategory] = useState(pinCategory);
   const [errors, setErrors] = useState({});
 
@@ -41,7 +39,6 @@ export default function EditPin({ pin }) {
 
     if (!title) validate.title = "Please provide title";
     if (!description) validate.description = "Please provide a description";
-    // if (!imageUrl) validate.imageUrl = "Please provide an image URL";
     if (!category) validate.category = "Please provide a category";
     if (title.length > 50 || title.length < 5)
       validate.title =
@@ -61,7 +58,6 @@ export default function EditPin({ pin }) {
         userId: currentUser.id,
         title,
         description,
-        // imageUrl,
         category,
       };
 

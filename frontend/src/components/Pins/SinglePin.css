@@ -99,14 +99,14 @@
   box-shadow: 0 0 10px 4px#1c6e8c;
   border-radius: 25px;
   max-width: 1150px;
-  height: 620px;
+  height: 600px;
   gap: 20px;
 }
 
 #single-pin-image {
   border-radius: 20px;
-  width: 520px;
-  height: 620px;
+  width: 540px;
+  height: 600px;
   padding: 0px;
   margin: 0px;
 }
@@ -186,6 +186,13 @@
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
   font-size: 1.5rem;
+  margin: 0px;
+}
+
+#single-pin-followers {
+  margin: 0px;
+  font-family: "Petrov Sans-Trial", sans-serif;
+  font-weight: light;
 }
 
 #creator-name-photo {

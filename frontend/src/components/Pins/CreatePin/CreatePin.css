@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
+
 .post-pin-form {
   display: flex;
   flex-direction: column;
@@ -47,6 +49,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #save-button {
@@ -61,6 +64,10 @@
   border: 1px white solid;
 }
 
+#save-button:hover {
+  box-shadow: 0 0 10px 1px black;
+}
+
 #description {
   border-radius: 25px;
   padding-left: 10px;
@@ -70,6 +77,7 @@
 
 #post-form-h2 {
   margin-left: 20px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #delete-button {

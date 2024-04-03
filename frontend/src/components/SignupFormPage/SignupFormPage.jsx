@@ -26,8 +26,12 @@ function SignupFormPage() {
   };
 
   const handleSubmit = (e) => {
-    if (image === null) errors.image = "Please provide an image";
     e.preventDefault();
+
+    if (!image) {
+      setErrors({ profilePicture: "Please provide an image" });
+      return;
+    }
     if (password === confirmPassword) {
       setErrors({});
       return dispatch(
@@ -46,7 +50,6 @@ function SignupFormPage() {
         }
       });
     }
-
     return setErrors({
       confirmPassword:
         "Confirm Password field must be the same as the Password field",
@@ -134,7 +137,9 @@ function SignupFormPage() {
           <label id="signup-file-upload">
             <input id="signup-file-upload" type="file" onChange={updateFile} />
           </label>
-          {errors.image && <p className="errors">{errors.image}</p>}
+          {errors.profilePicture && (
+            <p className="errors">{errors.profilePicture}</p>
+          )}
           <button id="signup-button-modal" type="submit">
             Continue
           </button>
