@@ -73,7 +73,7 @@ export default function EditBoard({ board }) {
     <div className="put-edit-form">
       <div className="outer-post_container">
         <form onSubmit={onSubmit}>
-          <h2>Edit Board</h2>
+          <h2 id="edit-board">Edit Board</h2>
           <div id="edit-board-form">
             Title
             <label>

@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
+
 #edit-board-form {
   display: flex;
   margin-top: 20px;
@@ -5,4 +7,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+#edit-board {
+  font-family: "Petrov Sans-Trial", sans-serif;
 }

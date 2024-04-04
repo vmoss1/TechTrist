@@ -12,6 +12,9 @@ import { useRef } from "react";
 import { createCommentThunk } from "../../store/pin";
 import { deleteCommentThunk } from "../../store/pin";
 import { IoMdTrash } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
+
 // import { useNavigate } from "react-router-dom";
 import "./SinglePin.css";
 
@@ -30,8 +33,6 @@ const SinglePin = () => {
 
   let currentPin = useSelector((state) => state.pins?.list);
   let creator = users?.filter((user) => currentPin?.userId == user.id);
-  // console.log(creator[0].followers.length);
-
   let followers = creator[0]?.followers?.length;
 
   const toggleMenu = (e) => {
@@ -105,6 +106,11 @@ const SinglePin = () => {
 
   return (
     <div id="current-pin-container">
+      <div id="back-button" style={{ fontSize: "40px", color: "black" }}>
+        <Link id="back-link" to={`/pins`}>
+          <IoChevronBackCircleOutline />
+        </Link>
+      </div>
       <div id="current-pin-small-container">
         <img id="single-pin-image" src={currentPin?.imageUrl} alt="" />
         <div id="single-pin-right-side">
@@ -150,16 +156,18 @@ const SinglePin = () => {
             <img id="creator-img" src={creator[0]?.profilePicture} alt="" />
             <div>
               <p id="single-pin-username">{creator[0]?.username}</p>
-              {followers && (
+              {followers > 0 && (
                 <p id="single-pin-followers">{followers} followers</p>
               )}
             </div>
-            <button
-              onClick={() => alert("Feature coming soon")}
-              id="follow-button"
-            >
-              Follow
-            </button>
+            {!creator && (
+              <button
+                onClick={() => alert("Feature coming soon")}
+                id="follow-button"
+              >
+                Follow
+              </button>
+            )}
           </div>
 
           <div id="current-pin-description-container">
@@ -183,7 +191,7 @@ const SinglePin = () => {
                   {comment.body}
                 </p>
                 <div id="remove-comment-container">
-                  {comment.User.id === currentUser.id && (
+                  {comment.User.id === currentUser.id && creator && (
                     <button
                       id="remove-comment-button"
                       onClick={(e) => handleDelete(e, comment.id)}

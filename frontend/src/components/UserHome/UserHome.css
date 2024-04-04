@@ -1,10 +1,24 @@
 @import url("https://fonts.cdnfonts.com/css/raider-crusader");
+@import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
 
 #profile-page-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+  animation: show 0.3s;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #profile-page-picture {
@@ -14,19 +28,48 @@
   border: 2px #1c6e8c solid;
 }
 
+#boards-pins-container {
+  display: flex;
+}
+
 #profile-page-h1 {
   margin: 0px;
   margin-top: 20px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #profile-page-p {
   margin-top: 5px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #all-boards {
   display: flex;
-  gap: 65px;
-  /* font-family: "Raider Crusader", sans-serif; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* width: 1100px; */
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  /* height: fit-content; */
+}
+
+#board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  border-radius: 25px;
+  /* border: 2px solid black; */
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.761);
+  box-shadow: 0 0 10px 2px #1c6e8c;
+}
+
+#board:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #boards-link {
@@ -42,16 +85,48 @@
   margin-right: 25px;
 }
 
+#all-pins-home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 1150px;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+#my-boards-container {
+  text-align: center;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+#all-boards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
+
 #my-boards-title {
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
-  margin: 0px;
-  margin-top: 45px;
 }
 
 #my-pins-title {
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
+  align-self: center;
+  justify-content: center;
 }
 
 #plus-emblem {
@@ -84,20 +159,34 @@
   color: #1c6e8c;
 }
 
+#pins-title-container {
+  display: flex;
+  justify-content: center;
+}
+
 #board-title-profile {
   color: #1c6e8c;
   text-decoration: none;
   font-size: 1.5rem;
+  font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#followers-length {
+  margin: 0px;
 }
 
 #home-pins-container {
   margin-bottom: 15px;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#board-title-profile:hover {
+/* #board-title-profile:hover {
   transform: scale(1.1);
   transition: transform 0.5s ease;
-}
+} */
 
 #profile-new-pin-container {
   padding: 8px;

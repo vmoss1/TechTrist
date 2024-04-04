@@ -7,6 +7,19 @@
   justify-content: center;
   align-items: center;
   font-family: "Petrov Sans-Trial", sans-serif;
+  opacity: 1;
+  animation: show 0.3s;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #single-board-title-container {
@@ -97,6 +110,7 @@
   background-color: grey;
   color: white;
   margin-bottom: 15px;
+  font-family: "Petrov Sans-Trial", sans-serif;
 }
 
 #remove-button:hover {

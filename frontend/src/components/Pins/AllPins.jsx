@@ -3,7 +3,30 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
+
 import "./AllPins.css";
+
+const getFilteredPins = (query, pins) => {
+  if (!query) {
+    return pins;
+  }
+  return pins.filter((pin) => {
+    const letterFilter =
+      pin.title.includes(query) || pin.category.includes(query);
+    // Filter by words
+    const wordFilter =
+      pin.title
+        .toLowerCase()
+        .split(" ")
+        .some((word) => word.includes(query)) ||
+      pin.title
+        .toLowerCase()
+        .split(" ")
+        .some((word) => word.includes(query));
+    return letterFilter || wordFilter;
+  });
+};
 
 const AllPins = () => {
   const dispatch = useDispatch();
@@ -11,10 +34,20 @@ const AllPins = () => {
 
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [currentSelectedKey, setCurrentSelectedKey] = useState(null);
+  const [query, setQuery] = useState("");
 
   let currentPins = useSelector((state) => state.pins.list);
   let currentUser = useSelector((state) => state.session.user);
   currentPins = Object.values(currentPins);
+
+  const filteredPins = getFilteredPins(query, currentPins);
+
+  useEffect(() => {
+    if (!currentUser) navigate("/");
+    dispatch(fetchAllPins());
+  }, [dispatch, currentUser, navigate]);
+
+  const handleSubmit = (e) => e.preventDefault();
 
   const handleMouseOver = (pinId) => {
     setCurrentSelectedKey(pinId);
@@ -25,15 +58,21 @@ const AllPins = () => {
     setCurrentSelectedKey(null);
   };
 
-  useEffect(() => {
-    if (!currentUser) navigate("/");
-    dispatch(fetchAllPins());
-  }, [dispatch, currentUser, navigate]);
-
   return (
     <div id="all-pins-main-container">
+      <div id="search-bar-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="Search for pins"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </form>
+      </div>
+
       <div id="all-pins">
-        {currentPins?.map((pin) => (
+        {filteredPins?.map((pin) => (
           <Link
             to={`/pins/${pin.id}`}
             id="pin"
@@ -47,10 +86,10 @@ const AllPins = () => {
                 <div id="container-img-username">
                   <img
                     id="pin-creator-img"
-                    src={pin.User.profilePicture}
+                    src={pin.User?.profilePicture}
                     alt={pin.title}
                   />
-                  <h4 id="username-all-pins">{pin.User.username}</h4>
+                  <h4 id="username-all-pins">{pin.User?.username}</h4>
                 </div>
               </div>
             )}
@@ -59,6 +98,9 @@ const AllPins = () => {
             </div>
           </Link>
         ))}
+      </div>
+      <div id="footer-container">
+        <Footer />
       </div>
     </div>
   );

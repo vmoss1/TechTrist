@@ -95,7 +95,7 @@ export default function EditPin({ pin }) {
     <div className="put-edit-form">
       <div className="outer-post_container">
         <form onSubmit={onSubmit}>
-          <h2>Edit Pin</h2>
+          <h2 id="edit-board">Edit Pin</h2>
           <div id="edit-pin-form">
             Title
             <label>

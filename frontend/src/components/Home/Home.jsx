@@ -2,6 +2,7 @@ import "./Home.css";
 import SignupFormPage from "../SignupFormPage";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -12,13 +13,18 @@ export default function Home() {
   }
 
   return (
-    <div id="home-page-container">
-      <div id="home-paragraph-container">
-        <h2>Sign up to get your new tech ideas</h2>
+    <>
+      <div id="home-page-container">
+        <div id="home-paragraph-container">
+          <h2 id="paragraph-home">Sign up to get your new tech ideas</h2>
+        </div>
+        <div id="home-signup-form">
+          <SignupFormPage />
+        </div>
       </div>
-      <div id="home-signup-form">
-        <SignupFormPage />
+      <div id="footer-home">
+        <Footer />
       </div>
-    </div>
+    </>
   );
 }
