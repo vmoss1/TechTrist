@@ -243,13 +243,19 @@
   gap: 15px;
 }
 
+#set-favorite-container {
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-left: 240px;
+}
+
 #submit-button-single-pin {
   border-radius: 25px;
   padding: 10px;
   margin-left: 15px;
-  border: 2px #1c6e8c solid;
-  background-color: gray;
-  color: white;
+  border: none;
+  background-color: rgb(192, 192, 192);
+  color: rgb(0, 0, 0);
 }
 
 #single-pin-edit-button {

@@ -11,6 +11,9 @@ import { Link, NavLink } from "react-router-dom";
 import CreateBoard from "../Boards/CreateBoard/CreateBoard";
 import { useModal } from "../../context/Modal";
 import { getUsersThunk } from "../../store/session";
+import { fetchCurrentFavorites } from "../../store/favorite";
+import { deleteFavoriteThunk } from "../../store/favorite";
+import { useNavigate } from "react-router-dom";
 
 function UserHome() {
   const currentUser = useSelector((state) => state.session.user);
@@ -18,8 +21,10 @@ function UserHome() {
   const { closeModal } = useModal();
   const [isMouseOver, setIsMouseOver] = useState(null);
   const [currentSelectedKey, setCurrentSelectedKey] = useState(null);
+
   let users = useSelector((state) => state.session.users);
   users = Object.values(users);
+  const navigate = useNavigate();
 
   let currentPins = useSelector((state) => state.pins.list);
   let boards = useSelector((state) => state.boards.list);
@@ -27,7 +32,15 @@ function UserHome() {
   currentPins = Object.values(currentPins);
   currentPins = currentPins.filter((pins) => pins.userId == currentUser.id);
   let creator = users?.filter((user) => currentPins[0]?.userId == user.id);
+  let favorites = useSelector((state) => state?.favorites.list);
+  favorites = Object?.values(favorites);
+  // console.log("FAVORITES", favorites);
   // console.log(creator[0].followers.length);
+
+  const handleRemove = async (pinId) => {
+    await dispatch(deleteFavoriteThunk(pinId));
+    await dispatch(fetchCurrentFavorites());
+  };
 
   const handleMouseOver = (pinId) => {
     setCurrentSelectedKey(pinId);
@@ -39,9 +52,13 @@ function UserHome() {
   };
 
   useEffect(() => {
-    dispatch(fetchAllPins());
-    dispatch(fetchUserBoards());
-    dispatch(getUsersThunk());
+    const fetchAll = async () => {
+      await dispatch(fetchAllPins());
+      await dispatch(fetchUserBoards());
+      await dispatch(getUsersThunk());
+      await dispatch(fetchCurrentFavorites());
+    };
+    fetchAll();
   }, [dispatch]);
 
   return (
@@ -115,16 +132,52 @@ function UserHome() {
                 {isMouseOver && currentSelectedKey === pin.id && (
                   <div id="pin__overlay">
                     <h3 className="pin-overlay-icons">{pin.title}</h3>
-                    <h3 className="pin-overlay-icons"></h3>
-                    <h3 className="pin-overlay-icons"></h3>
                   </div>
                 )}
                 <div id="pins-link" key={pin.id}>
-                  <img id="pin-images" src={pin.imageUrl} alt={pin.title} />
+                  <img id="pin-images" src={pin?.imageUrl} alt={pin.title} />
                 </div>
               </Link>
             ))}
           </div>
+        </div>
+      </div>
+      <div id="favorites-container">
+        <div id="favorites-title-container">
+          <h3 id="favorites-title">Favorites</h3>
+        </div>
+        <div id="all-pins-favorites">
+          {favorites.map((pin) => (
+            <div
+              onClick={() => navigate(`/pins/${pin?.Pin?.id}`)}
+              id="pin"
+              onMouseLeave={handleMouseLeave}
+              onMouseOver={() => handleMouseOver(pin?.Pin?.id)}
+              key={pin?.Pin?.id}
+            >
+              {isMouseOver && currentSelectedKey === pin?.Pin?.id && (
+                <div id="board-pin__overlay">
+                  <h3 className="board-pin-overlay-icons">{pin?.Pin?.title}</h3>
+                  <button
+                    className="board-remove-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemove(pin?.Pin?.id);
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              )}
+              <div id="pins-link" key={pin?.Pin?.id}>
+                <img
+                  id="pin-images"
+                  src={pin?.Pin?.imageUrl}
+                  alt={pin?.Pin?.title}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

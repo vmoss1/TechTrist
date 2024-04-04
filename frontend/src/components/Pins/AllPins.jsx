@@ -20,7 +20,7 @@ const getFilteredPins = (query, pins) => {
         .toLowerCase()
         .split(" ")
         .some((word) => word.includes(query)) ||
-      pin.title
+      pin.category
         .toLowerCase()
         .split(" ")
         .some((word) => word.includes(query));

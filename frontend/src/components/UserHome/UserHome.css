@@ -217,3 +217,38 @@
   text-decoration: none;
   color: #1c6e8c;
 }
+
+#favorites-title-container {
+  display: flex;
+  justify-content: center;
+}
+
+#favorites-title {
+  font-weight: 500;
+  font-family: "Raider Crusader", sans-serif;
+  font-size: 1.5rem;
+}
+
+#all-pins-favorites {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.board-remove-button {
+  width: 80px;
+  padding: 10px;
+  border-radius: 25px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  align-self: flex-end;
+  z-index: 99;
+  color: rgb(255, 255, 255);
+  font-family: "Petrov Sans-Trial", sans-serif;
+}

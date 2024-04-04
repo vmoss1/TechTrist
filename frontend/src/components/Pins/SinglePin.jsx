@@ -14,9 +14,14 @@ import { deleteCommentThunk } from "../../store/pin";
 import { IoMdTrash } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
-
-// import { useNavigate } from "react-router-dom";
+import { GoHeart } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
 import "./SinglePin.css";
+import {
+  createFavoriteThunk,
+  deleteFavoriteThunk,
+  fetchCurrentFavorites,
+} from "../../store/favorite";
 
 const SinglePin = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,8 +29,8 @@ const SinglePin = () => {
   const ulRef = useRef();
   const [errors, setErrors] = useState({});
   const showButton = body !== "";
-  const [editing, setEditing] = useState(false);
-  // const navigate = useNavigate();
+  // const [favorite, setFavorite] = useState(false);
+
   let boards = useSelector((state) => state.boards?.list);
   let currentUser = useSelector((state) => state.session.user);
   let users = useSelector((state) => state.session.users);
@@ -34,6 +39,13 @@ const SinglePin = () => {
   let currentPin = useSelector((state) => state.pins?.list);
   let creator = users?.filter((user) => currentPin?.userId == user.id);
   let followers = creator[0]?.followers?.length;
+
+  let currentUserFavorites = useSelector((state) => state.favorites.list);
+  currentUserFavorites = Object.values(currentUserFavorites);
+  const isFavorite = currentUserFavorites.find(
+    (favorite) => favorite?.pinId === currentPin.id
+  );
+  // console.log("CURRENT FAV", isFavorite);
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -62,9 +74,10 @@ const SinglePin = () => {
       await dispatch(fetchPinDetails(pinId));
       await dispatch(getUsersThunk());
       await dispatch(fetchUserBoards());
+      await dispatch(fetchCurrentFavorites());
     };
     fetchData();
-  }, [dispatch, pinId, body, editing]);
+  }, [dispatch, pinId, body]);
 
   const handleSaveToBoard = async (pinId, boardId) => {
     await dispatch(addPinToBoardThunk(pinId, boardId));
@@ -75,7 +88,6 @@ const SinglePin = () => {
     e.preventDefault();
     await dispatch(deleteCommentThunk(commentId));
     await dispatch(fetchPinDetails(pinId));
-    setEditing(true);
   };
 
   const onSubmit = async (e) => {
@@ -99,6 +111,18 @@ const SinglePin = () => {
         return setErrors(res.errors);
       }
       setBody("");
+    }
+  };
+
+  const setFavoriteFunc = async (pinId) => {
+    if (isFavorite != undefined) {
+      await dispatch(deleteFavoriteThunk(pinId));
+      await fetchCurrentFavorites();
+      // isFavorite === undefined;
+    } else {
+      await dispatch(createFavoriteThunk(pinId));
+      await fetchCurrentFavorites();
+      // isFavorite === true;
     }
   };
 
@@ -168,6 +192,14 @@ const SinglePin = () => {
                 Follow
               </button>
             )}
+            <div id="set-favorite-container">
+              <h2
+                id="set-favorite"
+                onClick={() => setFavoriteFunc(currentPin.id)}
+              >
+                {isFavorite === undefined ? <GoHeart /> : <GoHeartFill />}
+              </h2>
+            </div>
           </div>
 
           <div id="current-pin-description-container">
