@@ -27,6 +27,16 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
         hooks: true,
       });
+      Pin.belongsToMany(models.User, {
+        through: models.Favorite,
+        foreignKey: "pinId",
+        otherKey: "userId",
+      });
+      Pin.hasMany(models.Favorite, {
+        foreignKey: "pinId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
     }
   }
   Pin.init(

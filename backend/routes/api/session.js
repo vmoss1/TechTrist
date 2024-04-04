@@ -7,7 +7,7 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { User, Follower } = require("../../db/models");
+const { User, Follower, Favorite } = require("../../db/models");
 
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -35,10 +35,6 @@ router.post("/", validateLogin, async (req, res, next) => {
         username: credential,
         email: credential,
       },
-    },
-    include: {
-      model: Follower,
-      as: "followers",
     },
   });
 
@@ -92,10 +88,12 @@ router.get("/", (req, res) => {
 
 router.get("/users", async (req, res) => {
   const users = await User.findAll({
-    include: {
-      model: Follower,
-      as: "followers",
-    },
+    include: [
+      {
+        model: Follower,
+        as: "followers",
+      },
+    ],
   });
 
   return res.json({ users });
