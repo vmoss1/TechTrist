@@ -13,7 +13,7 @@ import { ThemeContext } from "../../context/ToggleBack";
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
-  let { theme, toggleTheme } = useContext(ThemeContext);
+  let { theme, toggleTheme, setTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
 
   const logout = () => {
     dispatch(sessionActions.logout());
-    toggleTheme("ToggleMe");
+    setTheme("ToggleMe");
     closeMenu();
     setTimeout(() => {
       navigate("/");
