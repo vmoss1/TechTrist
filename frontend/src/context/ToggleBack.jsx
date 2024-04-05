@@ -16,10 +16,10 @@ const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(getTheme);
 
   function toggleTheme() {
-    if (theme === "ToggleMe-Again") {
-      setTheme("ToggleMe");
-    } else {
+    if (theme === "ToggleMe") {
       setTheme("ToggleMe-Again");
+    } else {
+      setTheme("ToggleMe");
     }
   }
 
