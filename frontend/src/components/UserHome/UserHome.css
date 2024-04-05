@@ -26,6 +26,7 @@
   width: 120px;
   border-radius: 80px;
   border: 2px #1c6e8c solid;
+  background-color: white;
 }
 
 #boards-pins-container {
@@ -92,7 +93,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 1150px;
-  gap: 5px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
   height: fit-content;
@@ -108,6 +109,7 @@
   align-items: center;
   justify-content: center;
   height: fit-content;
+  margin-top: 20px;
 }
 
 #all-boards {
@@ -122,6 +124,7 @@
 #my-boards-title {
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
+  margin-bottom: 5px;
 }
 
 #my-pins-title {
@@ -164,6 +167,8 @@
 #pins-title-container {
   display: flex;
   justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 #board-title-profile {
@@ -228,16 +233,19 @@
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
   font-size: 1.5rem;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 #all-pins-favorites {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
   height: fit-content;
+  margin-bottom: 40px;
 }
 
 .board-remove-button {

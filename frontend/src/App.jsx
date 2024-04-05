@@ -9,9 +9,12 @@ import SinglePin from "./components/Pins/SinglePin";
 import CreatePin from "./components/Pins/CreatePin/CreatePin";
 import UserHome from "./components/UserHome/UserHome";
 import SingleBoard from "./components/Boards/SingleBoard";
+import { useContext } from "react";
+import { ThemeContext } from "./context/ToggleBack";
 import * as sessionActions from "./store/session";
 
 function Layout() {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -22,11 +25,11 @@ function Layout() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={`${theme}`}>
       <Navigation isLoaded={isLoaded} />
       <Modal closeTimeoutMS={2000} />
       {isLoaded && <Outlet />}
-    </>
+    </div>
   );
 }
 

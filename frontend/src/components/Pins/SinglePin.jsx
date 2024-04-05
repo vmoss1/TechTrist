@@ -196,7 +196,10 @@ const SinglePin = () => {
                 id="set-favorite"
                 onClick={() => setFavoriteFunc(currentPin.id)}
               >
-                <div style={{ fontSize: "40px", color: "red" }}>
+                <div
+                  id="heart-favorite"
+                  style={{ fontSize: "40px", color: "red" }}
+                >
                   {isFavorite === undefined ? <GoHeart /> : <GoHeartFill />}
                 </div>
               </h2>

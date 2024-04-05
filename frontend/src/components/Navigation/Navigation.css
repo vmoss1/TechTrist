@@ -5,9 +5,17 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 10px;
+}
+
+#toggle-theme-button {
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  padding-left: 13px;
+  padding-right: 13px;
+  background-color: rgb(39, 90, 134);
 }
 
 #user-photo {
@@ -20,6 +28,7 @@ nav {
   display: flex;
   justify-content: space-between;
   gap: 25px;
+  margin-top: 10px;
 }
 
 .profile-button {
@@ -48,14 +57,14 @@ nav {
 
 #logout-button {
   border-radius: 20px;
-  margin-top: 10px;
+  /* margin-top: 5px; */
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 25px;
   padding-right: 25px;
   background-color: #8c1c1c;
   color: white;
-  border: 2px #ffffff solid;
+  border: none;
 }
 
 #profile-button {
@@ -73,7 +82,7 @@ nav {
 
 #my-button {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: #1c6e8c;
   font-size: 1.25rem;
   border-radius: 20px;
   padding: 10px;
@@ -89,7 +98,7 @@ nav {
 
 #home-button {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: #1c6e8c;
   font-size: 1.25rem;
   border-radius: 20px;
   padding: 10px;
@@ -106,14 +115,13 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #ffffff;
   border-radius: 20px;
   padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
   border: 2px #1c6e8c solid;
 }
 
@@ -142,12 +150,13 @@ nav {
 #nav-logo-container {
   display: flex;
   margin-left: 10px;
+  margin-top: 10px;
   gap: 10px;
   align-items: center;
 }
 
 #bio-tech {
-  color: #605856;
+  color: #000000;
 }
 
 #nav-home-button {
@@ -161,6 +170,7 @@ nav {
 .login-signup-buttons {
   display: flex;
   gap: 15px;
+  margin-top: 15px;
 }
 
 #nav-login-button {
@@ -174,7 +184,7 @@ nav {
 #nav-signup-button {
   font-size: 1rem;
   margin: 0px;
-  color: #605856;
+
   font-family: "Raider Crusader", sans-serif;
 }
 

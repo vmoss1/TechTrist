@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
           {sessionUser && (
             <>
               <Link to={"/pins"} id="home-button">
-                Home
+                Explore
               </Link>
               <Link to={"/pins/new"} id="home-button">
                 Create

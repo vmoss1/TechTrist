@@ -95,7 +95,7 @@
 #search-bar-container {
   z-index: 99;
   position: absolute;
-  top: 3%;
+  top: 2%;
   max-width: 800px;
 }
 
@@ -132,6 +132,7 @@
   width: 40px;
   height: 40px;
   border-radius: 25px;
+  margin-bottom: 4px;
 }
 
 #pins-link {

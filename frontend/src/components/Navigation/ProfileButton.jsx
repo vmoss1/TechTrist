@@ -7,9 +7,13 @@ import LoginFormPage from "../LoginFormPage";
 import SignupFormPage from "../SignupFormPage";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ToggleBack";
+
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
+  let { theme, toggleTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -37,6 +41,7 @@ function ProfileButton({ user }) {
 
   const logout = () => {
     dispatch(sessionActions.logout());
+    toggleTheme("Light");
     closeMenu();
     setTimeout(() => {
       navigate("/");
@@ -63,6 +68,11 @@ function ProfileButton({ user }) {
             <div id="ul-dropdown">
               <div>{user.firstName}</div>
               <div>{user.email}</div>
+              <div className="all-toggle">
+                <button id="toggle-theme-button" onClick={() => toggleTheme()}>
+                  {theme}
+                </button>
+              </div>
               <div>
                 <button id="logout-button" onClick={logout}>
                   Log Out

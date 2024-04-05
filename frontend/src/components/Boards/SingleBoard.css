@@ -9,6 +9,7 @@
   font-family: "Petrov Sans-Trial", sans-serif;
   opacity: 1;
   animation: show 0.3s;
+  min-height: 700px;
 }
 
 @keyframes show {
@@ -141,7 +142,8 @@
   justify-content: center;
   max-width: 1200px;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
+  margin-bottom: 50px;
 }
 
 #single-board-pin-image {
@@ -160,6 +162,6 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: black;
+  margin-bottom: 10px;
   align-items: center;
 }

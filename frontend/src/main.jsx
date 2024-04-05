@@ -6,6 +6,7 @@ import "./index.css";
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import { ModalProvider } from "./context/Modal";
+import { ThemeProvider } from "./context/ToggleBack";
 import * as sessionActions from "./store/session";
 
 const store = configureStore();
@@ -20,10 +21,12 @@ if (import.meta.env.MODE !== "production") {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ModalProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ModalProvider>
+    <ThemeProvider>
+      <ModalProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ModalProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
