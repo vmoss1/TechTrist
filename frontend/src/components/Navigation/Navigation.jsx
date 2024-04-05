@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-// import { Link } from "react-router-dom";
 import { SiKingstontechnology } from "react-icons/si";
 
 import "./Navigation.css";

@@ -221,6 +221,7 @@
 #favorites-title-container {
   display: flex;
   justify-content: center;
+  border-top: rgba(128, 128, 128, 0.491) 2px solid;
 }
 
 #favorites-title {

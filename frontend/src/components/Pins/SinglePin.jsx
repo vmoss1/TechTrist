@@ -29,7 +29,6 @@ const SinglePin = () => {
   const ulRef = useRef();
   const [errors, setErrors] = useState({});
   const showButton = body !== "";
-  // const [favorite, setFavorite] = useState(false);
 
   let boards = useSelector((state) => state.boards?.list);
   let currentUser = useSelector((state) => state.session.user);
@@ -42,9 +41,11 @@ const SinglePin = () => {
 
   let currentUserFavorites = useSelector((state) => state.favorites.list);
   currentUserFavorites = Object.values(currentUserFavorites);
+
   const isFavorite = currentUserFavorites.find(
     (favorite) => favorite?.pinId === currentPin.id
   );
+  const [favorite, setFavorite] = useState(isFavorite);
   // console.log("CURRENT FAV", isFavorite);
 
   const toggleMenu = (e) => {
@@ -77,7 +78,7 @@ const SinglePin = () => {
       await dispatch(fetchCurrentFavorites());
     };
     fetchData();
-  }, [dispatch, pinId, body]);
+  }, [dispatch, pinId, body, favorite]);
 
   const handleSaveToBoard = async (pinId, boardId) => {
     await dispatch(addPinToBoardThunk(pinId, boardId));
@@ -117,12 +118,10 @@ const SinglePin = () => {
   const setFavoriteFunc = async (pinId) => {
     if (isFavorite != undefined) {
       await dispatch(deleteFavoriteThunk(pinId));
-      await fetchCurrentFavorites();
-      // isFavorite === undefined;
+      setFavorite(false);
     } else {
       await dispatch(createFavoriteThunk(pinId));
-      await fetchCurrentFavorites();
-      // isFavorite === true;
+      setFavorite(true);
     }
   };
 
@@ -156,7 +155,7 @@ const SinglePin = () => {
             {showMenu && (
               <ul className={ulClassName} ref={ulRef}>
                 <div id="single-pin-dropdown">
-                  <h2>My Boards</h2>
+                  <h2 id="my-boards-title-side">My Boards</h2>
                   {boards?.map((board) => (
                     <button
                       onClick={() =>
@@ -197,7 +196,9 @@ const SinglePin = () => {
                 id="set-favorite"
                 onClick={() => setFavoriteFunc(currentPin.id)}
               >
-                {isFavorite === undefined ? <GoHeart /> : <GoHeartFill />}
+                <div style={{ fontSize: "40px", color: "red" }}>
+                  {isFavorite === undefined ? <GoHeart /> : <GoHeartFill />}
+                </div>
               </h2>
             </div>
           </div>
