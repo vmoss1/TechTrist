@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
 
   const logout = () => {
     dispatch(sessionActions.logout());
-    toggleTheme("Light");
+    toggleTheme("ToggleMe");
     closeMenu();
     setTimeout(() => {
       navigate("/");
