@@ -129,7 +129,7 @@ const SinglePin = () => {
 
   return (
     <div id="current-pin-container">
-      <div id="back-button" style={{ fontSize: "40px", color: "black" }}>
+      <div id="back-button" style={{ fontSize: "35px", color: "black" }}>
         <Link id="back-link" to={`/pins`}>
           <IoChevronBackCircleOutline />
         </Link>
@@ -138,20 +138,24 @@ const SinglePin = () => {
         <img id="single-pin-image" src={currentPin?.imageUrl} alt="" />
         <div id="single-pin-right-side">
           <div id="single-pin-edit-container">
-            <OpenModalButton
-              id="single-pin-edit-button"
-              closeTimeoutMS={2000}
-              buttonText={
-                <p style={{ fontSize: "25px" }} id="single-pin-edit-button">
-                  <BiDotsHorizontalRounded />
-                </p>
-              }
-              modalComponent={<EditPin pin={currentPin} />}
-            />
-            {/* <div id="board-button-dropdown"> */}
-            <button onClick={toggleMenu} className="single-pin-save-button">
-              Save
-            </button>
+            <div id="single-pin-edit-button">
+              <OpenModalButton
+                id="single-pin-edit-button"
+                closeTimeoutMS={2000}
+                buttonText={
+                  <p style={{ fontSize: "25px" }}>
+                    <BiDotsHorizontalRounded />
+                  </p>
+                }
+                modalComponent={<EditPin pin={currentPin} />}
+              />
+              {/* <div id="board-button-dropdown"> */}
+            </div>
+            <div>
+              <button onClick={toggleMenu} className="single-pin-save-button">
+                Save
+              </button>
+            </div>
             {showMenu && (
               <ul className={ulClassName} ref={ulRef}>
                 <div id="single-pin-dropdown">
