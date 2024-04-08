@@ -9,7 +9,6 @@
   font-family: "Petrov Sans-Trial", sans-serif;
   opacity: 1;
   animation: show 0.3s;
-  min-height: 700px;
 }
 
 @keyframes show {
@@ -21,6 +20,10 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 #single-board-title-container {

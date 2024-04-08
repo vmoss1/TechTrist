@@ -3,11 +3,10 @@
 
 #current-pin-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
-
+  height: 100vh;
   opacity: 1;
   animation: show 0.3s;
 }
@@ -24,8 +23,7 @@
 }
 
 #back-button {
-  align-self: flex-start;
-  margin-left: 80px;
+  margin-bottom: 15px;
 }
 
 #back-link {
@@ -41,7 +39,6 @@
 #single-pin-edit-container {
   display: flex;
   justify-content: space-between;
-  height: 40px;
 }
 
 #single-pin-title {
@@ -57,7 +54,7 @@
   flex-direction: column;
   position: absolute; /* or 'fixed' depending on your preference */
   border: 2px #1c6e8c solid;
-  margin-left: 10px;
+  margin-left: 15px;
   border-radius: 25px;
   background-color: #1c6e8c;
   gap: 5px;
@@ -73,7 +70,7 @@
   padding: 10px;
   border: none;
   color: rgb(0, 0, 0);
-  margin-top: 5px;
+  margin-top: 10px;
   font-family: "Petrov Sans-Trial", sans-serif;
 }
 
@@ -166,6 +163,20 @@
   border-radius: 25px;
   border: none;
   background-color: white;
+}
+
+::-webkit-file-upload-button {
+  border: none;
+  margin-left: 25px;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: "Petrov Sans-Trial", sans-serif;
+  background-color: #1c6e8c;
+  color: white;
+}
+
+::-webkit-file-upload-button:hover {
+  cursor: pointer;
 }
 
 #remove-comment-button:hover {
@@ -280,6 +291,8 @@
 #single-pin-edit-button {
   margin: 0px;
   padding: 0px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 #current-pin-description-container {
