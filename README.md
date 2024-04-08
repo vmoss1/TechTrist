@@ -8,19 +8,31 @@ This is tech-themed Pinterest exclusively dedicated to technology-related conten
 
 # Search Bar Preview
 
+https://github.com/vmoss1/TechTrist/assets/142066227/0f69f6a8-7091-43d5-9abe-6d4ab62a00a6
 <video controls src="images/search-bar.mp4" title="Title"></video>
 
 # Single pin preview - add/delete comment and edit pin and favorite
 
+https://github.com/vmoss1/TechTrist/assets/142066227/c9caa5bc-86db-451a-984f-09285111c355
 <video controls src="images/comment:edit.mp4" title="Title"></video>
 
 # Toggle Theme preview
 
 <video controls src="images/toggletheme.mp4" title="Title"></video>
+https://github.com/vmoss1/TechTrist/assets/142066227/0245ab7c-d89b-4169-b04f-644f9885c383
 
 # Technologies Used
 
+
+
+
 ### Backend:
+
+
+
+
+
+
 
 - JavaScript
 - Express.js (Node.js framework for server-side development)
