@@ -51,6 +51,10 @@
 }
 
 @media screen and (max-width: 600px) {
+  #paragraph-home {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
   #home-page-container {
     background-color: antiquewhite;
     min-height: 850px;
