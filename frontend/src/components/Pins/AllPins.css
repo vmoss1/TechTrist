@@ -223,7 +223,7 @@
   }
   #pin__overlay {
     display: flex;
-    width: 100px;
+    width: 120px;
     flex-direction: column;
     justify-content: space-between;
     height: 180px;
@@ -255,5 +255,22 @@
     margin: 0px;
     margin-left: 5px;
     margin-right: 5px;
+  }
+  .pin-overlay-icons {
+    z-index: 99;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1rem;
+    align-items: center;
+    font-family: "Petrov Sans-Trial", sans-serif;
+    width: 100px;
+  }
+  #username-all-pins {
+    color: white;
+    font-family: "Petrov Sans-Trial", sans-serif;
+    font-size: 0.5rem;
   }
 }

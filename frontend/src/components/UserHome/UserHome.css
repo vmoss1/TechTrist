@@ -339,6 +339,43 @@
 }
 
 @media screen and (max-width: 600px) {
+  #board-pin__overlay {
+    display: flex;
+    width: 120px;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    border-radius: 25px;
+    position: absolute;
+    z-index: 0;
+    background: linear-gradient(
+      110deg,
+      #06b22543,
+      #1b97495c,
+      #19a19f52,
+      #0e797746,
+      #105c8851,
+      #9b1d1d5c,
+      #6e0c2947,
+      #54064d4c
+    );
+    background-size: 200% 200%;
+    animation: pulse 3s ease infinite;
+  }
+
+  .board-pin-overlay-icons {
+    z-index: 99;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1rem;
+    align-items: center;
+    font-family: "Petrov Sans-Trial", sans-serif;
+    width: 100px;
+  }
+
   #board {
     display: flex;
     justify-content: center;
@@ -410,5 +447,18 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+  }
+  .board-remove-button {
+    width: 80px;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    align-self: flex-start;
+    z-index: 99;
+    color: rgb(255, 255, 255);
+    font-family: "Petrov Sans-Trial", sans-serif;
   }
 }
