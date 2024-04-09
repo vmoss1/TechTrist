@@ -185,10 +185,26 @@
     font-family: "Petrov Sans-Trial", sans-serif;
     min-width: none;
     min-width: 50px;
+    width: 500px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  #search-bar-container {
+    z-index: 99;
+    position: relative;
+    margin-bottom: 25px;
+    min-width: none;
+    width: max-content;
+  }
+  #search-bar {
+    box-shadow: 0 0 9px 2px #1c6e8c;
+    border: none;
+    font-family: "Petrov Sans-Trial", sans-serif;
+    min-width: none;
+    min-width: 50px;
+    width: 300px;
+  }
   #all-pins-main-container {
     display: flex;
     flex-direction: column;
