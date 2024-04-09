@@ -110,6 +110,7 @@
   justify-content: center;
   height: fit-content;
   margin-top: 20px;
+  margin-left: 15px;
 }
 
 #all-boards {
@@ -119,6 +120,7 @@
   align-items: center;
   flex-wrap: wrap;
   max-width: 600px;
+  margin-left: 15px;
 }
 
 #my-boards-title {
@@ -260,4 +262,153 @@
   z-index: 99;
   color: rgb(255, 255, 255);
   font-family: "Petrov Sans-Trial", sans-serif;
+}
+@media screen and (max-width: 1200px) {
+  #board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 60px;
+    border-radius: 25px;
+    /* border: 2px solid black; */
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.952);
+    box-shadow: 0 0 10px 2px #1c6e8c;
+  }
+  #all-boards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  #profile-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    animation: show 0.3s;
+    margin-top: 50px;
+  }
+  #boards-pins-container {
+    border-top: rgba(128, 128, 128, 0.491) 2px solid;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  #home-pins-container {
+    margin-bottom: 15px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #all-pins-home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 400px;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+  }
+  #my-boards-container {
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 20px;
+  }
+
+  #all-boards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 60px;
+    border-radius: 25px;
+    /* border: 2px solid black; */
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.952);
+    box-shadow: 0 0 10px 2px #1c6e8c;
+  }
+  #all-boards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 400px;
+  }
+  #profile-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    animation: show 0.3s;
+    margin-top: 50px;
+  }
+  #boards-pins-container {
+    border-top: rgba(128, 128, 128, 0.491) 2px solid;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  #home-pins-container {
+    margin-bottom: 15px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #all-pins-home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 400px;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+  }
+  #my-boards-container {
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 20px;
+  }
+
+  #all-boards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }

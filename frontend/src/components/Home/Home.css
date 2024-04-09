@@ -49,3 +49,30 @@
 #paragraph-home {
   font-family: "Petrov Sans-Trial", sans-serif;
 }
+
+@media screen and (max-width: 600px) {
+  #home-page-container {
+    background-color: antiquewhite;
+    min-height: 850px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("https://wallpapercave.com/wp/Bp90Y3N.jpg");
+    background-size: 150% 150%;
+    animation: Gradient 15s ease infinite;
+    border-top: 1px solid black;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #home-signup-form {
+    border: 1px solid grey;
+    border-radius: 25px;
+    max-height: 900px;
+    margin-top: 0px;
+    max-width: 500px;
+    margin-left: 0px;
+    background-color: white;
+    box-shadow: 1px 2px 2px black;
+    margin-bottom: 10px;
+  }
+}

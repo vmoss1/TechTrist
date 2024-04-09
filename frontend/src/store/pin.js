@@ -208,7 +208,7 @@ const pinsReducer = (state = initialState, action) => {
       delete pinState[action.payload];
       return pinState;
     }
-    //Currently breaking on adding a comment
+
     case ADD_COMMENT:
       return {
         ...state,

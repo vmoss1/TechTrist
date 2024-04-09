@@ -299,3 +299,66 @@
   max-width: 500px;
   margin-top: 15px;
 }
+
+@media screen and (max-width: 600px) {
+  #current-pin-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    opacity: 1;
+    animation: show 0.3s;
+  }
+  #current-pin-small-container {
+    display: flex;
+    box-shadow: 0 0 15px 5px#2680a1;
+    border-radius: 25px;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+    max-width: 400px;
+    height: 700px;
+  }
+  #single-pin-image {
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+  }
+  #single-pin-right-side {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 10px;
+    overflow-y: auto;
+    width: 400px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  #creator-name-photo {
+    display: flex;
+    align-items: center;
+  }
+
+  #set-favorite-container {
+    align-self: center;
+    justify-self: center;
+    margin-left: 40px;
+  }
+  #single-pin-edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 35px;
+  }
+  .single-pin-save-button {
+    margin-left: 0px;
+    border-radius: 25px;
+  }
+}

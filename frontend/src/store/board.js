@@ -58,7 +58,6 @@ export const fetchBoardDetails = (boardId) => async (dispatch) => {
   const response = await csrfFetch(`/api/boards/${boardId}`);
   if (response.ok) {
     const boardDetails = await response.json();
-    // console.log("boardDETAILLS", boardDetails);
     dispatch(readBoardDetails(boardDetails.Board));
   } else {
     throw new Error("Unable to fetch Board Details");
