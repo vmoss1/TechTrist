@@ -2,12 +2,12 @@
 
 #footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  gap: 20px;
   border-top: 1px solid black;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 #about-me {
   margin: 0px;
@@ -24,4 +24,9 @@
 
 #github-link:hover {
   text-shadow: 2px 2px 9px rgb(23, 146, 191);
+}
+
+#footer-icons {
+  display: flex;
+  gap: 10px;
 }
