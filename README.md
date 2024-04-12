@@ -24,15 +24,7 @@ https://github.com/vmoss1/TechTrist/assets/142066227/0245ab7c-d89b-4169-b04f-644
 # Technologies Used
 
 
-
-
 ### Backend:
-
-
-
-
-
-
 
 - JavaScript
 - Express.js (Node.js framework for server-side development)
@@ -56,7 +48,22 @@ https://github.com/vmoss1/TechTrist/assets/142066227/0245ab7c-d89b-4169-b04f-644
 - Implementing followers and followings
 - Video uploads for pins
 
+# Wiki Links
+
+- Database Schema
+- https://github.com/vmoss1/TechTrist.wiki.git
+
+ - Features List
+ - https://github.com/vmoss1/TechTrist.wiki.git
+
+ - User Stories
+ - https://github.com/vmoss1/TechTrist.wiki.git
+
+ - WireFrame
+ - https://github.com/vmoss1/TechTrist.wiki.git
+
 # Find me
 
 - github: https://github.com/vmoss1
-- linkedin - www.linkedin.com/in/veronica-moss
+- linkedin: www.linkedin.com/in/veronica-moss
+- portfolio: https://vmoss1.github.io/
