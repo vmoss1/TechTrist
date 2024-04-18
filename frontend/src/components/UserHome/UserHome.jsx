@@ -73,7 +73,9 @@ function UserHome() {
         <SiKingstontechnology />
         {currentUser.username}
       </p>
-      <p id="followers-length">{creator[0]?.followers?.length} followers</p>
+      <p id="followers-length">
+        {creator[0]?.followers ? creator[0].followers.length : 0} followers
+      </p>
       <div id="plus-emblem-container">
         <OpenModalButton
           buttonText={
@@ -106,13 +108,20 @@ function UserHome() {
         <div id="my-boards-container">
           <h2 id="my-boards-title">My Boards</h2>
           <div id="all-boards">
-            {boards?.map((board) => (
-              <NavLink id="board" key={board.id} to={`/boards/${board.id}`}>
-                <div id="boards-link" to={`/boards/${board.id}`}>
-                  <h3 id="board-title-profile">{board?.title}</h3>
-                </div>
-              </NavLink>
-            ))}
+            {boards && boards.length > 0 ? (
+              boards.map((board) => (
+                <NavLink id="board" key={board.id} to={`/boards/${board.id}`}>
+                  <div id="boards-link">
+                    <h3 id="board-title-profile">{board.title}</h3>
+                  </div>
+                </NavLink>
+              ))
+            ) : (
+              <div className="no-boards-message">
+                You have no boards. Please create a board using the + sign on
+                the right side.
+              </div>
+            )}
           </div>
         </div>
 
@@ -121,24 +130,31 @@ function UserHome() {
             <h2 id="my-pins-title">My Pins</h2>
           </div>
           <div id="all-pins-home">
-            {currentPins?.map((pin) => (
-              <Link
-                to={`/pins/${pin.id}`}
-                id="pin"
-                onMouseLeave={handleMouseLeave}
-                onMouseOver={() => handleMouseOver(pin.id)}
-                key={pin.id}
-              >
-                {isMouseOver && currentSelectedKey === pin.id && (
-                  <div id="pin__overlay">
-                    <h3 className="pin-overlay-icons">{pin.title}</h3>
+            {currentPins && currentPins.length > 0 ? (
+              currentPins.map((pin) => (
+                <Link
+                  to={`/pins/${pin.id}`}
+                  id="pin"
+                  onMouseLeave={handleMouseLeave}
+                  onMouseOver={() => handleMouseOver(pin.id)}
+                  key={pin.id}
+                >
+                  {isMouseOver && currentSelectedKey === pin.id && (
+                    <div id="pin__overlay">
+                      <h3 className="pin-overlay-icons">{pin.title}</h3>
+                    </div>
+                  )}
+                  <div id="pins-link">
+                    <img id="pin-images" src={pin.imageUrl} alt={pin.title} />
                   </div>
-                )}
-                <div id="pins-link" key={pin.id}>
-                  <img id="pin-images" src={pin?.imageUrl} alt={pin.title} />
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              <div className="no-pins-message">
+                You have no pins. Please add new pins using the + sign on the
+                right side.
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -147,37 +163,45 @@ function UserHome() {
           <h3 id="favorites-title">Favorites</h3>
         </div>
         <div id="all-pins-favorites">
-          {favorites.map((pin) => (
-            <div
-              onClick={() => navigate(`/pins/${pin?.Pin?.id}`)}
-              id="pin"
-              onMouseLeave={handleMouseLeave}
-              onMouseOver={() => handleMouseOver(pin?.Pin?.id)}
-              key={pin?.Pin?.id}
-            >
-              {isMouseOver && currentSelectedKey === pin?.Pin?.id && (
-                <div id="board-pin__overlay">
-                  <h3 className="board-pin-overlay-icons">{pin?.Pin?.title}</h3>
-                  <button
-                    className="board-remove-button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRemove(pin?.Pin?.id);
-                    }}
-                  >
-                    Remove
-                  </button>
+          {favorites.length > 0 ? (
+            favorites.map((pin) => (
+              <div
+                onClick={() => navigate(`/pins/${pin?.Pin?.id}`)}
+                id="pin"
+                onMouseLeave={handleMouseLeave}
+                onMouseOver={() => handleMouseOver(pin?.Pin?.id)}
+                key={pin?.Pin?.id}
+              >
+                {isMouseOver && currentSelectedKey === pin?.Pin?.id && (
+                  <div id="board-pin__overlay">
+                    <h3 className="board-pin-overlay-icons">
+                      {pin?.Pin?.title}
+                    </h3>
+                    <button
+                      className="board-remove-button"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the onClick of the parent div from being triggered
+                        handleRemove(pin?.Pin?.id);
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
+                <div id="pins-link">
+                  <img
+                    id="pin-images"
+                    src={pin?.Pin?.imageUrl}
+                    alt={pin?.Pin?.title}
+                  />
                 </div>
-              )}
-              <div id="pins-link" key={pin?.Pin?.id}>
-                <img
-                  id="pin-images"
-                  src={pin?.Pin?.imageUrl}
-                  alt={pin?.Pin?.title}
-                />
               </div>
+            ))
+          ) : (
+            <div className="no-favorites-message">
+              You have no favorites yet. Start adding some!
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

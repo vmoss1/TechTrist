@@ -28,7 +28,9 @@
 #find-new {
   font-weight: 200;
   margin: 0px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  color: #1c6e8c;
+  font-weight: bold;
 }
 
 #form-container {
@@ -43,13 +45,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 input {
   border-radius: 15px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: rgba(182, 182, 182, 0.709) 2px solid;
   width: 250px;
 }

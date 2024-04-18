@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <div id="home-page-container">
         <div id="home-paragraph-container">
-          <h2 id="paragraph-home">Sign up to get your new tech ideas</h2>
+          <h2 id="paragraph-home-page">Sign up to get your new tech ideas</h2>
         </div>
         <div id="home-signup-form">
           <SignupFormPage />
