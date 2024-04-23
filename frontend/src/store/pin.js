@@ -47,9 +47,7 @@ const deleteComment = (commentId) => ({
 // Pins fetch
 export const fetchAllPins = () => async (dispatch) => {
   const response = await csrfFetch("/api/pins");
-  //   console.log("RES", response);
   const data = await response.json();
-  //   console.log("DATA", data);
   dispatch(readPins(data.Pins));
 };
 
@@ -58,32 +56,14 @@ export const fetchPinDetails = (pinId) => async (dispatch) => {
   const response = await csrfFetch(`/api/pins/${pinId}`);
   if (response.ok) {
     const pinDetails = await response.json();
-    // console.log("pinDETAILLS", pinDetails);
+
     dispatch(readPinDetails(pinDetails));
   } else {
     throw new Error("Unable to fetch pin Details");
   }
 };
 
-//Pin post
-//Create new pin
-// export const createPinThunk = (pin) => async (dispatch) => {
-//   const response = await csrfFetch("/api/pins", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(pin),
-//   });
-//   if (response.ok) {
-//     const newPin = await response.json();
-//     dispatch(createPin(newPin));
-//     return newPin;
-//   } else {
-//     throw new Error("Unable to Create");
-//   }
-// };
-//Pin post
+
 //Create new pin
 export const createPinThunk = (pin) => async (dispatch) => {
   const { userId, title, description, category, imageUrl } = pin;
@@ -105,7 +85,7 @@ export const createPinThunk = (pin) => async (dispatch) => {
   });
 
   const data = await res.json();
-  // console.log("DATA", data);
+
   dispatch(createPin(data));
   return data;
 };
@@ -115,7 +95,7 @@ export const deletePinThunk = (pinId) => async (dispatch) => {
   const response = await csrfFetch(`/api/pins/${pinId}`, {
     method: "DELETE",
   });
-  //   console.log("RES", response);
+
   if (response.ok) {
     dispatch(deletePin(pinId));
     return response.json();
@@ -133,10 +113,10 @@ export const editPinThunk = (pinId, pinData) => async (dispatch) => {
     },
     body: JSON.stringify(pinData),
   });
-  //   console.log("RESPONSE", response);
+
   if (response.ok) {
     const editedPin = await response.json();
-    // console.log("PIN", editedPin);
+
     dispatch(editPin(editedPin));
     return editedPin;
   } else {
@@ -146,7 +126,7 @@ export const editPinThunk = (pinId, pinData) => async (dispatch) => {
 
 //post a comment
 export const createCommentThunk = (pinId, comment) => async (dispatch) => {
-  // console.log("THUNK", comment);
+
   const response = await csrfFetch(`/api/pins/${pinId}/comments`, {
     method: "POST",
     headers: {
@@ -154,10 +134,10 @@ export const createCommentThunk = (pinId, comment) => async (dispatch) => {
     },
     body: JSON.stringify(comment),
   });
-  // console.log("RES", response);
+
   if (response.ok) {
     const newComment = await response.json();
-    // console.log("NEWCOMMENT", newComment);
+
     dispatch(addComment(newComment));
     return newComment;
   } else {
@@ -170,7 +150,7 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
   const response = await csrfFetch(`/api/comments/${commentId}`, {
     method: "DELETE",
   });
-  //   console.log("RES", response);
+
   if (response.ok) {
     dispatch(deleteComment(commentId));
     return response.json();
@@ -200,7 +180,7 @@ const pinsReducer = (state = initialState, action) => {
     case EDIT_PIN:
       return {
         ...state,
-        list: [state.list, action.payload], // Update the pin with the new data
+        list: [state.list, action.payload], 
       };
 
     case DELETE_PIN: {

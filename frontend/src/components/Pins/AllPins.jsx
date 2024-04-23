@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
-
+import Skeleton from "react-loading-skeleton";
 import "./AllPins.css";
 
 const getFilteredPins = (query, pins) => {
@@ -14,7 +14,7 @@ const getFilteredPins = (query, pins) => {
   return pins.filter((pin) => {
     const letterFilter =
       pin.title.includes(query) || pin.category.includes(query);
-    // Filter by words
+
     const wordFilter =
       pin.title
         .toLowerCase()
@@ -37,10 +37,9 @@ const AllPins = () => {
   const [query, setQuery] = useState("");
 
   let currentPins = useSelector((state) => state.pins.list);
-  let currentUser = useSelector((state) => state.session.user);
   currentPins = Object.values(currentPins);
-
   const filteredPins = getFilteredPins(query, currentPins);
+  let currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     if (!currentUser) navigate("/");
@@ -93,8 +92,13 @@ const AllPins = () => {
                 </div>
               </div>
             )}
+
             <div id="pins-link" key={pin.id}>
-              <img id="pin-images" src={pin.imageUrl} alt={pin.title} />
+              <img
+                id="pin-images"
+                src={pin.imageUrl || <Skeleton />}
+                alt={pin.title}
+              />
             </div>
           </Link>
         ))}

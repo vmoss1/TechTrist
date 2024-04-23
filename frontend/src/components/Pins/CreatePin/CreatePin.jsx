@@ -61,14 +61,11 @@ export default function CreatePin() {
         imageUrl,
       };
 
-      // console.log("NEW-PIN", newPin);
-
       const res = await dispatch(createPinThunk(newPin));
 
       if (res && res.errors) {
         return setErrors(res.errors);
       }
-      // console.log("RES", res);
       // passed in res.id because res is the newly created Pin which is where the id gets assigned
       navigate(`/pins/${res?.id}`);
     }

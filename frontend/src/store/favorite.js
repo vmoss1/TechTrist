@@ -23,9 +23,7 @@ const deleteFavorite = (pinId) => ({
 // favorite fetch
 export const fetchCurrentFavorites = () => async (dispatch) => {
   const response = await csrfFetch("/api/favorites/current");
-  //   console.log("RES", response);
   const data = await response.json();
-  //   console.log("DATA", data);
   dispatch(readFavorites(data.favorites));
 };
 
@@ -52,7 +50,6 @@ export const deleteFavoriteThunk = (pinId) => async (dispatch) => {
   const response = await csrfFetch(`/api/favorites/${pinId}`, {
     method: "DELETE",
   });
-  //   console.log("RES", response);
   if (response.ok) {
     dispatch(deleteFavorite(pinId));
     return response.json();

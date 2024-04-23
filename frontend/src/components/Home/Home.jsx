@@ -1,8 +1,8 @@
-import "./Home.css";
 import SignupFormPage from "../SignupFormPage";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import "./Home.css";
 
 export default function Home() {
   const navigate = useNavigate();

@@ -19,7 +19,6 @@ export default function SingleBoard() {
   const [currentSelectedKey, setCurrentSelectedKey] = useState(null);
 
   const pinCount = board?.Pins?.length;
-
   const dispatch = useDispatch();
 
   const handleRemove = async (pinId) => {

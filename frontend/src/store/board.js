@@ -47,9 +47,7 @@ const deletePinFromBoard = (pinId, boardId) => ({
 // Boards fetch by current user
 export const fetchUserBoards = () => async (dispatch) => {
   const response = await csrfFetch("/api/boards/current");
-  //   console.log("RES", response);
   const data = await response.json();
-  //   console.log("DATA", data);
   dispatch(readBoards(data.currentBoards));
 };
 
@@ -86,7 +84,6 @@ export const deleteBoardThunk = (boardId) => async (dispatch) => {
   const response = await csrfFetch(`/api/boards/${boardId}`, {
     method: "DELETE",
   });
-  //   console.log("RES", response);
   if (response.ok) {
     dispatch(deleteBoard(boardId));
     return response.json();
@@ -104,10 +101,9 @@ export const editBoardThunk = (boardId, boardData) => async (dispatch) => {
     },
     body: JSON.stringify(boardData),
   });
-  //   console.log("RESPONSE", response);
+
   if (response.ok) {
     const editedBoard = await response.json();
-    // console.log("PIN", editedPin);
     dispatch(editBoard(editedBoard));
     return editedBoard;
   } else {
@@ -117,7 +113,6 @@ export const editBoardThunk = (boardId, boardData) => async (dispatch) => {
 
 //Add pin to board
 export const addPinToBoardThunk = (pinId, boardId) => async (dispatch) => {
-  // console.log("THUNK-BOARD-ID", boardId);
   const response = await csrfFetch(`/api/boards/${boardId}/pins/${pinId}`, {
     method: "POST",
     headers: {
@@ -125,10 +120,8 @@ export const addPinToBoardThunk = (pinId, boardId) => async (dispatch) => {
     },
     body: JSON.stringify({ pinId, boardId }),
   });
-  //   console.log("RESPONSE", response);
   if (response.ok) {
     const newPinOnBoard = await response.json();
-    // console.log("NEW-PIN-ON-BOARD", newPinOnBoard);
     dispatch(addPinToBoard(newPinOnBoard));
     return newPinOnBoard;
   } else {
@@ -141,7 +134,6 @@ export const deletePinFromBoardThunk = (boardId, pinId) => async (dispatch) => {
   const response = await csrfFetch(`/api/boards/${boardId}/pins/${pinId}`, {
     method: "DELETE",
   });
-  //   console.log("RES", response);
   if (response.ok) {
     dispatch(deletePinFromBoard({ boardId, pinId }));
     return response.json();
@@ -171,7 +163,7 @@ const boardsReducer = (state = initialState, action) => {
     case EDIT_BOARD:
       return {
         ...state,
-        [action.payload.id]: action.payload, // Update the pin with the new data
+        [action.payload.id]: action.payload, 
       };
 
     case DELETE_BOARD: {
@@ -180,7 +172,6 @@ const boardsReducer = (state = initialState, action) => {
       return boardState;
     }
     case ADD_PIN_TO_BOARD: {
-      // desc pinId and boardId from action payload
       const { pinId, boardId } = action.payload;
       // creating new list so that board can be updated by id
       const updatedList = state.list.map((board) => {

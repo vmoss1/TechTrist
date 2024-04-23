@@ -46,17 +46,6 @@
   font-family: "Petrov Sans-Trial", sans-serif;
 }
 
-#all-boards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* width: 1100px; */
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
-  /* height: fit-content; */
-}
-
 #board {
   display: flex;
   justify-content: center;
@@ -64,9 +53,16 @@
   width: 200px;
   height: 100px;
   border-radius: 25px;
-  /* border: 2px solid black; */
   text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.952);
+  background: linear-gradient(
+    110deg,
+    #06b22543,
+    #1b97495c,
+    #19a19f52,
+    #0e797746
+  );
+  background-size: 200% 200%;
+  animation: pulse 15s ease infinite;
   box-shadow: 0 0 10px 2px #1c6e8c;
 }
 
@@ -77,7 +73,6 @@
 
 #boards-link {
   text-decoration: none;
-  /* font-family: "Raider Crusader", sans-serif; */
 }
 
 #plus-emblem-container {
@@ -115,9 +110,10 @@
 
 #all-boards {
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
   max-width: 600px;
   margin-left: 15px;
@@ -146,7 +142,6 @@
 }
 
 #plus-emblem:hover {
-  /* border-radius: 30px; */
   transform: scale(1.05);
   transition: transform 0.5s ease;
 }
@@ -186,16 +181,10 @@
 
 #home-pins-container {
   margin-bottom: 15px;
-  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-/* #board-title-profile:hover {
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
-} */
 
 #profile-new-pin-container {
   padding: 8px;
@@ -214,10 +203,6 @@
   padding: 10px;
   font-size: 2rem;
 }
-
-/* #open-modal-new-board:hover {
-  box-shadow: 1px 3px 5px #1c6e8c;
-} */
 
 #profile-new-board {
   font-size: 2rem;
@@ -263,6 +248,7 @@
   color: rgb(255, 255, 255);
   font-family: "Petrov Sans-Trial", sans-serif;
 }
+
 @media screen and (max-width: 1200px) {
   #board {
     display: flex;
@@ -271,7 +257,6 @@
     width: 150px;
     height: 60px;
     border-radius: 25px;
-    /* border: 2px solid black; */
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.952);
     box-shadow: 0 0 10px 2px #1c6e8c;
@@ -301,7 +286,6 @@
   }
   #home-pins-container {
     margin-bottom: 15px;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -383,7 +367,6 @@
     width: 150px;
     height: 60px;
     border-radius: 25px;
-    /* border: 2px solid black; */
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.952);
     box-shadow: 0 0 10px 2px #1c6e8c;
@@ -413,7 +396,6 @@
   }
   #home-pins-container {
     margin-bottom: 15px;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;

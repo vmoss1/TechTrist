@@ -5,27 +5,13 @@
   min-height: 820px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-image: url("https://cdn.gencraft.com/prod/user/453ca2fe-6dad-44b4-af3c-6ac15d03d245/83bd9676-d563-43b5-bfe4-a590cc2eff5c/image/image1_0.jpg?Expires=1713557844&Signature=AC8tbLNagpgUAC-1mHHomvsrSxz9brLA9lLD6CigCG7fi80NvXjOcVaperJYr54PzRGd5Gchq1TmxAn60QuRRHbcA~Hh7KvkU01iqBjV3A8SPBxZ3CX4aJBcgzXOvGeNxjcXUVNXKmnnOFdJMJEh1GH1Uj2R2P9sWF4dQvihwu9pZbpcbj5ujchBF96iAw8sV~tjkOLcPJcMDybgrj0~Ay~6B5OuCXt6p7UqS6fymkDltJeGOZBNZbJk7HSOusgeGom2jJQjA30EHlBMPH9X0schA5Frp-0ivHlhIemVkU2Qrzm~YWWFU1DUaz3TEfI2wE3O~2jyRM17nTKNmdMf7g__&Key-Pair-Id=K3RDDB1TZ8BHT8");
+  background-image: url("https://wallpapercave.com/wp/Bp90Y3N.jpg");
   background-size: 100% 100%;
-  /* animation: Gradient 15s ease infinite; */
   border-top: 1px solid black;
-}
-
-@keyframes Gradient {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 #home-signup-form {
   border: 1px solid grey;
-  /* border-radius: 25px; */
   max-height: 750px;
   margin-top: 40px;
   max-width: 450px;
@@ -48,7 +34,6 @@
 
 #paragraph-home {
   font-family: "Petrov Sans-Trial", sans-serif;
-  /* animation: pulse 15s ease infinite; */
 }
 
 @media screen and (max-width: 600px) {

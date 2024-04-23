@@ -3,7 +3,6 @@ import { SiKingstontechnology } from "react-icons/si";
 import { useDispatch } from "react-redux";
 import { fetchAllPins } from "../../store/pin";
 import { fetchUserBoards } from "../../store/board";
-import "./UserHome.css";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import OpenModalButton from "../OpenModalButton";
@@ -14,6 +13,7 @@ import { getUsersThunk } from "../../store/session";
 import { fetchCurrentFavorites } from "../../store/favorite";
 import { deleteFavoriteThunk } from "../../store/favorite";
 import { useNavigate } from "react-router-dom";
+import "./UserHome.css";
 
 function UserHome() {
   const currentUser = useSelector((state) => state.session.user);
@@ -34,8 +34,6 @@ function UserHome() {
   let creator = users?.filter((user) => currentPins[0]?.userId == user.id);
   let favorites = useSelector((state) => state?.favorites.list);
   favorites = Object?.values(favorites);
-  // console.log("FAVORITES", favorites);
-  // console.log(creator[0].followers.length);
 
   const handleRemove = async (pinId) => {
     await dispatch(deleteFavoriteThunk(pinId));

@@ -16,12 +16,13 @@ import { Link } from "react-router-dom";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { GoHeart } from "react-icons/go";
 import { GoHeartFill } from "react-icons/go";
-import "./SinglePin.css";
 import {
   createFavoriteThunk,
   deleteFavoriteThunk,
   fetchCurrentFavorites,
 } from "../../store/favorite";
+import Skeleton from "react-loading-skeleton";
+import "./SinglePin.css";
 
 const SinglePin = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -46,7 +47,6 @@ const SinglePin = () => {
     (favorite) => favorite?.pinId === currentPin.id
   );
   const [favorite, setFavorite] = useState(isFavorite);
-  // console.log("CURRENT FAV", isFavorite);
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -135,7 +135,11 @@ const SinglePin = () => {
         </Link>
       </div>
       <div id="current-pin-small-container">
-        <img id="single-pin-image" src={currentPin?.imageUrl} alt="" />
+        <img
+          id="single-pin-image"
+          src={currentPin?.imageUrl || <Skeleton />}
+          alt=""
+        />
         <div id="single-pin-right-side">
           <div id="single-pin-edit-container">
             <div id="single-pin-edit-button">
@@ -149,7 +153,6 @@ const SinglePin = () => {
                 }
                 modalComponent={<EditPin pin={currentPin} />}
               />
-              {/* <div id="board-button-dropdown"> */}
             </div>
             <div>
               <button onClick={toggleMenu} className="single-pin-save-button">
@@ -168,33 +171,33 @@ const SinglePin = () => {
                       id="single-pin-board-name"
                       key={board?.id}
                     >
-                      {board?.title}
+                      {board?.title || <Skeleton />}
                     </button>
                   ))}
                 </div>
               </ul>
             )}
-            {/* </div> */}
           </div>
           <div id="single-pin-title-container">
-            <h1 id="single-pin-title">{currentPin?.title}</h1>
+            <h1 id="single-pin-title">{currentPin?.title || <Skeleton />}</h1>
           </div>
           <div id="creator-name-photo">
-            <img id="creator-img" src={creator[0]?.profilePicture} alt="" />
+            <img
+              id="creator-img"
+              src={creator[0]?.profilePicture || <Skeleton />}
+              alt=""
+            />
             <div>
-              <p id="single-pin-username">{creator[0]?.username}</p>
+              <p id="single-pin-username">
+                {creator[0]?.username || <Skeleton />}
+              </p>
               {followers > 0 && (
-                <p id="single-pin-followers">{followers} followers</p>
+                <p id="single-pin-followers">
+                  {followers || <Skeleton />} followers
+                </p>
               )}
             </div>
-            {!creator && (
-              <button
-                onClick={() => alert("Feature coming soon")}
-                id="follow-button"
-              >
-                Follow
-              </button>
-            )}
+
             <div id="set-favorite-container">
               <h2
                 id="set-favorite"
@@ -204,14 +207,20 @@ const SinglePin = () => {
                   id="heart-favorite"
                   style={{ fontSize: "40px", color: "red" }}
                 >
-                  {isFavorite === undefined ? <GoHeart /> : <GoHeartFill />}
+                  {isFavorite === undefined ? (
+                    <GoHeart />
+                  ) : (
+                    <GoHeartFill /> || <Skeleton />
+                  )}
                 </div>
               </h2>
             </div>
           </div>
 
           <div id="current-pin-description-container">
-            <p id="single-pin-description">{currentPin.description}</p>
+            <p id="single-pin-description">
+              {currentPin.description || <Skeleton count={10} />}
+            </p>
           </div>
           <div>
             <p id="comment-title">Comments</p>
@@ -222,13 +231,15 @@ const SinglePin = () => {
                 <div id="comment-photo-and-username">
                   <img
                     id="single-pin-comment-photo"
-                    src={comment.User.profilePicture}
+                    src={comment.User.profilePicture || <Skeleton />}
                     alt=""
                   />
-                  <p id="comment-username">{comment.User.username}</p>
+                  <p id="comment-username">
+                    {comment.User.username || <Skeleton />}
+                  </p>
                 </div>
                 <p id="comment-body" key={comment.id}>
-                  {comment.body}
+                  {comment.body || <Skeleton />}
                 </p>
                 <div id="remove-comment-container">
                   {comment.User.id === currentUser.id && creator && (
@@ -246,7 +257,7 @@ const SinglePin = () => {
           <div id="comment-form">
             <img
               id="creator-img-comment"
-              src={currentUser?.profilePicture}
+              src={currentUser?.profilePicture || <Skeleton />}
               alt=""
             />
             <form onSubmit={onSubmit}>

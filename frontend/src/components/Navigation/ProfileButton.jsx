@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { CgProfile } from "react-icons/cg";
 import * as sessionActions from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormPage from "../LoginFormPage";
@@ -9,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ToggleBack";
-
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
@@ -21,7 +19,7 @@ function ProfileButton({ user }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 
@@ -45,7 +43,7 @@ function ProfileButton({ user }) {
     closeMenu();
     setTimeout(() => {
       navigate("/");
-    }, 100);
+    }, 50);
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

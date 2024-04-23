@@ -22,22 +22,6 @@ const getUsers = (users) => ({
   payload: users,
 });
 
-// export const signup = (user) => async (dispatch) => {
-//   const { username, firstName, lastName, email, password } = user;
-//   const response = await csrfFetch("/api/users", {
-//     method: "POST",
-//     body: JSON.stringify({
-//       username,
-//       firstName,
-//       lastName,
-//       email,
-//       password,
-//     }),
-//   });
-//   const data = await response.json();
-//   dispatch(setUser(data.user));
-//   return response;
-// };
 
 export const signup = (user) => async (dispatch) => {
   const { username, firstName, lastName, email, password, profilePicture } =
@@ -49,12 +33,6 @@ export const signup = (user) => async (dispatch) => {
   formData.append("email", email);
   formData.append("password", password);
 
-  // for multiple files
-  // if (images && images.length !== 0) {
-  //   for (var i = 0; i < images.length; i++) {
-  //     formData.append("images", images[i]);
-  //   }
-  // }
   // for single file
   if (profilePicture) formData.append("profilePicture", profilePicture);
 
@@ -92,7 +70,6 @@ export const getUsersThunk = () => async (dispatch) => {
     }
     const data = await response.json();
     dispatch(getUsers(data));
-    // console.log(data.users);
   } catch (error) {
     console.error("Error fetching users:", error.message);
   }

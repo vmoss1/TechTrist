@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { deletePinThunk } from "../../../store/pin";
 import { useModal } from "../../../context/Modal";
 import { fetchPinDetails } from "../../../store/pin";
-
 import "./EditPin.css";
 
 export default function EditPin({ pin }) {
@@ -118,20 +117,6 @@ export default function EditPin({ pin }) {
                 <p className="errors">{errors.description}</p>
               )}
             </label>
-            {/* <label>
-              <input id="post-image-url" type="file" onChange={updateFile} />
-            </label>
-            {imagePreview && (
-              <img
-                id="preview-image"
-                src={imagePreview}
-                alt="preview of uploaded image"
-                style={{ maxWidth: "300px" }}
-              />
-            )}
-            {"imageUrl" in errors && (
-              <p className="errors">{errors.imageUrl}</p>
-            )} */}
             Category
             <label>
               <input
