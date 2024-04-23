@@ -132,7 +132,7 @@ router.post("/:boardId/pins/:pinId", requireAuth, async (req, res, next) => {
 
     const board = await Board.findByPk(boardId);
     const pin = await Pin.findByPk(pinId);
-    // console.log("ONE", board);
+
 
     if (!pin) {
       return res.json({ message: "Pin does not exist" });

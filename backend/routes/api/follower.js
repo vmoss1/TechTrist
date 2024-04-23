@@ -5,27 +5,6 @@ const follower = require("../../db/models/follower");
 
 const router = express.Router();
 
-// GET route to retrieve following of the current user
-// router.get("/current", requireAuth, async (req, res, next) => {
-//   try {
-//     const userId = req.user.id;
-
-//     const followers = await Follower.findAll({
-//       where: {
-//         followerId: userId,
-//       },
-//       include: {
-//         model: User,
-//         as: "following",
-//       },
-//     });
-
-//     res.json({ followers });
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
 // GET route to retrieve followers of the current user
 router.get("/current", requireAuth, async (req, res, next) => {
   try {

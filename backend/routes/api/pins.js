@@ -162,7 +162,6 @@ router.post("/:pinId/comments", requireAuth, async (req, res, next) => {
       return res.status(404).json({ message: "Pin couldn't be found" });
     }
     const { body } = req.body;
-    // console.log("BODY", body);
 
     const newComment = await Comment.create({
       userId: req.user.id,
