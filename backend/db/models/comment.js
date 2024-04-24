@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Comment",
       defaultScope: {
         attributes: {
-          exclude: ["updatedAt"],
+          exclude: ["updatedAt", "createdAt"],
         }, // default query when searching for Users, the hashedPassword, updatedAt, and, depending on your application, email and createdAt fields should not be returned
       }, // protects
     }
