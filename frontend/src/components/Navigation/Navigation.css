@@ -9,15 +9,6 @@ nav {
   margin-right: 10px;
 }
 
-#toggle-theme-button {
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  padding-left: 13px;
-  padding-right: 13px;
-  background-color: rgb(39, 90, 134);
-}
-
 #user-photo {
   height: 40px;
   width: 40px;
@@ -53,18 +44,6 @@ nav {
   box-shadow: 0 0 10px 1px #1c6e8c;
   transform: scale(1.05);
   transition: transform 0.5s ease;
-}
-
-#logout-button {
-  border-radius: 20px;
-  /* margin-top: 5px; */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 25px;
-  padding-right: 25px;
-  background-color: #8c1c1c;
-  color: white;
-  border: none;
 }
 
 #profile-button {
@@ -114,16 +93,55 @@ nav {
 #ul-dropdown {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   border-radius: 15px;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  gap: 5px;
   justify-content: center;
   width: 100px;
   align-items: center;
   margin-top: 5px;
   border: 2px #1c6e8c solid;
+}
+
+#ul-names {
+  font-family: "Raider Crusader", sans-serif;
+  align-self: center;
+  margin-top: 5px;
+}
+
+#toggle-theme-button {
+  margin-top: 10px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  align-self: flex-start;
+  border-radius: 10px;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#toggle-theme-button:hover {
+  background-color: #1c6e8c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+#logout-button {
+  border: none;
+  background-color: rgb(255, 255, 255);
+  align-self: flex-start;
+  border-radius: 10px;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#logout-button:hover {
+  background-color: #8c1c1c;
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 
 #currentlyIn {
@@ -141,8 +159,8 @@ nav {
 
 #profile-button-dropdown {
   z-index: 99;
-  position: fixed; /* or 'fixed' depending on your preference */
-  top: 8%; /* Position it below the button */
+  position: fixed;
+  top: 8%;
   right: 0%;
   margin-right: 10px;
 }
@@ -169,8 +187,9 @@ nav {
 
 .login-signup-buttons {
   display: flex;
-  gap: 15px;
+  gap: 25px;
   margin-top: 15px;
+  margin-right: 50px;
 }
 
 #nav-login-button {

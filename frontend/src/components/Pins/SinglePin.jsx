@@ -228,7 +228,7 @@ const SinglePin = () => {
           <div>
             {currentPin?.Comments?.map((comment) => (
               <>
-                <div id="comment-photo-and-username">
+                <div key={comment.id} id="comment-photo-and-username">
                   <img
                     id="single-pin-comment-photo"
                     src={comment.User.profilePicture || <Skeleton />}
@@ -238,9 +238,7 @@ const SinglePin = () => {
                     {comment.User.username || <Skeleton />}
                   </p>
                 </div>
-                <p id="comment-body" key={comment.id}>
-                  {comment.body || <Skeleton />}
-                </p>
+                <p id="comment-body">{comment.body || <Skeleton />}</p>
                 <div id="remove-comment-container">
                   {comment.User.id === currentUser.id && creator && (
                     <button

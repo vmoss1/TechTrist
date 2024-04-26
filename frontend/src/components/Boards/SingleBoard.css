@@ -194,11 +194,6 @@ button:hover {
     align-items: center;
     width: 150px;
     height: 60px;
-    border-radius: 25px;
-    /* border: 2px solid black; */
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.952);
-    box-shadow: 0 0 10px 2px #1c6e8c;
   }
   #all-boards {
     display: flex;

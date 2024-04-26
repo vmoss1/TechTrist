@@ -64,8 +64,11 @@ function ProfileButton({ user }) {
         {user && showMenu && (
           <ul className={ulClassName} ref={ulRef}>
             <div id="ul-dropdown">
-              <div>{user.firstName}</div>
-              <div>{user.email}</div>
+              <div id="ul-name-container">
+                <div id="ul-names">
+                  {user.firstName} {user.lastName}
+                </div>
+              </div>
               <div className="all-toggle">
                 <button id="toggle-theme-button" onClick={() => toggleTheme()}>
                   {theme}

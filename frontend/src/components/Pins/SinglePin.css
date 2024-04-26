@@ -47,7 +47,7 @@
 
 #single-pin-dropdown {
   z-index: 99;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,9 +55,9 @@
   position: absolute; /* or 'fixed' depending on your preference */
   border: 2px #1c6e8c solid;
   margin-left: 15px;
-  border-radius: 25px;
+  border-radius: 1ch;
   background-color: #1c6e8c;
-  gap: 5px;
+  gap: 2px;
   opacity: 1;
   animation: show 0.3s;
   align-items: center;
@@ -100,7 +100,8 @@
 
 #single-pin-board-name {
   padding: 10px;
-  border-radius: 25px;
+  border-radius: 5px;
+  width: 120px;
   border: none;
   background-color: #1c6e8c;
   font-family: "Petrov Sans-Trial", sans-serif;
@@ -114,7 +115,7 @@
 }
 
 #single-pin-board-name:hover {
-  box-shadow: 0 0 4px 4px #ffffff;
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   transform: scale(1.05);
   transition: transform 0.5s ease;
@@ -122,6 +123,7 @@
 
 #my-boards-title-side {
   text-align: center;
+  font-family: "Raider Crusader", sans-serif;
 }
 
 .single-pin-save-button:hover {
@@ -229,9 +231,11 @@
   flex-direction: column;
   margin-top: 15px;
   gap: 10px;
-  /* margin-right: 15px; */
   max-height: 630px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 580px;
+  scrollbar-color: black;
 }
 
 #creator-img-comment {
@@ -299,6 +303,164 @@
   margin-top: 15px;
 }
 
+@media screen and (max-width: 1185px) {
+  #current-pin-small-container {
+    width: 900px;
+  }
+  #single-pin-image {
+    border-radius: 20px;
+    width: 470px;
+    height: 600px;
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+  }
+  #single-pin-right-side {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 10px;
+    overflow-y: auto;
+    width: 425px;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  #creator-name-photo {
+    display: flex;
+    align-items: center;
+  }
+
+  #set-favorite-container {
+    align-self: center;
+    justify-self: center;
+    margin-left: 40px;
+  }
+  #single-pin-edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 35px;
+  }
+  .single-pin-save-button {
+    margin-left: 0px;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #current-pin-small-container {
+    width: 700px;
+    height: 500px;
+  }
+  #single-pin-image {
+    border-radius: 20px;
+    width: 370px;
+    height: 500px;
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+  }
+
+  #comment-form {
+    width: 250px;
+  }
+  input {
+    width: 200px;
+  }
+  #single-pin-right-side {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 10px;
+    overflow-y: auto;
+    width: 320px;
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  #creator-name-photo {
+    display: flex;
+    align-items: center;
+  }
+
+  #set-favorite-container {
+    align-self: center;
+    justify-self: center;
+    margin-left: 40px;
+  }
+  #single-pin-edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 35px;
+  }
+  .single-pin-save-button {
+    margin-left: 0px;
+    border-radius: 25px;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  #current-pin-small-container {
+    width: 600px;
+    height: 400px;
+  }
+  #single-pin-image {
+    border-radius: 20px;
+    width: 300px;
+    height: 400px;
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+  }
+
+  #comment-form {
+    width: 200px;
+  }
+  input {
+    width: 140px;
+  }
+
+  #single-pin-right-side {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 10px;
+    overflow-y: auto;
+    width: 290px;
+    margin-left: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  #creator-name-photo {
+    display: flex;
+    align-items: center;
+  }
+
+  #set-favorite-container {
+    align-self: center;
+    justify-self: center;
+    margin-left: 40px;
+  }
+  #single-pin-edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 35px;
+  }
+  .single-pin-save-button {
+    margin-left: 0px;
+    border-radius: 25px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #current-pin-container {
     display: flex;
@@ -327,13 +489,21 @@
     margin: 0px;
     align-self: center;
   }
+
+  #comment-form {
+    width: 350px;
+  }
+
+  input {
+    width: 280px;
+  }
   #single-pin-right-side {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
     gap: 10px;
     overflow-y: auto;
-    width: 400px;
+    width: 390px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;

@@ -1,57 +1,103 @@
 @import url("https://fonts.cdnfonts.com/css/petrov-sans-trial");
+@import url("https://fonts.cdnfonts.com/css/raider-crusader");
 
 #home-page-container {
-  background-color: antiquewhite;
+  background-color: rgb(255, 255, 255);
   min-height: 820px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-image: url("https://wallpapercave.com/wp/Bp90Y3N.jpg");
-  background-size: 100% 100%;
   border-top: 1px solid black;
+  background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg");
+  background-size: 100% 100%;
 }
 
 #home-signup-form {
-  border: 1px solid grey;
   max-height: 750px;
   margin-top: 40px;
   max-width: 450px;
   margin-left: 130px;
   background-color: rgba(255, 255, 255, 0.738);
-  box-shadow: 1px 2px 2px black;
+  box-shadow: 1px 1px 10px rgb(144, 144, 144);
   margin-bottom: 10px;
+  border-radius: 20px;
 }
 
 #home-paragraph-container {
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 3.5rem;
   text-align: center;
-  text-shadow: 2px 2px 9px rgb(0, 0, 0);
+  text-shadow: 2px 2px 9px rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
 }
 
-#paragraph-home {
-  font-family: "Petrov Sans-Trial", sans-serif;
+#paragraph-home-page {
+  font-family: "Raider Crusader", sans-serif;
+  animation: pulse 10s ease infinite;
+}
+
+#home-right-side-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#home-right-side-title {
+  margin-bottom: 30px;
+  margin-top: 50px;
+  border: 1px rgb(0, 0, 0) solid;
+  background-color: rgba(240, 248, 255, 0.551);
+  border-radius: 25px;
+  width: 40vh;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    font-size: 30px; /* Smaller font size */
+  }
+  50% {
+    font-size: 40px; /* Larger font size */
+  }
 }
 
 @media screen and (max-width: 600px) {
   #paragraph-home {
     font-size: 2rem;
     margin-bottom: 10px;
+    background-color: white;
   }
   #home-page-container {
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
     min-height: 850px;
     display: flex;
     flex-direction: column;
-    background-image: url("https://wallpapercave.com/wp/Bp90Y3N.jpg");
-    background-size: 150% 150%;
-    animation: Gradient 15s ease infinite;
     border-top: 1px solid black;
     align-items: center;
     justify-content: center;
+    background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg");
+    background-size: 100% 100%;
+  }
+
+  #paragraph-home-page {
+    font-family: "Raider Crusader", sans-serif;
+    animation: pulse 10s ease infinite;
+  }
+
+  #home-paragraph-container {
+    background-image: none;
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      font-size: 20px; /* Smaller font size */
+    }
+    50% {
+      font-size: 30px; /* Larger font size */
+    }
   }
 
   #home-signup-form {

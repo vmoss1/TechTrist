@@ -5,31 +5,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* opacity: 1; */
-  /* animation: show 0.3s; */
 }
-/* 
-@keyframes show {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-} */
 
 #all-pins {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 12000px;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  margin-left: 130px;
-  margin-right: 130px;
+  margin-left: 80px;
+  margin-right: 80px;
   margin-top: 15px;
 }
 
@@ -63,10 +49,10 @@
     #54064d4c
   );
   background-size: 200% 200%;
-  animation: pulse 3s ease infinite;
+  animation: Gradient 3s ease infinite;
 }
 
-@keyframes pulse {
+@keyframes Gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -94,14 +80,16 @@
   z-index: 99;
   position: absolute;
   top: 2%;
-  max-width: 800px;
+  left: 30%;
+  max-width: 1000px;
 }
 
 #search-bar {
-  min-width: 600px;
-  max-width: 800px;
-  box-shadow: 0 0 9px 2px#1c6e8c;
+  min-width: 750px;
+  box-shadow: 0 0 4px 2px#1c6e8c;
   border: none;
+  outline: none;
+  padding: 1cqh;
   font-family: "Petrov Sans-Trial", sans-serif;
 }
 
@@ -169,13 +157,15 @@
   z-index: 99;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1398px) {
   #search-bar-container {
     z-index: 99;
-    position: relative;
+    position: absolute;
     margin-bottom: 25px;
     min-width: none;
     width: max-content;
+    left: 35%;
+    top: 2%;
   }
   #search-bar {
     box-shadow: 0 0 9px 2px #1c6e8c;
@@ -187,13 +177,64 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1145px) {
+  #search-bar-container {
+    left: 38%;
+    top: 2%;
+  }
+  #search-bar {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1014px) {
+  #search-bar-container {
+    left: 40%;
+    top: 2%;
+  }
+  #search-bar {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 894px) {
+  #search-bar-container {
+    left: 48%;
+    top: 2%;
+  }
+  #search-bar {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 813px) {
+  #search-bar-container {
+    left: 50%;
+    top: 2%;
+  }
+  #search-bar {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #search-bar-container {
+    left: 52%;
+    top: 2%;
+  }
+  #search-bar {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   #search-bar-container {
     z-index: 99;
     position: relative;
     margin-bottom: 25px;
     min-width: none;
     width: max-content;
+    left: 0%;
   }
   #search-bar {
     box-shadow: 0 0 9px 2px #1c6e8c;

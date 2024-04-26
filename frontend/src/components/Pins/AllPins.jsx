@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Skeleton from "react-loading-skeleton";
+
+
 import "./AllPins.css";
 
 const getFilteredPins = (query, pins) => {
@@ -93,7 +95,7 @@ const AllPins = () => {
               </div>
             )}
 
-            <div id="pins-link" key={pin.id}>
+            <div id="pins-link">
               <img
                 id="pin-images"
                 src={pin.imageUrl || <Skeleton />}

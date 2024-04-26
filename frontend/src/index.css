@@ -11,28 +11,4 @@
   background-color: rgb(35, 35, 35);
 
   color: white;
-
-  /* background: linear-gradient(
-    110deg,
-    #141414df,
-    #303030d9,
-    #131313d7,
-    #2c2c2cb9,
-    #181818a9,
-    #171717b0
-  );
-  background-size: 200% 200%;
-  animation: Gradient 10s ease infinite; */
 }
-
-/* @keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
