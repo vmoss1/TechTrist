@@ -4,11 +4,11 @@
 
 ##
 
-This is tech-themed social media website inspiried by Pinterest exclusively dedicated to technology-related content. Users can discover, save, and create pins/boards, articles related to various tech topics such as software development, gadgets, programming languages, artificial intelligence, and cybersecurity. They can create boards to organize their saved content and follow other user pins. This platform offers features like search , create and explore.
+This is tech-themed social media website inspired by Pinterest exclusively dedicated to technology-related content. Users can discover, save, and create pins/boards, articles related to various tech topics such as software development, gadgets, programming languages, artificial intelligence, and cybersecurity. They can create boards to organize their saved content and follow other user pins. This platform offers features like search , create and explore.
 
 # Search Bar Preview
 
-## Implemented a function that filtered the state array as it was being queried, filtering by the word and or letter that was on changed while something was being typed in the search input.
+### Implemented a function that filtered the state array as it was being queried, filtering by the word and or letter that was on changed in the search input.
 
 https://github.com/vmoss1/TechTrist/assets/142066227/0f69f6a8-7091-43d5-9abe-6d4ab62a00a6
 <video controls src="images/search-bar.mp4" title="Title"></video>
@@ -20,7 +20,7 @@ https://github.com/vmoss1/TechTrist/assets/142066227/c9caa5bc-86db-451a-984f-092
 
 # Toggle Theme preview
 
-## Used context and local storage to persist and grab the theme that is being set and wrapped as a provider so all compoenents can have access to it.
+### Used context and local storage to persist and grab the theme that is being set and wrapped as a provider so all the components can have access to it.
 
 <video controls src="images/toggletheme.mp4" title="Title"></video>
 https://github.com/vmoss1/TechTrist/assets/142066227/0245ab7c-d89b-4169-b04f-644f9885c383
