@@ -47,9 +47,9 @@
   margin-bottom: 30px;
   margin-top: 50px;
   border: 1px rgb(0, 0, 0) solid;
-  background-color: rgba(240, 248, 255, 0.551);
+  background-color: rgba(255, 255, 255, 0.551);
   border-radius: 25px;
-  width: 40vh;
+  width: 450px;
 }
 
 @keyframes pulse {
@@ -83,6 +83,10 @@
   #paragraph-home-page {
     font-family: "Raider Crusader", sans-serif;
     animation: pulse 10s ease infinite;
+  }
+
+  #home-right-side-container {
+    width: 250px;
   }
 
   #home-paragraph-container {

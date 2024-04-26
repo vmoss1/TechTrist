@@ -154,11 +154,11 @@ const SinglePin = () => {
                 modalComponent={<EditPin pin={currentPin} />}
               />
             </div>
-            <div>
-              <button onClick={toggleMenu} className="single-pin-save-button">
-                Save
-              </button>
-            </div>
+            {/* <div> */}
+            <button onClick={toggleMenu} className="single-pin-save-button">
+              Save
+            </button>
+            {/* </div> */}
             {showMenu && (
               <ul className={ulClassName} ref={ulRef}>
                 <div id="single-pin-dropdown">
