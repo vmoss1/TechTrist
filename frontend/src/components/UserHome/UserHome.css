@@ -33,6 +33,7 @@
   display: flex;
   border-top: rgba(128, 128, 128, 0.491) 2px solid;
   margin-top: 10px;
+  gap: 20px;
 }
 
 #profile-page-h1 {
@@ -95,7 +96,7 @@
   align-items: center;
   justify-content: center;
   height: fit-content;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 15px;
 }
 
@@ -114,8 +115,6 @@
 #my-boards-title {
   font-weight: 500;
   font-family: "Raider Crusader", sans-serif;
-  margin-bottom: 5px;
-  margin-top: 5px;
 }
 
 #my-pins-title {

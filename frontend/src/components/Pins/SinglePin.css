@@ -239,8 +239,9 @@
 }
 
 #creator-img-comment {
-  width: 40px;
-  border-radius: 40px;
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
   border: #1c6e8c 2px solid;
 }
 
@@ -365,8 +366,10 @@
   }
 
   #comment-form {
+    display: flex;
     width: 250px;
   }
+
   input {
     width: 200px;
   }
