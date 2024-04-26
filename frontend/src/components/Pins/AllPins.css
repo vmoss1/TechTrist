@@ -74,6 +74,7 @@
   font-size: 1.25rem;
   align-items: center;
   font-family: "Petrov Sans-Trial", sans-serif;
+  cursor: pointer;
 }
 
 #search-bar-container {
@@ -91,6 +92,10 @@
   outline: none;
   padding: 1cqh;
   font-family: "Petrov Sans-Trial", sans-serif;
+}
+
+#pin:hover {
+  cursor: pointer;
 }
 
 #pin-images {
