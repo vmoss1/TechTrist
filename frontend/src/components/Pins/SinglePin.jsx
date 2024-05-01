@@ -39,6 +39,7 @@ const SinglePin = () => {
   let currentPin = useSelector((state) => state.pins?.list);
   let creator = users?.filter((user) => currentPin?.userId == user.id);
   let followers = creator[0]?.followers?.length;
+  // console.log("CREATOR", creator[0].id);
 
   let currentUserFavorites = useSelector((state) => state.favorites.list);
   currentUserFavorites = Object.values(currentUserFavorites);
@@ -226,31 +227,36 @@ const SinglePin = () => {
             <p id="comment-title">Comments</p>
           </div>
           <div>
-            {currentPin?.Comments?.map((comment) => (
-              <>
-                <div key={comment.id} id="comment-photo-and-username">
-                  <img
-                    id="single-pin-comment-photo"
-                    src={comment.User.profilePicture || <Skeleton />}
-                    alt=""
-                  />
-                  <p id="comment-username">
-                    {comment.User.username || <Skeleton />}
-                  </p>
+            {currentPin?.Comments?.length > 0 ? (
+              currentPin.Comments.map((comment) => (
+                <div key={comment.id}>
+                  <div id="comment-photo-and-username">
+                    <img
+                      id="single-pin-comment-photo"
+                      src={comment.User.profilePicture || <Skeleton />}
+                      alt={`${comment.User.username}'s profile`}
+                    />
+                    <p id="comment-username">
+                      {comment.User.username || <Skeleton />}
+                    </p>
+                  </div>
+                  <p id="comment-body">{comment.body || <Skeleton />}</p>
+                  <div id="remove-comment-container">
+                    {comment.User.id === currentUser.id ||
+                      (creator[0]?.id === currentUser?.id && (
+                        <button
+                          id="remove-comment-button"
+                          onClick={(e) => handleDelete(e, comment.id)}
+                        >
+                          <IoMdTrash />
+                        </button>
+                      ))}
+                  </div>
                 </div>
-                <p id="comment-body">{comment.body || <Skeleton />}</p>
-                <div id="remove-comment-container">
-                  {comment.User.id === currentUser.id && creator && (
-                    <button
-                      id="remove-comment-button"
-                      onClick={(e) => handleDelete(e, comment.id)}
-                    >
-                      <IoMdTrash />
-                    </button>
-                  )}
-                </div>
-              </>
-            ))}
+              ))
+            ) : (
+              <p id="no-comments">Be the first to comment!</p>
+            )}
           </div>
           <div id="comment-form">
             <img
