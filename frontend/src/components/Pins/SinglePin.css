@@ -139,8 +139,6 @@
   border-radius: 25px;
   max-width: 1150px;
   height: 600px;
-  /* gap: 20px; */
-  /* background-color: rgb(233, 233, 233); */
 }
 
 #single-pin-image {
@@ -151,10 +149,16 @@
   margin: 0px;
 }
 
+#no-comments {
+  justify-content: center;
+  align-self: center;
+  margin-left: 165px;
+}
+
 #remove-comment-container {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
+  justify-content: flex-start;
+  margin-left: 175px;
 }
 
 #remove-comment-button {

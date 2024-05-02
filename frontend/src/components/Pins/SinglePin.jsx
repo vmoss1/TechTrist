@@ -242,20 +242,20 @@ const SinglePin = () => {
                   </div>
                   <p id="comment-body">{comment.body || <Skeleton />}</p>
                   <div id="remove-comment-container">
-                    {comment.User.id === currentUser.id ||
-                      (creator[0]?.id === currentUser?.id && (
-                        <button
-                          id="remove-comment-button"
-                          onClick={(e) => handleDelete(e, comment.id)}
-                        >
-                          <IoMdTrash />
-                        </button>
-                      ))}
+                    {(comment.User.id === currentUser.id ||
+                      creator[0]?.id === currentUser.id) && (
+                      <button
+                        id="remove-comment-button"
+                        onClick={(e) => handleDelete(e, comment.id)}
+                      >
+                        <IoMdTrash />
+                      </button>
+                    )}
                   </div>
                 </div>
               ))
             ) : (
-              <p id="no-comments">Be the first to comment!</p>
+              <p id="no-comments">No comments yet! Be the first!</p>
             )}
           </div>
           <div id="comment-form">
