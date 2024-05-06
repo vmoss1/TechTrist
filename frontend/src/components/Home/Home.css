@@ -3,12 +3,10 @@
 
 #home-page-container {
   background-color: rgb(255, 255, 255);
-  min-height: 820px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid black;
-  /* background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg"); */
-  background-size: 100% 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 video {
@@ -28,9 +26,14 @@ video {
   border-radius: 20px;
 }
 
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #home-paragraph-container {
   position: absolute;
-
   color: rgb(0, 0, 0);
   font-size: 3.5rem;
   text-align: center;
@@ -42,7 +45,12 @@ video {
 
 #paragraph-home-page {
   font-family: "Raider Crusader", sans-serif;
-  animation: pulse 10s ease infinite;
+  justify-content: center;
+  align-self: center;
+
+  /* animation: pulse 10s ease infinite; */
+  /* margin-left: 30px;
+  margin-top: 350px; */
 }
 
 #home-right-side-container {
@@ -52,6 +60,7 @@ video {
 }
 
 #home-right-side-title {
+  position: absolute;
   margin-bottom: 30px;
   margin-top: 50px;
   border: 1px rgb(0, 0, 0) solid;
@@ -70,11 +79,41 @@ video {
   }
 }
 
+@media screen and (max-width: 1400px) {
+  video {
+    width: 150%;
+    height: 150%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 1145px) {
+  video {
+    width: 180%;
+    height: 150%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 955px) {
+  video {
+    width: 200%;
+    height: 150%;
+    object-fit: cover;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #paragraph-home {
     font-size: 2rem;
     margin-bottom: 10px;
     background-color: white;
+  }
+
+  video {
+    width: 300%;
+    height: 100%;
+    object-fit: cover;
   }
   #home-page-container {
     background-color: rgb(255, 255, 255);
@@ -84,8 +123,6 @@ video {
     border-top: 1px solid black;
     align-items: center;
     justify-content: center;
-    background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg");
-    background-size: 100% 100%;
   }
 
   #paragraph-home-page {

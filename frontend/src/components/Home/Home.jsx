@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import "./Home.css";
-import SignupFormPage from "../SignupFormPage";
 import front from "../../../public/front.mp4";
 
 export default function Home() {
@@ -21,11 +20,6 @@ export default function Home() {
         </div>
         <div id="home-paragraph-container">
           <h2 id="paragraph-home-page">Sign up to get your new tech ideas</h2>
-        </div>
-        <div id="home-right-side-container">
-          <div id="home-right-side-title">
-            <SignupFormPage />
-          </div>
         </div>
       </div>
       <div id="footer-home">
