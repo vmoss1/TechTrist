@@ -7,8 +7,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-top: 1px solid black;
-  background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg");
+  /* background-image: url("https://tech-trist-open.s3.us-east-2.amazonaws.com/tech.jpeg"); */
   background-size: 100% 100%;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 #home-signup-form {
@@ -23,6 +29,8 @@
 }
 
 #home-paragraph-container {
+  position: absolute;
+
   color: rgb(0, 0, 0);
   font-size: 3.5rem;
   text-align: center;
